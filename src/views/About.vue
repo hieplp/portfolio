@@ -1,6 +1,3 @@
-<script setup lang="ts">
-</script>
-
 <template>
 
   <div class="h-screen w-screen
@@ -8,8 +5,50 @@
               bg-[url('src/assets/b3.jpg')] bg-cover bg-center
              ">
 
-    <div class="fixed top-0 left-0">
-    </div>
+    <nav class="fixed w-full z-20 top-0 left-0 ">
+      <div class="flex flex-wrap items-center justify-center mx-auto p-16">
+
+        <!--        <button data-collapse-toggle="navbar-sticky" type="button"-->
+        <!--                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"-->
+        <!--                aria-controls="navbar-sticky" aria-expanded="false">-->
+        <!--          <span class="sr-only">Open main menu</span>-->
+        <!--          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">-->
+        <!--            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"-->
+        <!--                  d="M1 1h15M1 7h15M1 13h15"/>-->
+        <!--          </svg>-->
+        <!--        </button>-->
+
+        <div class="items-center justify-between w-full md:flex md:w-auto md:order-1 space-x-12" id="navbar-sticky">
+          <ul v-for="(header, index) in headers"
+              :key="index"
+              class="">
+            <li class="">
+              <a :href="header.link"
+                 class="text-xl relative pt-5 group"
+                 aria-current="page">
+                <div :class="{
+                  'text-white': index === 0,
+                  'text-gray-400': index !== 0
+                }"
+                     class="text-sm absolute top-0 right-0 text-gray-400 group-hover:text-white">
+                  0{{ index + 1 }}
+                </div>
+                <span :class="{
+                  'text-white font-bold': index === 0,
+                  'text-gray-400': index !== 0
+                }"
+                      class="group-hover:text-white group-hover:font-bold">
+                   {{ header.label }}
+                </span>
+              </a>
+
+
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
 
     <div class="px-2 md:px-28 2xl:px-36 space-y-2">
 
@@ -62,6 +101,35 @@
 
   </div>
 </template>
+
+<script setup lang="ts">
+
+const headers = [
+  {
+    link: "/",
+    label: "about",
+    isActive: true
+  },
+  {
+    link: "/",
+    label: "experience"
+  },
+  {
+    link: "/",
+    label: "projects"
+  },
+  {
+    link: "/",
+    label: "awards"
+  },
+  {
+    link: "/",
+    label: "contact"
+  },
+];
+
+
+</script>
 
 <style scoped>
 
