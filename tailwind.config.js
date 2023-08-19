@@ -6,7 +6,13 @@ export default {
     ],
     daisyui: {
         themes: [
-            "night",
+            {
+                'night': {
+                    ...require("daisyui/src/theming/themes")["[data-theme=night]"],
+                    "primary": "#133047",
+
+                }
+            },
         ]
     },
     theme: {
