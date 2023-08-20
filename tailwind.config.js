@@ -10,7 +10,6 @@ export default {
                 'night': {
                     ...require("daisyui/src/theming/themes")["[data-theme=night]"],
                     "primary": "#133047",
-
                 }
             },
         ]

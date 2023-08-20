@@ -7,3 +7,24 @@
 body {
     font-family: 'Josefin Sans', sans-serif;
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    border-radius: 4px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #9a9a9a;
+    border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #464646;
+}

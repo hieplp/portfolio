@@ -51,25 +51,25 @@
 
           <!--Menu-->
           <ul class="mt-10">
-            <li v-for="(header, index) in headers"
+            <li v-for="(menu, index) in MENU_ARR"
                 :key="index"
                 class="">
-              <a :href="header.link"
-                 aria-current="page"
-                 class="text-xl group flex items-center space-x-3">
+              <a aria-current="page"
+                 class="text-xl group flex items-center space-x-3"
+                 @click="menuStore.goToMenuByHash(menu)">
                 <div :class="{
-                  'text-white': index === 0,
-                  'text-gray-400': index !== 0
+                  'text-white': index === currentMenu,
+                  'text-gray-400': index !== currentMenu
                 }"
                      class="text-sm text-gray-400 group-hover:text-white">
                   0{{ index + 1 }}.
                 </div>
                 <span :class="{
-                  'text-white font-bold': index === 0,
-                  'text-gray-400': index !== 0
+                  'text-white font-bold': index === currentMenu,
+                  'text-gray-400': index !== currentMenu
                 }"
                       class="group-hover:text-white group-hover:font-bold">
-                   {{ header.label }}
+                  {{ menu }}
                 </span>
               </a>
             </li>
@@ -123,34 +123,32 @@
                   md:w-auto
                   md:order-1
                   space-x-12">
-        <ul v-for="(header, index) in headers"
+        <ul v-for="(menu, index) in MENU_ARR"
             :key="index"
             class="">
-          <li class="">
-            <a :href="header.link"
-               aria-current="page"
-               class="text-xl
-                      relative
-                      pt-5 group">
-              <div :class="{
-                  'text-white': index === 0,
-                  'text-gray-400': index !== 0
+          <li aria-current="page"
+              class="text-xl hover:cursor-pointer
+                     relative
+                     pt-5 group"
+              @click="menuStore.goToMenuByHash(menu)">
+            <div :class="{
+                  'text-white': index === currentMenu,
+                  'text-gray-400': index !== currentMenu
                 }"
-                   class="text-sm
-                          absolute
-                          top-0 right-0
-                          text-gray-400
-                          group-hover:text-white">
-                0{{ index + 1 }}
-              </div>
-              <span :class="{
-                  'text-white font-bold': index === 0,
-                  'text-gray-400': index !== 0
+                 class="text-sm
+                        absolute
+                        top-0 right-0
+                        text-gray-400
+                        group-hover:text-white">
+              0{{ index + 1 }}
+            </div>
+            <span :class="{
+                  'text-white font-bold': index === currentMenu,
+                  'text-gray-400': index !== currentMenu
                 }"
-                    class="group-hover:text-white group-hover:font-bold">
-                   {{ header.label }}
-                </span>
-            </a>
+                  class="group-hover:text-white group-hover:font-bold">
+              {{ menu }}
+            </span>
           </li>
         </ul>
       </div>
@@ -164,30 +162,12 @@
 <script lang="ts" setup>
 
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
+import {MENU_ARR} from "../common/constants.ts";
+import {useMenuStore} from "../store/menu.store.ts";
+import {computed} from "vue";
 
-const headers = [
-  {
-    link: "/",
-    label: "about",
-    isActive: true
-  },
-  {
-    link: "/",
-    label: "experience"
-  },
-  {
-    link: "/",
-    label: "projects"
-  },
-  {
-    link: "/",
-    label: "awards"
-  },
-  {
-    link: "/",
-    label: "contact"
-  },
-];
+const menuStore = useMenuStore();
+const currentMenu = computed(() => menuStore.currentMenu);
 
 const contacts = [
   {

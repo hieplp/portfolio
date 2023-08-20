@@ -1,17 +1,21 @@
 import {createRouter, createWebHistory} from "vue-router";
-import About from "../views/About.vue";
+import Home from "../views/Home.vue";
 
 const routes = [
     {
         path: "/",
-        name: "about",
-        component: About,
+        name: "home",
+        component: Home,
     }
 ]
 
 const router = createRouter({
     routes,
     history: createWebHistory(),
+    scrollBehavior() {
+        // when reload or change page, scroll to top
+        return {x: 0, y: 0}
+    }
 })
 
 

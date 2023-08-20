@@ -1,19 +1,18 @@
 <template>
-  <Headers/>
 
   <div class="h-screen w-screen
               flex items-center justify-center
               bg-[url('src/assets/b3.jpg')] bg-cover bg-center
              ">
-    <div class="px-2 md:px-28 2xl:px-36 space-y-2">
+    <div class="px-2 md:px-24 lg:px-36 xl:px-64 2xl:px-96 space-y-2">
 
-      <p class="text-6xl md:text-8xl font-bold text-white">
-        HIEP LY
+      <p class="text-5xl md:text-8xl font-bold text-white">
+        Hiep Phuoc Ly
       </p>
 
       <div class="ml-2 space-y-2">
-        <p class="">
-          SOFTWARE ENGINEER
+        <p class="text-xl">
+          Software Engineer
         </p>
 
         <p class="w-full md:w-2/3 2xl:w-3/6 text-g">
@@ -38,18 +37,37 @@
 
 
       </div>
-
     </div>
 
+    <!--Scroll To Expertise-->
+    <div class="absolute bottom-10">
+      <button class="flex
+                     justify-center
+                     group
+                     motion-safe:animate-bounce"
+              @click="menuStore.goToMenuByHash(MENU_MAP.expertise)">
+        <div class="group-hover:text-white">
+          <p>
+            {{ MENU_MAP.expertise }}
+          </p>
+          <div class="flex justify-center">
+            <font-awesome-icon :icon="['fas', 'angles-down']"/>
+          </div>
+        </div>
+      </button>
+    </div>
+    <!--End Scroll To Expertise-->
 
   </div>
 </template>
 
 <script lang="ts" setup>
-
-
-import Headers from "../components/Headers.vue";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
+import {useMenuStore} from "../store/menu.store.ts";
+import {MENU_MAP} from "../common/constants.ts";
+
+const menuStore = useMenuStore();
+
 </script>
 
 <style scoped>
