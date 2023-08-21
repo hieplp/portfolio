@@ -16,8 +16,14 @@ export const useMenuStore = defineStore("menu", {
         goToMenu(index: number, onDone?: () => void) {
             if (this.isScrolling) return;
 
+
             this.isScrolling = true;
             this.setCurrentMenu(index);
+
+            // Change title
+            document.title = `${MENU_ARR[this.currentMenu]} | hiep.lp`
+
+            // Scroll to menu
             VueScrollTo.scrollTo(`#${MENU_ARR[this.currentMenu]}`, 1000, {
                 cancelable: false,
                 onDone: () => {
