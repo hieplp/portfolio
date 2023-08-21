@@ -2,7 +2,7 @@ export const MENU_MAP = {
     about: 'about',
     expertise: 'expertise',
     experience: 'experience',
-    projects: 'projects',
+    project: 'project',
     contact: 'contact'
 };
 

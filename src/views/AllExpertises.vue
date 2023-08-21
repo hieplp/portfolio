@@ -1,7 +1,9 @@
 <template>
   <HeaderWithOnlyLogo/>
   <ContainerLayout>
-    <div class="text-lg breadcrumbs">
+
+    <!--Breadcrumbs-->
+    <div class="text-lg breadcrumbs mb-5">
       <ul>
         <li>
           <router-link to="/">
@@ -15,7 +17,9 @@
         </li>
       </ul>
     </div>
+    <!--End Breadcrumbs-->
 
+    <!--Description-->
     <div class="mb-10 space-y-2">
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet consectetur consequuntur debitis dolorum eius
@@ -29,8 +33,10 @@
         rerum sint.
       </p>
     </div>
+    <!--End Description-->
 
-    <div class="space-y-5">
+    <!--Expertise-->
+    <div class="space-y-5 pb-5">
       <div v-for="(type, index) in expertises"
            :key="index"
            class="space-y-2">
@@ -53,6 +59,7 @@
         </div>
       </div>
     </div>
+    <!--End Expertise-->
   </ContainerLayout>
 </template>
 
@@ -63,7 +70,7 @@ import HeaderWithOnlyLogo from "../components/header/HeaderWithOnlyLogo.vue";
 import {onMounted} from "vue";
 
 onMounted(() => {
-  document.title = "All Expertise | hiep.lp";
+  document.title = "all expertise | hiep.lp";
   window.scrollTo(0, 0);
 });
 
