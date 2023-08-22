@@ -10,8 +10,8 @@ export const MENU_MAP = {
 
 export const MENU_ARR = Object.keys(MENU_MAP) as string[];
 
-export const PROJECTS_ARR: ProjectType[] = [
-    {
+export const PROJECT_MAP = {
+    giotmauvang: {
         id: "giotmauvang",
         name: "Giọt Máu Vàng",
         smallBackground: "src/assets/project/gmv.png",
@@ -30,7 +30,7 @@ export const PROJECTS_ARR: ProjectType[] = [
         role: "Backend Developer",
         skills: ["Vert.x", "jOOQ", "MariaDB", "Redis", "RabbitMQ", "JasperReport"],
     },
-    {
+    meeasy: {
         id: "meeasy",
         name: "Mẹ Easy",
         smallBackground: "src/assets/project/meeasy.png",
@@ -49,7 +49,7 @@ export const PROJECTS_ARR: ProjectType[] = [
         role: "Backend Developer",
         skills: ["Vert.x", "jOOQ", "MariaDB", "Redis", "RabbitMQ", "Apache POI"],
     },
-    {
+    "url-shorten": {
         id: "url-shorten",
         name: "URL Shortener",
         smallBackground: "src/assets/project/url-shortener.png",
@@ -66,9 +66,9 @@ export const PROJECTS_ARR: ProjectType[] = [
         },
         type: "Personal",
         role: "Software Engineer",
-        skills: ["Vert.x", "jOOQ", "MariaDB", "Elastic", "Kafka"],
+        skills: ["Vert.x", "jOOQ", "MariaDB", "Elastic", "Kafka", "TailwindCSS"],
     },
-    {
+    "recipe-platform": {
         id: "recipe-platform",
         name: "Recipe Platform",
         smallBackground: "src/assets/project/recipe-platform.png",
@@ -85,8 +85,141 @@ export const PROJECTS_ARR: ProjectType[] = [
         },
         type: "Personal",
         role: "Software Engineer",
-        skills: ["SpringBoot", "jOOQ", "MariaDB", "CQRS", "SAGA"],
-    }
-]
+        skills: ["SpringBoot", "jOOQ", "MariaDB", "CQRS", "SAGA", "TailwindCSS"],
+    },
+    portfolio: {
+        id: "portfolio",
+        name: "Portfolio",
+        smallBackground: "src/assets/project/portfolio.png",
+        fullBackground: "src/assets/project/portfolio.png",
+        shortDescription: "A portfolio application built with Vue and TailwindCSS.",
+        descriptions: [],
+        link: {
+            name: "portfolio",
+            url: "https://github.com/hieplp/portfolio",
+        },
+        location: {
+            name: "Home",
+            url: "https://github.com/hieplp",
+        },
+        type: "Personal",
+        role: "Software Engineer",
+        skills: ["Vue", "TailwindCSS", "Vite", "Pinia"],
+    },
+    "tic-tac-toe": {
+        id: "tic-tac-toe",
+        name: "Tic Tac Toe",
+        smallBackground: "src/assets/project/default.jpeg",
+        fullBackground: "src/assets/project/default.jpeg",
+        shortDescription: "A tic tac toe game built with gRPC and Vue.",
+        descriptions: [],
+        link: {
+            name: "tic-tac-toe",
+            url: "https://github.com/hieplp/tic-tac-toe",
+        },
+        location: {
+            name: "Home",
+            url: "https://github.com/hieplp",
+        },
+        type: "Personal",
+        role: "Software Engineer",
+        skills: ["Java", "gRPC", "Vue", "Pinia", "TailwindCSS"],
+    },
+    "long-running-task": {
+        id: "long-running-task",
+        name: "Long Running Task",
+        smallBackground: "src/assets/project/default.jpeg",
+        fullBackground: "src/assets/project/default.jpeg",
+        shortDescription: "A long running task application built with Vert.x and Vue.",
+        descriptions: [],
+        link: {
+            name: "long-running-task",
+            url: "https://github.com/hieplp/long-running-task",
+        },
+        location: {
+            name: "Home",
+            url: "https://github.com/hieplp",
+        },
+        type: "Personal",
+        role: "Software Engineer",
+        skills: ["Vert.x", "jOOQ", "Vue", "SSE", "TailwindCSS"],
+    },
+    "gpt-messenger": {
+        id: "gpt-messenger",
+        name: "GPT Messenger",
+        smallBackground: "src/assets/project/default.jpeg",
+        fullBackground: "src/assets/project/default.jpeg",
+        shortDescription: "A messenger application built with GPT-3.",
+        descriptions: [],
+        link: {
+            name: "long-running-task",
+            url: "https://github.com/hieplp/long-running-task",
+        },
+        location: {
+            name: "Home",
+            url: "https://github.com/hieplp",
+        },
+        type: "Personal",
+        role: "Software Engineer",
+        skills: ["SpringBoot", "GPT-3", "Facebook"],
+    },
+    "ascii-art": {
+        id: "ascii-art",
+        name: "ASCII Art",
+        smallBackground: "src/assets/project/default.jpeg",
+        fullBackground: "src/assets/project/default.jpeg",
+        shortDescription: "An application that converts images to ASCII art.",
+        descriptions: [],
+        link: {
+            name: "ascii-art",
+            url: "https://github.com/hieplp/ascii-art",
+        },
+        location: {
+            name: "Home",
+            url: "https://github.com/hieplp",
+        },
+        type: "Personal",
+        role: "Software Engineer",
+        skills: ["C#", "ASCII"],
+    },
+    tiktik: {
+        id: "tiktik",
+        name: "TikTik",
+        smallBackground: "src/assets/project/tiktik.png",
+        fullBackground: "src/assets/project/tiktik.png",
+        shortDescription: "A loyalty platform enabling users to manage, earn points, and redeem rewards at various stores.",
+        descriptions: [],
+        link: {
+            name: "tiktik.vn",
+            url: "https://tiktik.vn/",
+        },
+        location: {
+            name: "Intelin",
+            url: "https://intelin.vn",
+        },
+        type: "Company",
+        role: "Backend Developer",
+        skills: ["Vert.x", "jOOQ", "MariaDB", "Redis", "RabbitMQ", "JasperReport"],
+    },
+    iportal: {
+        id: "iportal",
+        name: "iPortal",
+        smallBackground: "src/assets/project/default.jpeg",
+        fullBackground: "src/assets/project/default.jpeg",
+        shortDescription: "A low-code platform enabling users to create their business applications more easily.",
+        descriptions: [],
+        link: null,
+        location: {
+            name: "Intelin",
+            url: "https://intelin.vn",
+        },
+        type: "Company",
+        role: "Backend Developer",
+        skills: ["Vert.x", "jOOQ", "MariaDB", "RabbitMQ", ".Net 5", "OpenXML"],
+    },
+};
 
-export const STAR_PROJECTS_ARR: ProjectType[] = PROJECTS_ARR.splice(0, 4);
+export const PROJECT_ARR = Object.values(PROJECT_MAP) as ProjectType[];
+export const STAR_PROJECTS_ARR: ProjectType[] = PROJECT_ARR.slice(0, 4);
+export const PERSONAL_PROJECTS_ARR: ProjectType[] = PROJECT_ARR.filter(project => project.type === "Personal");
+export const COMPANY_PROJECTS_ARR: ProjectType[] = [...PROJECT_ARR.filter(project => project.type === "Company")];

@@ -64,7 +64,6 @@
 </template>
 
 <script lang="ts" setup>
-
 import ContainerLayout from "../components/layout/ContainerLayout.vue";
 import HeaderWithOnlyLogo from "../components/header/HeaderWithOnlyLogo.vue";
 import {onMounted} from "vue";

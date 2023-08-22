@@ -85,7 +85,8 @@
                             items-center
                             space-x-1
                             hover:text-white
-                            hover:font-bold" rel="noopener noreferrer"
+                            hover:font-bold"
+                     rel="noopener noreferrer"
                      target="_blank">
                     <font-awesome-icon :icon="['fas', 'link']" class="h-4 w-4"/>
                     <p>{{ project.name }}</p>

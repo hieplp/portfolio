@@ -1,15 +1,17 @@
 <template>
   <!--Project-->
-  <router-link :to="'/'"
-               class="relative
-                      grid grid-cols-12
-                      gap-3
-                      group
-                      pb-1
-                      mt-3
-                      transition-all
-                      hover:!opacity-100
-                      group-hover/list:opacity-50">
+  <a :href="project.link?.url || project.location.url"
+     class="relative
+            grid grid-cols-12
+            gap-3
+            group
+            pb-1
+            mt-3
+            transition-all
+            hover:!opacity-100
+            group-hover/list:opacity-50"
+     rel="noopener noreferrer"
+     target="_blank">
 
     <div class="absolute
                 left-0
@@ -45,7 +47,8 @@
 
       <!--Links-->
       <div class="flex flex-row gap-2">
-        <a :href="project.link.url"
+        <a v-if="project.link"
+           :href="project.link.url"
            class="flex
                   mt-1
                   items-center
@@ -120,7 +123,7 @@
         </p>
       </div> <!--End Skills-->
     </div> <!--End Detail-->
-  </router-link> <!--End Project-->
+  </a> <!--End Project-->
 </template>
 
 <script lang="ts" setup>

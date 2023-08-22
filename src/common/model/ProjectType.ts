@@ -7,7 +7,7 @@ export default interface ProjectType {
     fullBackground: string;
     shortDescription: string;
     descriptions: string[];
-    link: LinkType;
+    link?: LinkType;
     location: LinkType;
     type: "Company" | "Personal";
     role: string;
