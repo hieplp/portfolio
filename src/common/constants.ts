@@ -1,4 +1,5 @@
 import ProjectType from "./model/ProjectType.ts";
+import ContactType from "./model/ContactType.ts";
 
 export const MENU_MAP = {
     about: 'about',
@@ -223,3 +224,31 @@ export const PROJECT_ARR = Object.values(PROJECT_MAP) as ProjectType[];
 export const STAR_PROJECTS_ARR: ProjectType[] = PROJECT_ARR.slice(0, 4);
 export const PERSONAL_PROJECTS_ARR: ProjectType[] = PROJECT_ARR.filter(project => project.type === "Personal");
 export const COMPANY_PROJECTS_ARR: ProjectType[] = [...PROJECT_ARR.filter(project => project.type === "Company")];
+
+export const CONTACT_MAP = {
+    github: {
+        name: "Github",
+        label: "github.com/hieplp",
+        url: "https://github.com/hieplp",
+        icon: ['fab', 'github']
+    },
+    gmail: {
+        name: "Gmail",
+        label: "hiepphuocly@gmail.com",
+        url: "mailto:hiepphuocly@gmail.com",
+        icon: ['fab', 'google']
+    },
+    facebook: {
+        name: "Facebook",
+        label: "facebook.com/hieplp99",
+        url: "https://www.facebook.com/hieplp99",
+        icon: ['fab', 'facebook']
+    },
+    phone: {
+        name: "Phone",
+        label: "(+84) 033 545 2591",
+        url: "",
+        icon: ['fas', 'mobile-screen-button']
+    }
+}
+export const CONTACT_ARR = Object.values(CONTACT_MAP) as ContactType[];

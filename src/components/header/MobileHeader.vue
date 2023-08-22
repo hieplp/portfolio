@@ -85,11 +85,13 @@
               <a v-for="(contact, index) in contacts"
                  :key="index"
                  :href="contact.url"
-                 class="flex items-center space-x-3 group">
+                 class="flex items-center space-x-3 group"
+                 rel="noopener noreferrer"
+                 target="_blank">
                 <font-awesome-icon :icon="contact.icon"
                                    class="h-7 w-7 text-gray-500 group-hover:text-white"/>
                 <p class="group-hover:text-white">
-                  {{ contact.value }}
+                  {{ contact.label }}
                 </p>
               </a>
             </div>
@@ -115,35 +117,21 @@
 </template>
 
 <script lang="ts" setup>
-import {MENU_ARR} from "../../common/constants.ts";
+import {CONTACT_MAP, MENU_ARR} from "../../common/constants.ts";
 import {useMenuStore} from "../../store/menu.store.ts";
 import {computed} from "vue";
 
 const menuStore = useMenuStore();
 const currentMenu = computed(() => menuStore.currentMenu);
 
+
 const contacts = [
-  {
-    url: "/",
-    icon: ['fas', 'mobile-screen-button'],
-    value: "(+84) 033 545 2591",
-  },
-  {
-    url: "https://github.com/hieplp",
-    icon: ['fab', 'github'],
-    value: "github.com/hieplp",
-  },
-  {
-    url: "/",
-    icon: ['fab', 'google'],
-    value: "hiepphuocly@gmail.com"
-  },
-  {
-    url: "/",
-    icon: ['fab', 'facebook'],
-    value: "facebook.com/hieplp99"
-  },
+  CONTACT_MAP.phone,
+  CONTACT_MAP.github,
+  CONTACT_MAP.gmail,
+  CONTACT_MAP.facebook
 ]
+
 </script>
 
 <style scoped>

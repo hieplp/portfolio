@@ -2,7 +2,8 @@
   <div class="overflow-hidden scroll-smooth">
 
     <Headers v-if="currentMenu === 0"/>
-    <HeaderWithLogo v-else/>
+    <HeaderWithLogo v-else-if="currentMenu === 4"/>
+    <HeaderWithLogo v-else class="bg-primary"/>
     <MobileHeader/>
 
     <About :id="MENU_ARR[0]"/>

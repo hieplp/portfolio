@@ -1,6 +1,6 @@
 <template>
   <DesktopHeaderLayout>
-    <div class="w-full bg-primary flex justify-center">
+    <div class="w-full flex justify-center">
       <div class="w-full h-full max-w-4xl xl:max-w-6xl flex items-center pt-10">
         <p class="text-4xl font-bold text-white">
           hiep.lp
@@ -44,7 +44,6 @@ import {computed} from "vue";
 import {useMenuStore} from "../../store/menu.store.ts";
 import {MENU_ARR} from "../../common/constants.ts";
 import DesktopHeaderLayout from "../layout/DesktopHeaderLayout.vue";
-
 
 const menuStore = useMenuStore();
 const currentMenu = computed(() => menuStore.currentMenu);

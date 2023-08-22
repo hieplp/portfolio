@@ -1,34 +1,25 @@
 <template>
-  <router-link :to="to"
+  <a v-if="isExternal"
+     :href="to"
+     class="relative w-fit
+            flex items-center
+            hover:text-white hover:font-bold
+            group">
+    <AnimatedLinkContent :icon="icon" :text="text"/>
+  </a>
+  <router-link v-else
+               :to="to"
                class="relative w-fit
                       flex items-center
-                      mt-8
                       hover:text-white hover:font-bold
                       group">
-    <p class="mr-1">
-      {{ text }}
-    </p>
-    <font-awesome-icon
-        :icon="icon"
-        class="shrink-0
-               -translate-y-px transition-transform
-               group-hover:translate-x-1
-               group-focus-visible:translate-x-1
-               motion-reduce:transition-none"/>
-
-    <span class="absolute
-                 -bottom-0.5
-                 left-0
-                 w-0 h-0.5
-                 bg-white
-                 transition-all
-                 group-hover:w-full">
-    </span>
-
+    <AnimatedLinkContent :icon="icon" :text="text"/>
   </router-link>
 </template>
 
 <script lang="ts" setup>
+
+import AnimatedLinkContent from "./AnimatedLinkContent.vue";
 
 const props = defineProps({
   to: {
@@ -42,6 +33,10 @@ const props = defineProps({
   icon: {
     type: Array<string>,
     required: true,
+  },
+  isExternal: {
+    type: Boolean,
+    default: false,
   },
 });
 

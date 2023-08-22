@@ -22,19 +22,14 @@
       </div>
 
       <div class="flex pt-5 ml-2 space-x-3">
-
-        <a href="">
-          <font-awesome-icon :icon="['fab', 'github']" class="h-7 w-7 text-gray-500 hover:text-white"/>
+        <a v-for="(contact, index) in contacts"
+           :key="index"
+           :data-tip="contact.url"
+           :href="contact.url"
+           class="tooltip" rel="noopener noreferrer"
+           target="_blank">
+          <font-awesome-icon :icon="contact.icon" class="h-7 w-7 text-gray-500 hover:text-white"/>
         </a>
-
-        <a href="">
-          <font-awesome-icon :icon="['fab', 'google']" class="h-7 w-7 text-gray-500 hover:text-white"/>
-        </a>
-
-        <a class="h-5 w-5 fill-gray-500 hover:fill-white" href="">
-          <font-awesome-icon :icon="['fab', 'facebook']" class="h-7 w-7 text-gray-500 hover:text-white"/>
-        </a>
-
 
       </div>
     </div>
@@ -64,10 +59,15 @@
 <script lang="ts" setup>
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import {useMenuStore} from "../store/menu.store.ts";
-import {MENU_MAP} from "../common/constants.ts";
+import {CONTACT_MAP, MENU_MAP} from "../common/constants.ts";
 
 const menuStore = useMenuStore();
 
+const contacts = [
+  CONTACT_MAP.github,
+  CONTACT_MAP.gmail,
+  CONTACT_MAP.facebook
+];
 </script>
 
 <style scoped>
