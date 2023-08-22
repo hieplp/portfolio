@@ -63,7 +63,10 @@
         <!--End Content-->
 
         <!--Link-->
-        <AnimatedLink :icon="['fas', 'arrow-right']" text="More about my expertise" to="expertises"/>
+        <AnimatedLink :icon="['fas', 'arrow-right']"
+                      class="font-bold"
+                      text="More about my expertise"
+                      to="expertises"/>
         <!--End Link-->
 
       </div>

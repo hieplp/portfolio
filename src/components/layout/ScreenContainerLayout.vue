@@ -1,5 +1,6 @@
 <template>
-  <div class="h-screen w-screen
+  <div class="min-h-screen md:h-screen md:max-h-screen
+              w-screen
               bg-primary
               flex justify-center
               pt-24 md:pt-28

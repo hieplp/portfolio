@@ -22,11 +22,13 @@
             <AnimatedLink :icon="['fas', 'arrow-right']" class="mt-auto" text="View full résumé" to="expertises"/>
           </div>
           <!--End Description-->
+
           <div class="divider divider-vertical md:divider-horizontal"></div>
+
           <!--Experience-->
           <div class="col-span-2 space-y-8">
-            <a v-for="(experience, index) in experiences"
-               :key="index"
+            <a v-for="(experience, experienceIndex) in experiences"
+               :key="experienceIndex"
                :href="experience.companyLink"
                class="relative
                       grid grid-cols-12
@@ -35,20 +37,21 @@
                       pb-1
                       transition-all
                       hover:!opacity-100
-                      group-hover/list:opacity-50">
+                      group-hover/list:opacity-50" rel="noopener noreferrer"
+               target="_blank">
               <div class="absolute
-                         left-0
-                         -inset-y-4
-                         z-0
-                         hidden
-                         rounded-md
-                         transition
-                         motion-reduce:transition-none
-                         md:-inset-x-2
-                         md:block
-                         md:group-hover:bg-slate-600/50
-                         md:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)]
-                         md:group-hover:drop-shadow-lg">
+                          left-0
+                          -inset-y-4
+                          z-0
+                          hidden
+                          rounded-md
+                          transition
+                          motion-reduce:transition-none
+                          md:-inset-x-2
+                          md:block
+                          md:group-hover:bg-slate-600/50
+                          md:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)]
+                          md:group-hover:drop-shadow-lg">
               </div>
               <div class="col-span-4 z-10">
                 <p class="text-slate-500 group-hover:text-slate-300 hidden md:block">
@@ -68,29 +71,30 @@
                   {{ experience.from }} - {{ experience.to }}
                 </p>
 
-                <p v-for="(description, index) in experience.descriptions"
-                   :key="index"
+                <p v-for="(description, descriptionIndex) in experience.descriptions"
+                   :key="descriptionIndex"
                    class="mt-2 text-slate-500">
                   {{ description }}
                 </p>
 
                 <div class="flex flex-row space-x-3 mt-2">
-                  <a v-for="(project, index) in experience.projects"
-                     :key="index"
+                  <a v-for="(project, projectIndex) in experience.projects"
+                     :key="projectIndex"
                      :href="project.link"
                      class="flex
                             items-center
                             space-x-1
                             hover:text-white
-                            hover:font-bold">
+                            hover:font-bold" rel="noopener noreferrer"
+                     target="_blank">
                     <font-awesome-icon :icon="['fas', 'link']" class="h-4 w-4"/>
                     <p>{{ project.name }}</p>
                   </a>
                 </div>
 
                 <div class="flex flex-row gap-1 mt-4">
-                  <div v-for="(skill, index) in experience.skills"
-                       :key="index"
+                  <div v-for="(skill, skillIndex) in experience.skills"
+                       :key="skillIndex"
                        class="flex
                               items-center
                               rounded-full
@@ -140,15 +144,15 @@ const experiences = [
     projects: [
       {
         name: "giotmauvang",
-        link: "https://giotmauvang.org.vn/",
+        url: "https://giotmauvang.org.vn/",
       },
       {
         name: "tiktik",
-        link: "https://tiktik.vn/",
+        url: "https://tiktik.vn/",
       },
       {
         name: "meeasy",
-        link: "https://meeasy.vn/",
+        url: "https://meeasy.vn/",
       },
     ],
     skills: [

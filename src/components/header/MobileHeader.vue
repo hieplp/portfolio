@@ -84,7 +84,7 @@
             <div class="space-y-5">
               <a v-for="(contact, index) in contacts"
                  :key="index"
-                 :href="contact.link"
+                 :href="contact.url"
                  class="flex items-center space-x-3 group">
                 <font-awesome-icon :icon="contact.icon"
                                    class="h-7 w-7 text-gray-500 group-hover:text-white"/>
@@ -124,22 +124,22 @@ const currentMenu = computed(() => menuStore.currentMenu);
 
 const contacts = [
   {
-    link: "/",
+    url: "/",
     icon: ['fas', 'mobile-screen-button'],
     value: "(+84) 033 545 2591",
   },
   {
-    link: "https://github.com/hieplp",
+    url: "https://github.com/hieplp",
     icon: ['fab', 'github'],
     value: "github.com/hieplp",
   },
   {
-    link: "/",
+    url: "/",
     icon: ['fab', 'google'],
     value: "hiepphuocly@gmail.com"
   },
   {
-    link: "/",
+    url: "/",
     icon: ['fab', 'facebook'],
     value: "facebook.com/hieplp99"
   },

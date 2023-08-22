@@ -3,8 +3,7 @@
                class="relative w-fit
                       flex items-center
                       mt-8
-                      font-bold
-                      hover:text-white
+                      hover:text-white hover:font-bold
                       group">
     <p class="mr-1">
       {{ text }}
