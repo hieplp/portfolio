@@ -11,13 +11,26 @@
       </p>
 
       <div class="ml-2 space-y-2">
-        <p class="text-xl">
+        <p class="text-2xl font-bold text-white">
           Software Engineer
         </p>
 
+        <div class="w-full md:w-5/6 2xl:w-4/6 space-y-2">
+          <p class="">
+            I am a seasoned Software Engineer with over 2.5 years of practical experience, dedicated to constructing
+            robust backend solutions.
+          </p>
+          <p>
+            Primarily, I specialize in Java programming, often working with frameworks such as Vert.x and the Spring
+            Framework.
+          </p>
+          <p>
+            Additionally, I possess proficiency in TypeScript, and I've applied this expertise to frontend
+            technologies like Vue.js and React.
+          </p>
+        </div>
         <p class="w-full md:w-2/3 2xl:w-3/6 text-g">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi dicta dolor facere fugit id iusto laborum
-          nisi obcaecati odio optio quidem repellat saepe sed suscipit totam ullam, velit vero. Atque.
+
         </p>
       </div>
 

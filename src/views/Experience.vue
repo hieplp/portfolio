@@ -14,12 +14,20 @@
 
           <!--Description-->
           <div class="h-full">
-            <p class="font-bold text-lg space-x-1 mb-4">
-              I've been working with <span class="text-secondary">Java and its ecosystem</span>
-              for<span class="text-secondary">over 2.5 years </span> of hands-on experience.
+            <p class="font-bold text-lg mb-2">
+              With <span class="text-secondary">over 2.5 years</span> of hands-on experience, my journey has revolved
+              around the dynamic world of <span class="text-secondary">Java and its diverse ecosystem</span>.
+            </p>
+            <p>
+              I've seamlessly navigated through its intricacies, harnessing its power to architect, develop, and
+              optimize software solutions that stand as a testament to my proficiency and dedication.
             </p>
 
-            <AnimatedLink :icon="['fas', 'arrow-right']" class="mt-auto" text="View full résumé" to="expertises"/>
+            <AnimatedLink :icon="['fas', 'arrow-right']"
+                          :is-external="true"
+                          class="mt-10 md:mt-20"
+                          text="View full résumé"
+                          to="https://drive.google.com/file/d/1Z-8AK3RH0mBJszJRvw_pH6LrFX3X_U-r/view?usp=drive_link"/>
           </div>
           <!--End Description-->
 
@@ -37,7 +45,8 @@
                       pb-1
                       transition-all
                       hover:!opacity-100
-                      group-hover/list:opacity-50" rel="noopener noreferrer"
+                      group-hover/list:opacity-50"
+               rel="noopener noreferrer"
                target="_blank">
               <div class="absolute
                           left-0

@@ -4,7 +4,9 @@
      class="relative w-fit
             flex items-center
             hover:text-white hover:font-bold
-            group">
+            group"
+     rel="noopener noreferrer"
+     target="_blank">
     <AnimatedLinkContent :icon="icon" :text="text"/>
   </a>
   <router-link v-else

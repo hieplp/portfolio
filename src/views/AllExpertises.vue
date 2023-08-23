@@ -22,15 +22,14 @@
     <!--Description-->
     <div class="mb-10 space-y-2">
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet consectetur consequuntur debitis dolorum eius
-        excepturi id maiores molestias nihil obcaecati pariatur quas sapiente sequi sint suscipit, totam unde
-        voluptates? Illo?
+        Cultivating a comprehensive skill set, I bring expertise in Java and TypeScript to the table. My primary focus
+        lies in backend development, where I've demonstrated proficiency in utilizing frameworks such as Vert.x and
+        Spring to build robust and dependable systems.
       </p>
 
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias aspernatur consectetur consequatur cumque
-        delectus distinctio dolores doloribus eaque enim et facilis nam perspiciatis provident, quasi rem repellendus
-        rerum sint.
+        Additionally, I've extended my capabilities to encompass frontend technologies, including Vue.js and React,
+        enabling me to contribute effectively across the full stack of software development.
       </p>
     </div>
     <!--End Description-->

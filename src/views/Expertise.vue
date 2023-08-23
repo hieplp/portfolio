@@ -19,14 +19,14 @@
                 for<span class="text-secondary">over 2.5 years </span> of hands-on experience.
               </p>
 
-              <p class="text-slate-400">
+              <p class="">
                 Proficient in designing and implementing Restful APIs and managing databases efficiently.
                 My strong problem-solving skills enable me to create scalable software solutions.
               </p>
-              <p class="text-slate-400">
+              <p class="">
                 I am enthusiastic about exploring microservices, security, and design patterns.
               </p>
-              <p class="text-slate-400">
+              <p class="">
                 I am open to exciting opportunities and eager to take my skills to the next level.
               </p>
             </div>
