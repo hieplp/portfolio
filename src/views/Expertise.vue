@@ -83,27 +83,27 @@ import AnimatedLink from "../components/link/AnimatedLink.vue";
 const expertises = [
   {
     name: "Java",
-    icon: "src/assets/java.svg"
+    icon: "images/java.svg"
   },
   {
     name: "Spring",
-    icon: "src/assets/spring.svg"
+    icon: "images/spring.svg"
   },
   {
     name: "Vert.x",
-    icon: "src/assets/vertx.svg"
+    icon: "images/vertx.svg"
   },
   {
     name: "Vue",
-    icon: "src/assets/Vue.js.svg"
+    icon: "images/Vue.js.svg"
   },
   {
     name: "Docker",
-    icon: "src/assets/Docker.svg"
+    icon: "images/Docker.svg"
   },
   {
     name: "MariaDB",
-    icon: "src/assets/mariadb.svg"
+    icon: "images/mariadb.svg"
   },
 ]
 

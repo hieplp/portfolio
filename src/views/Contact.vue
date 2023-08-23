@@ -1,5 +1,5 @@
 <template>
-  <ScreenContainerLayout class="bg-[url('src/assets/b3.jpg')] bg-cover bg-center">
+  <ScreenContainerLayout class="bg-[url('images/b3.jpg')] bg-cover bg-center">
     <CenterLayout>
       <div class="w-full space-y-12">
         <!--Title-->

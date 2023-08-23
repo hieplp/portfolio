@@ -78,15 +78,15 @@ const expertises = [
     list: [
       {
         name: "Java",
-        icon: "src/assets/java.svg"
+        icon: "images/java.svg"
       },
       {
         name: "Javascript",
-        icon: "src/assets/JavaScript.svg"
+        icon: "images/JavaScript.svg"
       },
       {
         name: "Typescript",
-        icon: "src/assets/TypeScript.svg"
+        icon: "images/TypeScript.svg"
       },
     ]
   },
@@ -95,19 +95,19 @@ const expertises = [
     list: [
       {
         name: "Spring",
-        icon: "src/assets/spring.svg"
+        icon: "images/spring.svg"
       },
       {
         name: "Vert.x",
-        icon: "src/assets/vertx.svg"
+        icon: "images/vertx.svg"
       },
       {
         name: "jOOQ",
-        icon: "src/assets/jooq.png"
+        icon: "images/jooq.png"
       },
       {
         name: "JUnit",
-        icon: "src/assets/JUnit.svg"
+        icon: "images/JUnit.svg"
       },
     ]
   },
@@ -116,19 +116,19 @@ const expertises = [
     list: [
       {
         name: "Vue",
-        icon: "src/assets/Vue.js.svg"
+        icon: "images/Vue.js.svg"
       },
       {
         name: "React",
-        icon: "src/assets/React.svg"
+        icon: "images/React.svg"
       },
       {
         name: "TailwindCSS",
-        icon: "src/assets/Tailwind CSS.svg"
+        icon: "images/Tailwind CSS.svg"
       },
       {
         name: "Bootstrap",
-        icon: "src/assets/Bootstrap.svg"
+        icon: "images/Bootstrap.svg"
       },
     ]
   },
@@ -137,15 +137,15 @@ const expertises = [
     list: [
       {
         name: "MySQL",
-        icon: "src/assets/mysql.svg"
+        icon: "images/mysql.svg"
       },
       {
         name: "MariaDB",
-        icon: "src/assets/mariadb.svg"
+        icon: "images/mariadb.svg"
       },
       {
         name: "Redis",
-        icon: "src/assets/Redis.svg"
+        icon: "images/Redis.svg"
       },
     ]
   },
@@ -154,11 +154,11 @@ const expertises = [
     list: [
       {
         name: "Arch",
-        icon: "src/assets/Arch Linux.svg"
+        icon: "images/Arch Linux.svg"
       },
       {
         name: "Fedora",
-        icon: "src/assets/Fedora.svg"
+        icon: "images/Fedora.svg"
       },
     ]
   },
@@ -167,11 +167,11 @@ const expertises = [
     list: [
       {
         name: "Github",
-        icon: "src/assets/GitHub.svg"
+        icon: "images/GitHub.svg"
       },
       {
         name: "GitLab",
-        icon: "src/assets/GitLab.svg"
+        icon: "images/GitLab.svg"
       },
 
     ]
@@ -181,11 +181,11 @@ const expertises = [
     list: [
       {
         name: "Firebase",
-        icon: "src/assets/Firebase.svg"
+        icon: "images/Firebase.svg"
       },
       {
         name: "Google",
-        icon: "src/assets/Google Cloud.svg"
+        icon: "images/Google Cloud.svg"
       },
 
     ]
@@ -195,23 +195,23 @@ const expertises = [
     list: [
       {
         name: "Postman",
-        icon: "src/assets/Postman.svg"
+        icon: "images/Postman.svg"
       },
       {
         name: "IntelliJ",
-        icon: "src/assets/IntelliJ IDEA.svg"
+        icon: "images/IntelliJ IDEA.svg"
       },
       {
         name: "WebStorm",
-        icon: "src/assets/WebStorm.svg"
+        icon: "images/WebStorm.svg"
       },
       {
         name: "DataGrip",
-        icon: "src/assets/DataGrip.svg"
+        icon: "images/DataGrip.svg"
       },
       {
         name: "Vim",
-        icon: "src/assets/Vim.svg"
+        icon: "images/Vim.svg"
       },
     ]
   },
@@ -220,27 +220,27 @@ const expertises = [
     list: [
       {
         name: "RabbitMQ",
-        icon: "src/assets/RabbitMQ.svg"
+        icon: "images/RabbitMQ.svg"
       },
       {
         name: "Slack",
-        icon: "src/assets/Slack.svg"
+        icon: "images/Slack.svg"
       },
       {
         name: "Jira",
-        icon: "src/assets/Jira.svg"
+        icon: "images/Jira.svg"
       },
       {
         name: "Docker",
-        icon: "src/assets/Docker.svg"
+        icon: "images/Docker.svg"
       },
       {
         name: "Jenkins",
-        icon: "src/assets/Jenkins.svg"
+        icon: "images/Jenkins.svg"
       },
       {
         name: "Kubernetes",
-        icon: "src/assets/Kubernetes.svg"
+        icon: "images/Kubernetes.svg"
       },
     ]
   }
