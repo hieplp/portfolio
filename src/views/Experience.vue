@@ -89,7 +89,7 @@
                 <div class="flex flex-row space-x-3 mt-2">
                   <a v-for="(project, projectIndex) in experience.projects"
                      :key="projectIndex"
-                     :href="project.link"
+                     :href="project.url"
                      class="flex
                             items-center
                             space-x-1
@@ -102,7 +102,7 @@
                   </a>
                 </div>
 
-                <div class="flex flex-row gap-1 mt-4">
+                <div class="flex flex-wrap gap-1 mt-4">
                   <div v-for="(skill, skillIndex) in experience.skills"
                        :key="skillIndex"
                        class="flex

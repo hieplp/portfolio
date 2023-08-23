@@ -23,7 +23,7 @@
 
 import AnimatedLinkContent from "./AnimatedLinkContent.vue";
 
-const props = defineProps({
+defineProps({
   to: {
     type: String,
     required: true,
@@ -41,6 +41,7 @@ const props = defineProps({
     default: false,
   },
 });
+
 
 </script>
 

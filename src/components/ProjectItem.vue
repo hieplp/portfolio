@@ -130,7 +130,7 @@
 import {PropType} from "vue";
 import ProjectType from "../common/model/ProjectType";
 
-const props = defineProps({
+defineProps({
   project: {
     type: Object as PropType<ProjectType>,
     required: true,
