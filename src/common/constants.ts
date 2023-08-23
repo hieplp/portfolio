@@ -15,8 +15,8 @@ export const PROJECT_MAP = {
     giotmauvang: {
         id: "giotmauvang",
         name: "Giọt Máu Vàng",
-        smallBackground: "src/assets/project/gmv.png",
-        fullBackground: "src/assets/project/gmv.png",
+        smallBackground: "images/project/gmv.png",
+        fullBackground: "images/project/gmv.png",
         shortDescription: "A non-profit application enabling users to schedule blood donations and track their donation information.",
         descriptions: [],
         link: {
@@ -34,8 +34,8 @@ export const PROJECT_MAP = {
     meeasy: {
         id: "meeasy",
         name: "Mẹ Easy",
-        smallBackground: "src/assets/project/meeasy.png",
-        fullBackground: "src/assets/project/meeasy.png",
+        smallBackground: "images/project/meeasy.png",
+        fullBackground: "images/project/meeasy.png",
         shortDescription: "A social network enabling users to take challenges, track, and share their pregnancy and parenting journeys",
         descriptions: [],
         link: {
@@ -53,8 +53,8 @@ export const PROJECT_MAP = {
     "url-shorten": {
         id: "url-shorten",
         name: "URL Shortener",
-        smallBackground: "src/assets/project/url-shortener.png",
-        fullBackground: "src/assets/project/url-shortener.png",
+        smallBackground: "images/project/url-shortener.png",
+        fullBackground: "images/project/url-shortener.png",
         shortDescription: "A URL Shortener application that allows you to generate shortened URLs from long one.",
         descriptions: [],
         link: {
@@ -72,8 +72,8 @@ export const PROJECT_MAP = {
     "recipe-platform": {
         id: "recipe-platform",
         name: "Recipe Platform",
-        smallBackground: "src/assets/project/recipe-platform.png",
-        fullBackground: "src/assets/project/recipe-platform.png",
+        smallBackground: "images/project/recipe-platform.png",
+        fullBackground: "images/project/recipe-platform.png",
         shortDescription: "A recipe platform is a digital space where people share, discover, and organize recipes. ",
         descriptions: [],
         link: {
@@ -91,8 +91,8 @@ export const PROJECT_MAP = {
     portfolio: {
         id: "portfolio",
         name: "Portfolio",
-        smallBackground: "src/assets/project/portfolio.png",
-        fullBackground: "src/assets/project/portfolio.png",
+        smallBackground: "images/project/portfolio.png",
+        fullBackground: "images/project/portfolio.png",
         shortDescription: "A portfolio application built with Vue and TailwindCSS.",
         descriptions: [],
         link: {
@@ -110,8 +110,8 @@ export const PROJECT_MAP = {
     "tic-tac-toe": {
         id: "tic-tac-toe",
         name: "Tic Tac Toe",
-        smallBackground: "src/assets/project/default.jpeg",
-        fullBackground: "src/assets/project/default.jpeg",
+        smallBackground: "images/project/default.jpeg",
+        fullBackground: "images/project/default.jpeg",
         shortDescription: "A tic tac toe game built with gRPC and Vue.",
         descriptions: [],
         link: {
@@ -129,8 +129,8 @@ export const PROJECT_MAP = {
     "long-running-task": {
         id: "long-running-task",
         name: "Long Running Task",
-        smallBackground: "src/assets/project/default.jpeg",
-        fullBackground: "src/assets/project/default.jpeg",
+        smallBackground: "images/project/default.jpeg",
+        fullBackground: "images/project/default.jpeg",
         shortDescription: "A long running task application built with Vert.x and Vue.",
         descriptions: [],
         link: {
@@ -148,8 +148,8 @@ export const PROJECT_MAP = {
     "gpt-messenger": {
         id: "gpt-messenger",
         name: "GPT Messenger",
-        smallBackground: "src/assets/project/default.jpeg",
-        fullBackground: "src/assets/project/default.jpeg",
+        smallBackground: "images/project/default.jpeg",
+        fullBackground: "images/project/default.jpeg",
         shortDescription: "A messenger application built with GPT-3.",
         descriptions: [],
         link: {
@@ -167,8 +167,8 @@ export const PROJECT_MAP = {
     "ascii-art": {
         id: "ascii-art",
         name: "ASCII Art",
-        smallBackground: "src/assets/project/default.jpeg",
-        fullBackground: "src/assets/project/default.jpeg",
+        smallBackground: "images/project/default.jpeg",
+        fullBackground: "images/project/default.jpeg",
         shortDescription: "An application that converts images to ASCII art.",
         descriptions: [],
         link: {
@@ -186,8 +186,8 @@ export const PROJECT_MAP = {
     tiktik: {
         id: "tiktik",
         name: "TikTik",
-        smallBackground: "src/assets/project/tiktik.png",
-        fullBackground: "src/assets/project/tiktik.png",
+        smallBackground: "images/project/tiktik.png",
+        fullBackground: "images/project/tiktik.png",
         shortDescription: "A loyalty platform enabling users to manage, earn points, and redeem rewards at various stores.",
         descriptions: [],
         link: {
@@ -205,8 +205,8 @@ export const PROJECT_MAP = {
     iportal: {
         id: "iportal",
         name: "iPortal",
-        smallBackground: "src/assets/project/default.jpeg",
-        fullBackground: "src/assets/project/default.jpeg",
+        smallBackground: "images/project/default.jpeg",
+        fullBackground: "images/project/default.jpeg",
         shortDescription: "A low-code platform enabling users to create their business applications more easily.",
         descriptions: [],
         link: null,

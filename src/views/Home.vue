@@ -31,7 +31,6 @@ import {useMenuStore} from "../store/menu.store.ts";
 // const Experience = defineAsyncComponent(() => import('./Experience.vue'))
 // const Project = defineAsyncComponent(() => import('./Project.vue'))
 // const Contact = defineAsyncComponent(() => import('./Contact.vue'))
-//
 
 const menuStore = useMenuStore();
 const currentMenu = computed(() => menuStore.currentMenu);

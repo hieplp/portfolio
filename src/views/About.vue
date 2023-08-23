@@ -2,9 +2,10 @@
 
   <div class="h-screen w-screen
               flex items-center justify-center
-              bg-[url('src/assets/b3.jpg')] bg-cover bg-center
+              bg-[url('images/b3.jpg')] bg-cover bg-center
              ">
     <div class="px-2 md:px-24 lg:px-36 xl:px-64 2xl:px-96 space-y-2">
+
 
       <p class="text-5xl md:text-8xl font-bold text-white">
         Hiep Phuoc Ly
