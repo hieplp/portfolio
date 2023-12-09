@@ -244,11 +244,23 @@ export const CONTACT_MAP = {
         url: "https://www.facebook.com/hieplp99",
         icon: ['fab', 'facebook']
     },
+    skype: {
+        name: "Skype",
+        label: "hiep ly (hiepphuocly@gmail.com)",
+        url: "hiepphuocly@gmail.com",
+        icon: ['fab', 'skype']
+    },
     phone: {
         name: "Phone",
         label: "(+84) 033 545 2591",
         url: "",
         icon: ['fas', 'mobile-screen-button']
-    }
+    },
+    linkedin: {
+        name: "Linkedin",
+        label: "linkedin.com/Hiep Ly",
+        url: "https://www.linkedin.com/in/hiep-ly-563a231a2",
+        icon: ['fab', 'linkedin']
+    },
 }
 export const CONTACT_ARR = Object.values(CONTACT_MAP) as ContactType[];

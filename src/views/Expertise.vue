@@ -16,7 +16,7 @@
             <div class="space-y-1">
               <p class="font-bold text-lg space-x-1 mb-4">
                 I've been working with <span class="text-secondary">Java and its ecosystem</span>
-                for<span class="text-secondary">over 2.5 years </span> of hands-on experience.
+                for<span class="text-secondary">over 3 years </span> of hands-on experience.
               </p>
 
               <p class="">

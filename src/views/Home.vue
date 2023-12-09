@@ -27,14 +27,29 @@ import MobileHeader from "../components/header/MobileHeader.vue";
 import {MENU_ARR} from "../common/constants.ts";
 import {useMenuStore} from "../store/menu.store.ts";
 
-// const Expertise = defineAsyncComponent(() => import('./Expertise.vue'))
-// const Experience = defineAsyncComponent(() => import('./Experience.vue'))
-// const Project = defineAsyncComponent(() => import('./Project.vue'))
-// const Contact = defineAsyncComponent(() => import('./Contact.vue'))
-
 const menuStore = useMenuStore();
 const currentMenu = computed(() => menuStore.currentMenu);
 const isScrolling = ref(false);
+
+const observeComponent = (element: HTMLElement | null, menu: number) => {
+  console.log("number: " + menu);
+  const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            menuStore.setCurrentMenu(menu);
+          }
+        });
+      },
+      {threshold: 0} // Trigger when the component is fully in view
+  );
+
+  if (!element) {
+    return;
+  }
+
+  observer.observe(element);
+}
 
 const handleMouseWheel = (e: WheelEvent) => {
   // Prevent from scrolling when scrolling programmatically
@@ -65,6 +80,15 @@ const handleMouseWheel = (e: WheelEvent) => {
 };
 
 onMounted(() => {
+  // Only observe when screen is mobile
+  if (window.innerWidth < 768) {
+    observeComponent(document.getElementById(MENU_ARR[0]), 0);
+    observeComponent(document.getElementById(MENU_ARR[1]), 1);
+    observeComponent(document.getElementById(MENU_ARR[2]), 2);
+    observeComponent(document.getElementById(MENU_ARR[3]), 3);
+    observeComponent(document.getElementById(MENU_ARR[4]), 4);
+  }
+
   window.addEventListener('wheel', handleMouseWheel, {passive: false});
 
   if (!isScrolling.value) {
