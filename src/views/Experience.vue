@@ -15,7 +15,7 @@
           <!--Description-->
           <div class="h-full">
             <p class="font-bold text-lg mb-2">
-              With <span class="text-secondary">over 2.5 years</span> of hands-on experience, my journey has revolved
+              With <span class="text-secondary">over 3 years</span> of hands-on experience, my journey has revolved
               around the dynamic world of <span class="text-secondary">Java and its diverse ecosystem</span>.
             </p>
             <p>
@@ -27,7 +27,7 @@
                           :is-external="true"
                           class="mt-10 md:mt-20"
                           text="View full résumé"
-                          to="https://drive.google.com/file/d/1Z-8AK3RH0mBJszJRvw_pH6LrFX3X_U-r/view?usp=drive_link"/>
+                          to="https://drive.google.com/file/d/1EDSU2GHhi4w5-fqyfb0OgQ3W39aiyS8t/view?usp=sharing"/>
           </div>
           <!--End Description-->
 
@@ -89,8 +89,10 @@
                 <div class="flex flex-row space-x-3 mt-2">
                   <a v-for="(project, projectIndex) in experience.projects"
                      :key="projectIndex"
+                     :data-tip="project.url"
                      :href="project.url"
                      class="flex
+                            tooltip
                             items-center
                             space-x-1
                             hover:text-white
@@ -123,7 +125,6 @@
 
             </a>
 
-
           </div>
           <!--End Experience-->
 
@@ -142,6 +143,21 @@ import AnimatedLink from "../components/link/AnimatedLink.vue";
 
 
 const experiences = [
+  {
+    from: "Oct 2023",
+    to: "Dec 2023",
+    title: "Software Engineer",
+    company: "CMC Global",
+    companyLink: "https://cmcglobal.com.vn/",
+    descriptions: [
+      "Worked as an onsite software engineer at Techcombank.",
+    ],
+    projects: [],
+    skills: [
+      "SpringBoot",
+      "Oracle",
+    ]
+  },
   {
     from: "Mar 2021",
     to: "Jun 2023",

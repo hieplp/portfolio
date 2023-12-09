@@ -27,6 +27,15 @@
                 </p>
               </div>
             </CopyText>
+
+            <CopyText :text-to-copy="CONTACT_MAP.skype.label">
+              <div class="flex flex-row gap-2 text-lg">
+                <p class="">skype:</p>
+                <p class="font-bold text-white">
+                  {{ CONTACT_MAP.skype.label }}
+                </p>
+              </div>
+            </CopyText>
           </div>
 
           <div class="flex flex-col md:flex-row col-span-1 gap-2 md:gap-12">
@@ -58,7 +67,8 @@ import AnimatedLink from "../components/link/AnimatedLink.vue";
 
 const socials = [
   CONTACT_MAP.github,
-  CONTACT_MAP.facebook
+  CONTACT_MAP.facebook,
+  CONTACT_MAP.linkedin
 ];
 
 </script>

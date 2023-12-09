@@ -18,16 +18,17 @@
 
         <div class="w-full md:w-5/6 2xl:w-4/6 space-y-2">
           <p class="">
-            I am a seasoned Software Engineer with over 2.5 years of practical experience, dedicated to constructing
-            robust backend solutions.
+            I am a seasoned Software Engineer with over
+            <span class="font-bold"> 3 years of practical experience </span>,
+            dedicated to constructing robust backend solutions.
           </p>
           <p>
-            Primarily, I specialize in Java programming, often working with frameworks such as Vert.x and the Spring
-            Framework.
+            Primarily, I specialize in Java programming, often working with frameworks such as
+            <span class="font-bold">Vert.x</span> and the <span class="font-bold">Spring Framework.</span>
           </p>
           <p>
             Additionally, I possess proficiency in TypeScript, and I've applied this expertise to frontend
-            technologies like Vue.js and React.
+            technologies like <span class="font-bold">Vue.js</span> and <span class="font-bold">React</span>.
           </p>
         </div>
         <p class="w-full md:w-2/3 2xl:w-3/6 text-g">
@@ -80,7 +81,8 @@ const menuStore = useMenuStore();
 const contacts = [
   CONTACT_MAP.github,
   CONTACT_MAP.gmail,
-  CONTACT_MAP.facebook
+  CONTACT_MAP.facebook,
+  CONTACT_MAP.linkedin,
 ];
 </script>
 
