@@ -1,7 +1,6 @@
 <template>
   <HeaderWithOnlyLogo/>
 
-
   <ContainerLayout class="min-h-screen">
 
     <!--Breadcrumbs-->
