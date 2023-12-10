@@ -1,5 +1,6 @@
 import ProjectType from "./model/ProjectType.ts";
 import ContactType from "./model/ContactType.ts";
+import ExperienceType from "./model/ExperienceType.ts";
 
 export const MENU_MAP = {
     about: 'about',
@@ -264,3 +265,87 @@ export const CONTACT_MAP = {
     },
 }
 export const CONTACT_ARR = Object.values(CONTACT_MAP) as ContactType[];
+
+export const EXPERIENCES_MAP = {
+    CMC: {
+        from: "Oct 2023",
+        to: "Dec 2023",
+        title: "Software Engineer",
+        company: "CMC Global",
+        companyLink: "https://cmcglobal.com.vn/",
+        descriptions: [
+            "Worked as an onsite software engineer at Techcombank.",
+        ],
+        longDescriptions: [
+            "Worked as an onsite software engineer at Techcombank.",
+            "Utilized Spring Boot, and Oracle to build robust APIs that fulfilled the project's needs.",
+            "Developed and maintained unit tests to ensure code quality and reliability using JUnit, Mockito."
+        ],
+        projects: [],
+        skills: [
+            "SpringBoot",
+            "Oracle",
+        ]
+    },
+    INTELIN: {
+        from: "Mar 2021",
+        to: "Jun 2023",
+        title: "Backend Developer",
+        company: "Intelin",
+        companyLink: "https://intelin.vn",
+        descriptions: [
+            "Utilized Vertx, MariaDB, RabbitMQ, Redis, etc to develop multiple microservices and monolith applications.",
+        ],
+        longDescriptions: [
+            "My primary focus is Java, where I've employed technologies like Vertx, MariaDB, RabbitMQ, Redis, and others to create multiple microservices and monolithic applications.",
+            "Collaborated with senior engineers to build and maintain RESTful APIs for various application modules.",
+            "Contributed to the design and optimization of database queries to improve application performance.",
+            "Utilized version control (Gitlab) to manage the codebase and track changes effectively.",
+            "Assisted in the deployment and monitoring of applications in development and testing environments using Jenkin, Kubernetes.",
+        ],
+        projects: [
+            {
+                name: "giotmauvang",
+                url: "https://giotmauvang.org.vn/",
+            },
+            {
+                name: "tiktik",
+                url: "https://tiktik.vn/",
+            },
+            {
+                name: "meeasy",
+                url: "https://meeasy.vn/",
+            },
+        ],
+        skills: [
+            "Vert.x",
+            "jOOQ",
+            "MariaDB",
+            "Docker",
+        ]
+    },
+    FSOFT: {
+        from: "Sep 2019",
+        to: "Dec 2019",
+        title: "Software Engineer Intern",
+        company: "FPT Software",
+        companyLink: "https://fptsoftware.com",
+        descriptions: [
+            "Worked as a software engineer intern for an outsourcing Japanese project.",
+        ],
+        longDescriptions: [
+            "Worked as a software engineer intern for an outsourcing Japanese project.",
+            "Utilized VueJS, and ElementUI to develop user interfaces, creating screens that aligned with the specified requirements.",
+            "Using Spring Boot, and PostgreSQL to build APIs that fitted the requirements."
+        ],
+        projects: [],
+        skills: [
+            "SpringBoot",
+            "PostgreSQL",
+            "VueJs",
+            "ElementUI",
+        ]
+    }
+}
+export const EXPERIENCES_ARR = Object.values(EXPERIENCES_MAP) as ExperienceType[];
+export const TOP_3_EXPERIENCES_ARR = EXPERIENCES_ARR.slice(0, 4);
