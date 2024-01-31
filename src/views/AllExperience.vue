@@ -13,7 +13,7 @@
         </li>
         <li class="font-bold">
           <a>
-            Experience
+            Experiences
           </a>
         </li>
       </ul>
