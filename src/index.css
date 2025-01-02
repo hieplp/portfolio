@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 1rem; /* Adjust as needed */
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+}
+
+/* For WebKit browsers */
+*::-webkit-scrollbar {
+  width: 8px; /* Change this value to your desired width */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5); /* Customize the scrollbar thumb color */
+  border-radius: 10px; /* Optional: round the corners */
+}
+
+*::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1); /* Customize the scrollbar track color */
+}
+
+.scroll-container {
+  scroll-behavior: smooth;
+  transition: scroll 2s ease-in-out; /* Adjust the duration as needed */
+}
