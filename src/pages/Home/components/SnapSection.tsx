@@ -1,14 +1,26 @@
-import React from "react";
+import { ReactNode, Suspense, useRef } from "react";
+import { useOnScreen } from "../../../hooks/useOnScreen.ts";
+import Loading from "./Loading.tsx";
 
 interface SnapSectionProps {
-  children: React.ReactNode;
+  children?: ReactNode;
 }
 
 export default function SnapSection(props: SnapSectionProps) {
   const { children } = props;
+  const ref = useRef<HTMLDivElement>(null);
+  const isVisible = useOnScreen(ref);
   return (
-    <section className="h-screen snap-start flex items-center justify-center">
-      {children}
-    </section>
+    <div ref={ref}>
+      <section className="h-screen snap-start flex items-center justify-center">
+        {isVisible ? (
+          <Suspense fallback={<Loading/>}>
+            {children}
+          </Suspense>
+        ) : (
+          <Loading/>
+        )}
+      </section>
+    </div>
   )
 }
