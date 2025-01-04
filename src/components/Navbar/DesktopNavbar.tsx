@@ -1,4 +1,4 @@
-import classNames from "../../classNames.ts";
+import classNames from "../../lib/classNames.ts";
 import useDesktopNavbar from "../../hooks/useDesktopNavbar.ts";
 import {NavbarItemType} from "../../stores/navbar.store.ts";
 

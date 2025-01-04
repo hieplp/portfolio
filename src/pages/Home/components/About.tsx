@@ -1,19 +1,70 @@
+import {motion} from 'framer-motion';
+import {TypeAnimation} from "react-type-animation";
+
+const WavingHand = () => {
+  return (
+    <motion.span
+      animate={{rotate: [0, 14, -8, 14, -4, 10, 0, 0]}}
+      transition={{repeat: Infinity, duration: 2.5, ease: 'easeInOut'}}
+      style={{display: 'inline-block', transformOrigin: '70% 70%'}}
+    >
+      👋🏻
+    </motion.span>
+  )
+}
+
 export default function About() {
   return (
-    <section
+    <motion.section
       id="about"
-      className='text-white h-screen w-full bg-slate-950 grid place-content-center sticky top-0'
+      className='text-white h-screen w-full bg-slate-950 grid sticky top-0 items-center justify-center'
+      initial={{opacity: 0, y: 50}}
+      animate={{opacity: 1, y: 0}}
+      transition={{duration: 0.5, ease: 'easeOut'}}
     >
-      {/*<div className={classNames(*/}
-      {/*  'absolute bottom-0 left-0 right-0 top-0',*/}
-      {/*  'bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:54px_54px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]'*/}
-      {/*)}></div>*/}
+      <div className="container max-w-screen-lg mx-auto items-center tracking-tight leading-[120%]">
 
-      {/*<Navbar/>*/}
+        <p className="text-6xl">
+          Hi, I'm <span className="text-7xl font-bold"> Ly Phuoc Hiep. </span>
+          <WavingHand/>
+        </p>
 
-      {/*<h1 className='2xl:text-7xl text-6xl px-8 font-semibold text-center tracking-tight leading-[120%]'>*/}
-      {/*  I Know What Exactly you're <br/> Looking For! Scroll Please 👇*/}
-      {/*</h1>*/}
-    </section>
+        <p className="text-3xl mt-10">
+          <TypeAnimation
+            sequence={[
+              //
+              "A passionate Software Engineer with over 4 years of experience.",
+              300,
+              // Java
+              "Specialize in Java with Spring Framework.",
+              300,
+              //
+              "Specialize in Java with Vert.x.",
+              300,
+              //
+              "Specialize in Java with JPA.",
+              300,
+              // JavaScript/TypeScript
+              "Also specialize in JavaScript/TypeScript with React.",
+              300,
+              "Also specialize in JavaScript/TypeScript with JQuery.",
+              300,
+              "Also specialize in JavaScript/TypeScript with VueJS.",
+              300,
+              "Also specialize in JavaScript/TypeScript with TailwindCSS.",
+              300,
+              //
+              "Love to create robust, scalable, and maintainable software.",
+              300,
+              "And love to learn new technologies and frameworks.",
+              300,
+            ]}
+            wrapper="span"
+            speed={60}
+            repeat={Infinity}
+          />
+        </p>
+      </div>
+    </motion.section>
   )
 }
