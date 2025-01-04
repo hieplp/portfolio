@@ -1,4 +1,4 @@
-import { lazy } from "react";
+import {lazy} from "react";
 import ReactLenis from "lenis/react";
 import Navbar from "../../components/Navbar";
 

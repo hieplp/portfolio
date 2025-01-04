@@ -1,7 +1,11 @@
-import { Fragment } from "react";
+import {Fragment} from "react";
 import DesktopNavbar from "./DesktopNavbar.tsx";
 
-export default function Navbar() {
+interface NavbarProps {
+}
+
+export default function Navbar(props: NavbarProps) {
+  const {} = props;
   return (
     <Fragment>
       <DesktopNavbar/>

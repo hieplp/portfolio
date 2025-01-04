@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 
 export default function useIntersectionObserver(targets: string[]) {
-  const [ activeSection, setActiveSection ] = useState<string | null>(null);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -23,7 +23,7 @@ export default function useIntersectionObserver(targets: string[]) {
           }
         });
       },
-      { threshold: 0.9 } // Lower threshold to ensure the first section is detected
+      {threshold: 0.9} // Lower threshold to ensure the first section is detected
     );
 
     targets.forEach((target) => {
@@ -41,7 +41,7 @@ export default function useIntersectionObserver(targets: string[]) {
         }
       });
     };
-  }, [ targets ]);
+  }, [targets]);
 
   return activeSection;
 }

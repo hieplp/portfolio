@@ -36,3 +36,16 @@ html {
 /*  scroll-behavior: smooth;*/
 /*  transition: scroll 2s ease-in-out; !* Adjust the duration as needed *!*/
 /*}*/
+
+@keyframes boldText {
+  0% {
+    font-weight: normal;
+  }
+  100% {
+    font-weight: bold;
+  }
+}
+
+.bold-animation {
+  animation: boldText 0.3s forwards;
+}
