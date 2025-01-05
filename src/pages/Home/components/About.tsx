@@ -1,15 +1,56 @@
 import {motion} from 'framer-motion';
 import {TypeAnimation} from "react-type-animation";
+import {HoverScale, WavingHand} from "../../../components";
+import {useSocialStore} from "../../../stores/social.store.ts";
+import {cn} from "../../../lib/utils.ts";
+import {Fragment} from "react";
+import {FaRegHandPointDown} from "react-icons/fa";
+import {useLenis} from "lenis/react";
 
-const WavingHand = () => {
+const SocialLinks = () => {
+  const {aboutItems} = useSocialStore();
   return (
-    <motion.span
-      animate={{rotate: [0, 14, -8, 14, -4, 10, 0, 0]}}
-      transition={{repeat: Infinity, duration: 2.5, ease: 'easeInOut'}}
-      style={{display: 'inline-block', transformOrigin: '70% 70%'}}
+    <Fragment>
+      <div className="flex space-x-3">
+        {aboutItems.map((item, index) => (
+          <HoverScale key={index}>
+            <a
+              href={item.link}
+              className="text-neutral-400 tooltip tooltip-bottom"
+              aria-label={item.id}
+              data-tip={item.label}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <item.icon className={cn(
+                "text-3xl",
+                'hover:text-white',
+              )}/>
+            </a>
+          </HoverScale>
+        ))}
+      </div>
+
+    </Fragment>
+  )
+}
+
+const ScrollDown = () => {
+  const lenis = useLenis();
+  return (
+    <button
+      className="flex flex-col items-center group motion-safe:animate-bounce text-neutral-400 space-y-2"
+      onClick={() => lenis?.scrollTo('#expertise')}
     >
-      👋🏻
-    </motion.span>
+      <p className="group-hover:text-white">
+        Scroll down to see more
+      </p>
+      <div className="group-hover:text-white">
+        <div className="flex justify-center">
+          <FaRegHandPointDown className="text-2xl"/>
+        </div>
+      </div>
+    </button>
   )
 }
 
@@ -22,8 +63,8 @@ export default function About() {
       animate={{opacity: 1, y: 0}}
       transition={{duration: 0.5, ease: 'easeOut'}}
     >
-      <div className="container max-w-screen-lg mx-auto items-center tracking-tight leading-[120%]">
 
+      <div className="container max-w-screen-2xl mx-auto items-center tracking-tight leading-[120%]">
         <p className="text-6xl">
           Hi, I'm <span className="text-7xl font-bold"> Ly Phuoc Hiep. </span>
           <WavingHand/>
@@ -38,10 +79,8 @@ export default function About() {
               // Java
               "Specialize in Java with Spring Framework.",
               300,
-              //
               "Specialize in Java with Vert.x.",
               300,
-              //
               "Specialize in Java with JPA.",
               300,
               // JavaScript/TypeScript
@@ -64,7 +103,16 @@ export default function About() {
             repeat={Infinity}
           />
         </p>
+
+        <div className="mt-10">
+          <SocialLinks/>
+        </div>
       </div>
+
+      <div className="absolute bottom-10 w-full justify-center items-center flex">
+        <ScrollDown/>
+      </div>
+
     </motion.section>
   )
 }
