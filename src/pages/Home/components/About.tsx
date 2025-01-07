@@ -63,7 +63,6 @@ export default function About() {
       animate={{opacity: 1, y: 0}}
       transition={{duration: 0.5, ease: 'easeOut'}}
     >
-
       <div className="container max-w-screen-2xl mx-auto items-center tracking-tight leading-[120%]">
         <p className="text-6xl">
           Hi, I'm <span className="text-7xl font-bold"> Ly Phuoc Hiep. </span>

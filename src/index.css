@@ -8,10 +8,6 @@ body {
   font-family: 'Josefin Sans', sans-serif;
 }
 
-html {
-  /*scroll-behavior: smooth;*/
-  /*scroll-padding-top: 1rem; !* Adjust as needed *!*/
-}
 
 /* For Firefox */
 * {
@@ -49,3 +45,27 @@ html {
 .bold-animation {
   animation: boldText 0.3s forwards;
 }
+
+
+/*!* Custom invisible scrollbar *!*/
+/*.hide-scrollbar {*/
+/*  overflow-x: auto;*/
+/*  overflow-y: hidden;*/
+/*}*/
+
+/*.hide-scrollbar::-webkit-scrollbar {*/
+/*  width: 0;  !* Chrome, Safari, and Opera *!*/
+/*  height: 0; !* Chrome, Safari, and Opera *!*/
+/*}*/
+
+/*.hide-scrollbar {*/
+/*  -ms-overflow-style: none;  !* IE and Edge *!*/
+/*  scrollbar-width: none;  !* Firefox *!*/
+/*}*/
+
+/*.sticky-element {*/
+/*  position: -webkit-sticky; !* For Safari *!*/
+/*  position: sticky;*/
+/*  top: 0; !* Adjust as needed *!*/
+/*  z-index: 1000; !* Ensure it is above other content *!*/
+/*}*/

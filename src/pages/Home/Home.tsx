@@ -12,8 +12,8 @@ export default function Home() {
   return (
     <ReactLenis root>
       <Navbar/>
-      <main className='bg-black'>
-        <div className='wrapper'>
+      <main className='bg-black hide-scrollbar'>
+        <div className="wrapper">
           <About/>
           <Expertise/>
           <Experience/>

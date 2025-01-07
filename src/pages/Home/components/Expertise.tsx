@@ -1,14 +1,106 @@
+import {ReactNode, useEffect} from 'react';
+import {animate, scroll, spring} from 'framer-motion';
+import TextAnimation from "../../../components/text/TextAnimation.tsx";
+import {CaroBackground} from "../../../components";
+import classNames from "../../../lib/classNames.ts";
+
+const SlideItem = ({children, className}: {
+  children: ReactNode,
+  className?: string
+}) => {
+  return (
+    <li className={classNames('h-screen min-w-full w-screen overflow-hidden relative', className)}>
+      {children}
+    </li>
+  )
+}
+
+const Intro = () => {
+  return (
+    <SlideItem className="rounded-t-2xl bg-gray-300">
+      <CaroBackground className="flex justify-center items-center">
+        <TextAnimation
+          text="Let me share about my expertise 😎"
+          as='div'
+          variants={{
+            hidden: {filter: 'blur(10px)', opacity: 0, y: 20},
+            visible: {
+              filter: 'blur(0px)',
+              opacity: 1,
+              y: 0,
+              transition: {ease: 'linear'},
+            },
+          }}
+          classname='2xl:text-7xl text-5xl px-8 font-semibold text-center tracking-tight leading-[120%]'
+        />
+      </CaroBackground>
+    </SlideItem>
+  )
+}
+
+const BackendIntro = () => {
+  return (
+    <SlideItem className="rounded-t-2xl bg-gray-300">
+      <CaroBackground>
+        <h2 className='text-[20vw] font-semibold relative bottom-5 inline-block text-black'>
+          BACKEND
+        </h2>
+      </CaroBackground>
+    </SlideItem>
+  );
+}
+
+const FrontendIntro = () => {
+  return (
+    <SlideItem className="rounded-t-2xl bg-gray-300">
+      <CaroBackground>
+        <h2 className='text-[20vw] font-semibold relative bottom-5 inline-block text-black'>
+          FRONTEND
+        </h2>
+      </CaroBackground>
+    </SlideItem>
+  );
+}
+
+const DevOpsIntro = () => {
+  return (
+    <SlideItem className="rounded-t-2xl bg-gray-300">
+      <CaroBackground>
+        <h2 className='text-[20vw] font-semibold relative bottom-5 inline-block text-black'>
+          DEVOPS
+        </h2>
+      </CaroBackground>
+    </SlideItem>
+  );
+}
+
 export default function Expertise() {
+
+  useEffect(() => {
+    const items = document.querySelectorAll('#expertise li');
+
+    const controls = animate(
+      "#expertise ul",
+      {
+        transform: ['none', `translateX(-${items.length - 1}00vw)`],
+        // transform: ['none', `translateX(-${items.length - 1}00vw) translateY(100vh)`],
+      },
+      {ease: spring()}
+    );
+    scroll(controls, {target: document.querySelector('#expertise')});
+  }, []);
+
   return (
     <section
       id="expertise"
-      className='bg-gray-300 text-black grid place-content-center h-screen sticky top-0 rounded-2xl overflow-hidden'>
-      <div
-        className='absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:54px_54px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]'></div>
-      <h1 className='2xl:text-7xl text-4xl px-8 font-semibold text-center tracking-tight leading-[120%]'>
-        If you don't like this Smooth Scroll then I'm sorry, <br/> create
-        your own and make it open source 💼
-      </h1>
+      className='h-[400vh] bg-gray-300 text-black relative'
+    >
+      <ul className='flex sticky top-0 flex-row gap-1 '>
+        <Intro/>
+        <BackendIntro/>
+        <FrontendIntro/>
+        <DevOpsIntro/>
+      </ul>
     </section>
   )
 }
