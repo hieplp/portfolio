@@ -13,7 +13,7 @@ export default function HomeLayout({
       enableSystem
       disableTransitionOnChange
     >
-      <div className="container mx-auto max-w-screen-lg">
+      <div className="container mx-auto max-w-screen-lg px-4">
         <Navbar />
         <main className="flex-grow">{children}</main>
         {/* <Footer /> */}
