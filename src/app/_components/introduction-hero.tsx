@@ -4,7 +4,7 @@ import { Github, Linkedin, Mail } from "lucide-react";
 
 export function IntroductionHero() {
   return (
-    <div className="py-16 space-y-8">
+    <div className="py-50 space-y-8">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -12,10 +12,10 @@ export function IntroductionHero() {
         className="flex flex-col gap-4"
       >
         <div className="space-y-2">
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl bg-gradient-to-r from-primary to-primary/70 text-transparent bg-clip-text">
+          <h1 className="text-4xl font-bold tracking-tight sm:text-8xl bg-gradient-to-r from-primary to-primary/70 text-transparent bg-clip-text">
             Ly Phuoc Hiep
           </h1>
-          <p className="text-xl text-muted-foreground font-semibold">
+          <p className="text-4xl text-muted-foreground font-semibold">
             Software Engineer
           </p>
         </div>
