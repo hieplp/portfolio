@@ -2,32 +2,30 @@
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { motion, useInView } from "framer-motion";
-import { Building2, ExternalLink, Github } from "lucide-react";
+import { Calendar } from "lucide-react";
 import { useRef } from "react";
 
-export interface ProjectProps {
+export interface ExperienceProps {
   title: string;
   company: string;
-  overview: string;
-  description: string[];
-  hasLink?: boolean;
-  githubUrl?: string;
-  demoUrl?: string;
+  location: string;
+  period: string;
+  description: string;
+  achievements: string[];
   skills: string[];
   index: number;
 }
 
-export function ProjectItem({
+export function ExperienceItem({
   title,
   company,
-  overview,
+  location,
+  period,
   description,
-  hasLink,
-  githubUrl,
-  demoUrl,
+  achievements,
   skills,
   index,
-}: ProjectProps) {
+}: ExperienceProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -59,60 +57,52 @@ export function ProjectItem({
               initial={{ opacity: 0, x: 20 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
               transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
-              className="flex items-center gap-2"
             >
               <Badge
                 variant="secondary"
                 className="w-fit flex items-center gap-2"
               >
-                <Building2 className="w-3 h-3" />
-                {company}
+                <Calendar className="w-3 h-3" />
+                {period}
               </Badge>
-              {githubUrl && (
-                <a
-                  href={githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <Github className="h-4 w-4" />
-                </a>
-              )}
-              {demoUrl && (
-                <a
-                  href={demoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <ExternalLink className="h-4 w-4" />
-                </a>
-              )}
             </motion.div>
           </div>
-        </div>
 
-        {/* Overview */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
-          className="text-sm text-muted-foreground font-medium"
-        >
-          {overview}
-        </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+            transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
+            className="flex flex-col sm:flex-row sm:items-center gap-2 text-muted-foreground"
+          >
+            <div className="flex items-center gap-2">
+              <h4 className="font-semibold">{company}</h4>
+              <span className="hidden sm:inline">•</span>
+              <div className="flex items-center gap-1 text-sm">
+                {location}
+              </div>
+            </div>
+          </motion.div>
+        </div>
 
         {/* Content */}
         <div className="space-y-4">
           <div className="space-y-2">
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 + 0.4 }}
+              className="text-sm text-muted-foreground font-medium"
+            >
+              {description}
+            </motion.p>
             <ul className="space-y-2 pl-4">
-              {description.map((desc, idx) => (
+              {achievements.map((achievement, idx) => (
                 <motion.li
                   initial={{ opacity: 0, x: -20 }}
                   animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
                   transition={{
                     duration: 0.3,
-                    delay: index * 0.1 + 0.4 + idx * 0.1,
+                    delay: index * 0.1 + 0.5 + idx * 0.1,
                   }}
                   key={idx}
                   className="flex items-start gap-2 text-sm text-muted-foreground"
@@ -126,7 +116,7 @@ export function ProjectItem({
                       <circle cx="3" cy="3" r="3" />
                     </svg>
                   </span>
-                  <span>{desc}</span>
+                  <span>{achievement}</span>
                 </motion.li>
               ))}
             </ul>
@@ -140,7 +130,7 @@ export function ProjectItem({
                 animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
                 transition={{
                   duration: 0.2,
-                  delay: index * 0.1 + 0.6 + idx * 0.05,
+                  delay: index * 0.1 + 0.7 + idx * 0.05,
                 }}
                 key={idx}
               >

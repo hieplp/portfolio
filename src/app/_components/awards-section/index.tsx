@@ -3,9 +3,9 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { ProjectList } from "./project-list";
+import { AwardsList } from "./awards-list";
 
-export function ProjectsSection() {
+export function AwardsSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -18,9 +18,9 @@ export function ProjectsSection() {
         className="space-y-4"
       >
         <div className="flex items-center gap-2">
-          <h2 className="text-2xl font-bold tracking-tight">Projects</h2>
+          <h2 className="text-2xl font-bold tracking-tight">Awards</h2>
           <Badge variant="secondary" className="text-xs">
-            Featured Work
+            Recognition
           </Badge>
         </div>
         <motion.div
@@ -33,9 +33,9 @@ export function ProjectsSection() {
         </motion.div>
       </motion.div>
 
-      <ProjectList />
+      <AwardsList />
     </section>
   );
 }
 
-export * from "./project-item";
+export * from "./award-item"; 

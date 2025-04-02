@@ -1,7 +1,8 @@
 "use client";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import { SkillCategory } from "./skill-category";
 import { 
   Code2, 
@@ -58,16 +59,19 @@ const skillCategories = [
 ];
 
 export function SkillsSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  
   const totalSkills = skillCategories.reduce(
     (sum, category) => sum + category.skills.length,
     0
   );
 
   return (
-    <section className="py-8 space-y-2">
+    <section className="py-8 space-y-2" ref={ref}>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ duration: 0.5 }}
         className="space-y-4"
       >
@@ -79,7 +83,7 @@ export function SkillsSection() {
         </div>
         <motion.div
           initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
+          animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
           style={{ originX: 0 }}
         >
