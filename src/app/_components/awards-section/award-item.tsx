@@ -38,7 +38,7 @@ export function AwardItem({
       <div className="space-y-4">
         <div className="space-y-2">
           <div className="flex flex-col sm:flex-row sm:items-center gap-2 justify-between">
-            <div className="flex items-center justify-center gap-2">
+            <div className="flex items-center gap-2">
               <motion.div
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={

@@ -13,7 +13,14 @@ interface StatItemProps {
   gradient: string;
 }
 
-export function StatItem({ icon: Icon, value, label, index, iconColor, gradient }: StatItemProps) {
+export function StatItem({
+  icon: Icon,
+  value,
+  label,
+  index,
+  iconColor,
+  gradient,
+}: StatItemProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -30,12 +37,23 @@ export function StatItem({ icon: Icon, value, label, index, iconColor, gradient 
         "transition-all duration-300"
       )}
     >
-      <div className="space-y-4">
-        <div className={cn(
-          "p-2 w-fit rounded-lg",
-          gradient,
-          "bg-opacity-10"
-        )}>
+      <div
+        className={cn(
+          "space-y-4 flex flex-row md:flex-col",
+          "gap-10 md:gap-2",
+          "items-center ",
+          "md:items-start md:justify-start"
+        )}
+      >
+        <div
+          className={cn(
+            "w-fit rounded-lg",
+            gradient,
+            "bg-opacity-10",
+            "flex items-center justify-center",
+            "md:justify-start md:items-start"
+          )}
+        >
           <Icon className={cn("w-5 h-5", iconColor)} />
         </div>
         <div>
@@ -59,4 +77,4 @@ export function StatItem({ icon: Icon, value, label, index, iconColor, gradient 
       </div>
     </motion.div>
   );
-} 
+}
