@@ -1,4 +1,4 @@
-import { ModeToggle } from "../mode-toggle";
+import { ThemeToggle } from "../theme-toggle";
 
 interface NavbarProps {}
 
@@ -10,7 +10,7 @@ export function Navbar({}: NavbarProps) {
           <h1 className="font-bold">Hiep.LP</h1>
         </div>
         <div className="flex flex-1 items-center justify-end">
-          <ModeToggle />
+          <ThemeToggle />
         </div>
       </div>
     </header>
