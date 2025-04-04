@@ -1,6 +1,7 @@
 "use client";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { experiences } from "@/config/portfolio";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ExperienceList } from "./experience-list";
@@ -8,6 +9,8 @@ import { ExperienceList } from "./experience-list";
 export function ExperienceSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const experienceCount = experiences.length;
 
   return (
     <section className="py-8 space-y-2" ref={ref}>
@@ -20,7 +23,7 @@ export function ExperienceSection() {
         <div className="flex items-center gap-2">
           <h2 className="text-2xl font-bold tracking-tight">Experience</h2>
           <Badge variant="secondary" className="text-xs">
-            4 Positions
+            {experienceCount} Positions
           </Badge>
         </div>
         <motion.div
@@ -38,4 +41,4 @@ export function ExperienceSection() {
   );
 }
 
-export * from "./experience-item"; 
+export * from "./experience-item";

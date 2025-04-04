@@ -1,67 +1,15 @@
 "use client";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { skillCategories } from "@/config/portfolio";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { SkillCategory } from "./skill-category";
-import { 
-  Code2, 
-  Database, 
-  Layout, 
-  GitBranch, 
-  TestTube2, 
-  Puzzle 
-} from "lucide-react";
-
-const skillCategories = [
-  {
-    title: "Backend",
-    skills: ["Spring Boot", "Vert.x", "JPA", "jOOQ"],
-    icon: Code2,
-    iconColor: "text-blue-500",
-    gradient: "from-blue-500/20 to-cyan-500/20",
-  },
-  {
-    title: "Database",
-    skills: ["Oracle", "MariaDB", "PostgreSQL", "Redis"],
-    icon: Database,
-    iconColor: "text-green-500",
-    gradient: "from-green-500/20 to-emerald-500/20",
-  },
-  {
-    title: "Frontend",
-    skills: ["ReactJS", "Vue.js", "jQuery", "Material-UI", "IBSheet"],
-    icon: Layout,
-    iconColor: "text-purple-500",
-    gradient: "from-purple-500/20 to-pink-500/20",
-  },
-  {
-    title: "DevOps",
-    skills: ["Jenkins", "Docker", "Kubernetes"],
-    icon: GitBranch,
-    iconColor: "text-orange-500",
-    gradient: "from-orange-500/20 to-red-500/20",
-  },
-  {
-    title: "Testing",
-    skills: ["JUnit", "Mockito"],
-    icon: TestTube2,
-    iconColor: "text-yellow-500",
-    gradient: "from-yellow-500/20 to-amber-500/20",
-  },
-  {
-    title: "Others",
-    skills: ["RabbitMQ", "JasperReports", "Apache POI"],
-    icon: Puzzle,
-    iconColor: "text-indigo-500",
-    gradient: "from-indigo-500/20 to-violet-500/20",
-  }
-];
 
 export function SkillsSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  
+
   const totalSkills = skillCategories.reduce(
     (sum, category) => sum + category.skills.length,
     0
@@ -93,13 +41,9 @@ export function SkillsSection() {
 
       <div className="grid gap-6 mt-6 sm:grid-cols-2 lg:grid-cols-3">
         {skillCategories.map((category, index) => (
-          <SkillCategory
-            key={category.title}
-            {...category}
-            index={index}
-          />
+          <SkillCategory key={category.title} {...category} index={index} />
         ))}
       </div>
     </section>
   );
-} 
+}

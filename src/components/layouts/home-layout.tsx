@@ -1,7 +1,7 @@
 import { ThemeProvider } from "next-themes";
-import { Navbar } from "../navbar/navbar";
-import { Footer } from "@/app/_components/footer";
-import { ScrollToTop } from "@/app/_components/scroll-to-top";
+import { ScrollToTop } from "@/components/scroll-to-top";
+import { Footer } from "@/components/footer";
+import { Navbar } from "../navbar";
 
 interface HomeLayoutProps {
   children: React.ReactNode;

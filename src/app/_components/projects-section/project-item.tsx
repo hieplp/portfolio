@@ -109,7 +109,9 @@ export function ProjectItem({
               {description.map((desc, idx) => (
                 <motion.li
                   initial={{ opacity: 0, x: -20 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                  animate={
+                    isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }
+                  }
                   transition={{
                     duration: 0.3,
                     delay: index * 0.1 + 0.4 + idx * 0.1,
@@ -137,7 +139,11 @@ export function ProjectItem({
             {skills.map((skill, idx) => (
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+                animate={
+                  isInView
+                    ? { opacity: 1, scale: 1 }
+                    : { opacity: 0, scale: 0.9 }
+                }
                 transition={{
                   duration: 0.2,
                   delay: index * 0.1 + 0.6 + idx * 0.05,
@@ -157,4 +163,4 @@ export function ProjectItem({
       </div>
     </motion.div>
   );
-} 
+}

@@ -1,13 +1,5 @@
-import { AwardItem, AwardProps } from "./award-item";
-
-const awards: Omit<AwardProps, "index">[] = [
-  {
-    title: "Staff of the Year",
-    organization: "Intelin",
-    date: "Jan 2023",
-    description: "Recognized for outstanding performance and significant contributions to the organization",
-  },
-];
+import { awards } from "@/config/portfolio";
+import { AwardItem } from "./award-item";
 
 export function AwardsList() {
   return (
@@ -17,4 +9,4 @@ export function AwardsList() {
       ))}
     </div>
   );
-} 
+}

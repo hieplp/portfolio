@@ -1,25 +1,7 @@
 "use client";
+import { socialLinks } from "@/config/portfolio";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail } from "lucide-react";
-
-const socialLinks = [
-  {
-    name: "GitHub",
-    href: "https://github.com/yourusername",
-    icon: Github,
-  },
-  {
-    name: "LinkedIn",
-    href: "https://linkedin.com/in/yourusername",
-    icon: Linkedin,
-  },
-  {
-    name: "Email",
-    href: "mailto:your.email@example.com",
-    icon: Mail,
-  },
-];
 
 export function Footer() {
   return (
@@ -58,4 +40,4 @@ export function Footer() {
       </div>
     </footer>
   );
-} 
+}
