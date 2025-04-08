@@ -11,7 +11,10 @@
 - Backend specialist in Java ecosystem (Spring Boot, Vert.x) with expertise in RESTful API design, microservices, and database optimization.
 - Frontend developer skilled in modern JavaScript frameworks (React, TypeScript) and data-heavy applications (jQuery, IBSheet).
 - Experienced in cloud technologies and DevOps practices using Docker, Kubernetes, Redis, and RabbitMQ for scalable solutions.
-- Collaborative team player with cross-cultural experience working in Vietnamese, Korean, and Japanese business environments.
+- Collaborative team player with cross-cultural experience working in Vietnamese, Korean business environments.
+
+#### Professional Summary
+Full Stack Engineer with 4+ years of experience building enterprise applications across healthcare, banking, and manufacturing sectors. Specialized in Java backend (Spring Boot, Vert.x), modern frontend (React, jQuery), and cloud technologies (Docker, Kubernetes). Proven ability to deliver robust, scalable solutions with cross-cultural teams in Vietnamese, Korean business environments.
 
 #### Work Description
 - Backend Development:
@@ -52,7 +55,7 @@
 - Description:
   - Built testing tool for banking security features while updating APIs for new database structure
   - Developed secure APIs for banking operations following strict security standards
-  - Created tests to ensure system reliability and data protection
+  - Created unit tests to ensure system reliability and data protection
   - Used Scrum methodology with daily standups and sprint planning to deliver on time
 
 3. Intelin
@@ -65,7 +68,6 @@
   - Created message system with RabbitMQ and implemented Redis caching to handle user traffic effectively
   - Developed optimized APIs and database queries to improve application response times
   - Set up Docker containers and Kubernetes for reliable system deployment and scaling
-  - Shared knowledge with team members to improve code quality and technical practices
 
 4. FPT Software
 - Duration: Sept 2019 - Dec 2019

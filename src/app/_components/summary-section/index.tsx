@@ -39,7 +39,7 @@ export function SummarySection() {
           initial={{ opacity: 0, y: 10 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-muted-foreground w-full"
+          className="text-muted-foreground w-full space-x-1"
         >
           {personalInfo.statDescriptions.map((description, index) => (
             <span key={index}>{description}</span>

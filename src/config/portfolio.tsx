@@ -25,18 +25,36 @@ export const personalInfo = {
   linkedin: "https://www.linkedin.com/in/hiep-ly-563a231a2",
   descriptions: [
     <span key="description">
-      Hi! I&apos;m a full-stack developer who brings ideas to life using{" "}
-      <HighlightText text="Java Spring" /> for robust backends and{" "}
-      <HighlightText text="React" /> for smooth user experiences. From database
-      to deployment, I build complete solutions that make an impact.
+      Hi! I&apos;m a full-stack developer with 4+ years of experience in{" "}
+      <HighlightText underline={false} text="healthcare" />,{" "}
+      <HighlightText underline={false} text="banking" />, and{" "}
+      <HighlightText underline={false} text="manufacturing" /> industries. I
+      build robust backends with{" "}
+      <HighlightText underline={true} text="Java Spring Boot" /> and{" "}
+      <HighlightText underline={false} text="Vert.x" />, create responsive
+      interfaces using <HighlightText underline={true} text="React" /> and{" "}
+      <HighlightText underline={false} text="jQuery" />, and implement cloud
+      solutions with <HighlightText underline={true} text="Docker" /> and{" "}
+      <HighlightText underline={false} text="Kubernetes" />. From database
+      optimization to intuitive UI, I deliver complete solutions that make an
+      impact.
     </span>,
   ],
   statDescriptions: [
-    <span key="statDescription">
-      Full-stack developer with expertise in enterprise solutions, specializing
-      in Java backend development and modern frontend technologies. Proven track
-      record in delivering high-quality software across various industries
-      including banking, healthcare, and marketing.
+    <span key="statDescription1">
+      <HighlightText underline={false} text="Full Stack Engineer" /> with 4+
+      years in <HighlightText underline={false} text="healthcare" />,{" "}
+      <HighlightText underline={false} text="banking" />, and{" "}
+      <HighlightText underline={false} text="manufacturing" /> sectors.
+    </span>,
+    <span key="statDescription2">
+      <HighlightText underline={false} text="Java" /> backend specialist (Spring
+      Boot, Vert.x) with <HighlightText underline={false} text="React" />
+      /TypeScript frontend expertise.
+    </span>,
+    <span key="statDescription3">
+      <HighlightText underline={false} text="DevOps" /> practitioner using
+      Docker/Kubernetes and cross-cultural team collaborator.
     </span>,
   ],
 };
@@ -61,45 +79,48 @@ export const socialLinks = [
 
 export const experiences = [
   {
-    title: "IT Developer",
+    title: "Full Stack Developer",
     company: "Posco DX",
     location: "Ho Chi Minh",
     period: "Jan 2024 - Present",
     description:
-      "Contributed to internal applications as a full-stack developer:",
+      "Contributed to development for MarketingDX Order Management System:",
     achievements: [
-      "Built backend services using Spring Boot with JPA for Oracle database integration.",
-      "Developed responsive frontend interfaces using ReactJS, jQuery, and IBSheet.",
+      "Upgraded legacy order system to modern technology stack, improving system performance and user experience.",
+      "Built comprehensive order management features handling the full process from creation to delivery.",
+      "Created database design and APIs using Spring Boot and Oracle for reliable data handling.",
+      "Developed user-friendly interfaces with jQuery and IBSheet that display large amounts of data clearly.",
+      "Collaborated effectively in mixed Korean-Vietnamese team to deliver high-quality solutions.",
     ],
-    skills: ["Spring Boot", "JPA", "Oracle", "ReactJS", "jQuery", "IBSheet"],
+    skills: ["Spring Boot", "JPA", "Oracle", "jQuery", "IBSheet"],
   },
   {
     title: "Software Engineer",
     company: "CMC Global",
     location: "Ho Chi Minh",
     period: "Oct 2023 - Dec 2023",
-    description:
-      "Contributed to banking enterprise applications as a Java backend developer at Techcombank:",
+    description: "Developed CCash Banking System for Techcombank:",
     achievements: [
-      "Refactored and developed RESTful APIs using Spring Boot and Oracle to support new database schema.",
-      "Created encryption testing tool and implemented unit tests with JUnit/Mockito for quality assurance.",
+      "Built testing tool for banking security features while updating APIs for new database structure.",
+      "Developed secure APIs for banking operations following strict security standards.",
+      "Created unit tests to ensure system reliability and data protection.",
+      "Used Scrum methodology with daily standups and sprint planning to deliver on time.",
     ],
-    skills: ["Spring Boot", "Oracle", "JUnit", "Mockito"],
+    skills: ["Spring Boot", "Oracle", "JUnit", "Mockito", "Encryption"],
   },
   {
     title: "Backend Engineer",
     company: "Intelin",
     location: "Ho Chi Minh",
     period: "Mar 2021 - Jul 2023",
-    description:
-      "Contributed to healthcare project as a Java backend developer:",
+    description: "Designed and developed healthcare platforms:",
     achievements: [
-      "Built monolithic applications and microservices using Vert.x framework with MariaDB.",
-      "Implemented message queuing with RabbitMQ and Redis for data caching.",
-      "Developed RESTful APIs and optimized database queries for better performance.",
-      "Monitored system health and performance using Kubernetes dashboard.",
+      "Built two successful healthcare platforms (Giot Mau Vang and Me Easy) from the ground up using Vert.x and MariaDB.",
+      "Created message system with RabbitMQ and implemented Redis caching to handle user traffic effectively.",
+      "Developed optimized APIs and database queries to improve application response times.",
+      "Set up Docker containers and Kubernetes for reliable system deployment and scaling.",
     ],
-    skills: ["Vert.x", "MariaDB", "RabbitMQ", "Redis", "Kubernetes"],
+    skills: ["Vert.x", "MariaDB", "RabbitMQ", "Redis", "Docker", "Kubernetes"],
   },
   {
     title: "Software Engineer Intern",
@@ -109,8 +130,9 @@ export const experiences = [
     description:
       "Contributed to Japanese outsourcing project as a full-stack developer:",
     achievements: [
-      "Developed responsive UI components with Vue.js and ElementUI framework.",
-      "Built RESTful APIs using Spring Boot and PostgreSQL for data management.",
+      "Created features using Vue.js (frontend) and Spring Boot (backend) for Japanese business client.",
+      "Designed clean user interfaces following Japanese design standards with ElementUI.",
+      "Built reliable APIs and database connections using Spring Boot and PostgreSQL.",
     ],
     skills: ["Vue.js", "ElementUI", "Spring Boot", "PostgreSQL"],
   },
@@ -121,44 +143,50 @@ export const projects = [
     title: "MarketingDX",
     company: "Posco DX",
     overview:
-      "A comprehensive marketing automation platform that streamlines campaign management and customer engagement through an integrated dashboard.",
+      "Order management system for steel products and materials for a Korean steel manufacturing company.",
     description: [
-      "Developed full-stack solution at Posco DX by migrating legacy system to Spring Boot/Oracle.",
-      "Implemented data access layer with JPA and built dynamic interfaces using IBSheet/jQuery.",
+      "Upgraded outdated system to modern technology, improving speed and user experience.",
+      "Built database queries and APIs using Spring Boot and Oracle.",
+      "Created user-friendly screens for order entry and tracking.",
+      "Implemented data tables with sorting and filtering using IBSheet/jQuery.",
     ],
     skills: ["Spring Boot", "JPA", "Oracle", "IBSheet", "jQuery"],
   },
   {
     title: "CCash",
-    company: "Techcombank",
+    company: "CMC Global",
     overview:
-      "A banking liquidity management system that helps financial institutions monitor and optimize their cash positions across multiple accounts.",
+      "Banking system for managing cash flow and financial transactions for Techcombank, a major Vietnamese bank.",
     description: [
-      "Developed backend for banking liquidity system at Techcombank using Spring Boot and Oracle.",
-      "Created encryption testing tool and refactored services for new database schema with JUnit/Mockito tests.",
+      "Enhanced security features and database functionality.",
+      "Built tool for testing encryption/decryption of sensitive banking data.",
+      "Updated APIs to work with new database structure.",
+      "Created thorough tests to ensure system reliability and security.",
     ],
-    skills: ["Spring Boot", "Oracle", "JUnit", "Mockito"],
+    skills: ["Spring Boot", "Oracle", "JUnit", "Mockito", "Encryption"],
   },
   {
     title: "Giot Mau Vang",
     company: "Intelin",
     overview:
-      "A blood donation management platform that connects donors with hospitals and facilitates efficient blood supply chain management.",
+      "Digital platform connecting blood donors with donation centers for Vietnam Red Cross and hospitals.",
     description: [
-      "Developed backend for blood donation platform at Intelin using Vert.x and MariaDB.",
-      "Refactored services, integrated with hospital systems, and generated reports using JasperReports.",
+      "Built API system for blood donation registration and tracking.",
+      "Connected platform with hospital systems for seamless data sharing.",
+      "Generated statistical reports for donation centers using JasperReports.",
     ],
     hasLink: true,
-    skills: ["Vert.x", "MariaDB", "JasperReports"],
+    skills: ["Vert.x", "MariaDB", "RabbitMQ", "JasperReports", "Docker"],
   },
   {
     title: "Me Easy",
     company: "Intelin",
     overview:
-      "A comprehensive pregnancy and parenting platform providing resources, tracking tools, and community features for new parents.",
+      "Mobile platform for pregnancy tracking and parenting advice for healthcare providers and expectant mothers.",
     description: [
-      "Developed backend for pregnancy/parenting platform at Intelin using Vert.x and MariaDB.",
-      "Implemented caching (Redis), messaging (RabbitMQ) and report generation (Apache POI).",
+      "Created APIs for user profiles, health tracking, and content delivery.",
+      "Implemented caching system to improve app performance.",
+      "Built report generation feature for health summaries.",
     ],
     hasLink: true,
     skills: ["Vert.x", "MariaDB", "Redis", "RabbitMQ", "Apache POI"],
@@ -185,7 +213,7 @@ export const stats = [
   },
   {
     icon: Code2,
-    value: "10+",
+    value: "5+",
     label: "Enterprise Projects",
     iconColor: "text-green-500",
     gradient: "from-green-500/20 to-emerald-500/20",
@@ -199,14 +227,14 @@ export const stats = [
   },
   {
     icon: Boxes,
-    value: "15+",
+    value: "12+",
     label: "Technologies Used",
     iconColor: "text-orange-500",
     gradient: "from-orange-500/20 to-red-500/20",
   },
   {
     icon: Users,
-    value: "5+",
+    value: "20+",
     label: "Team Collaborations",
     iconColor: "text-yellow-500",
     gradient: "from-yellow-500/20 to-amber-500/20",
