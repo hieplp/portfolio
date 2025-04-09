@@ -22,7 +22,6 @@ export function ProjectItem({
   company,
   overview,
   description,
-  hasLink,
   githubUrl,
   demoUrl,
   skills,
