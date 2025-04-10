@@ -3,10 +3,11 @@ import { personalInfo } from "@/config/portfolio";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { SocialLinks } from "./social-links";
+import { ArrowDown } from "lucide-react";
 
 export function IntroductionHero() {
   return (
-    <div className="py-50 space-y-8">
+    <div className="relative h-[90vh] flex flex-col justify-center space-y-8">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -16,7 +17,8 @@ export function IntroductionHero() {
         <div className="space-y-3 md:space-y-4">
           <h1
             className={cn(
-              "text-6xl font-bold tracking-tight sm:text-8xl",
+              "font-bold tracking-tight",
+              "text-5xl md:text-8xl",
               "text-primary"
             )}
           >
@@ -47,6 +49,23 @@ export function IntroductionHero() {
       </motion.div>
 
       <SocialLinks />
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, y: [0, 5, 0] }}
+        transition={{
+          opacity: { duration: 0.5, delay: 0.4 },
+          y: {
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 0.6,
+          },
+        }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+      >
+        <ArrowDown className="h-6 w-6 text-muted-foreground" />
+      </motion.div>
     </div>
   );
 }
