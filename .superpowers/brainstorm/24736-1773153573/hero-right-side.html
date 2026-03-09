@@ -1,0 +1,70 @@
+<h2>What goes on the right side of the hero?</h2>
+<p class="subtitle">The left has your name, title, bio, and CTAs. What should fill the right half?</p>
+
+<div class="cards">
+  <div class="card" data-choice="avatar" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 24px; background: var(--surface); display: flex; justify-content: center; align-items: center;">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
+        <div style="width: 180px; height: 180px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--border)); display: flex; align-items: center; justify-content: center; font-size: 64px; box-shadow: 0 0 0 4px var(--border);">👤</div>
+        <div style="font-size: 13px; color: var(--text-muted); font-weight: 500; text-align: center;">Your Name<br><span style="font-weight: 400; opacity: 0.7;">Your Title</span></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Profile Avatar</h3>
+      <p>A clean circular photo of you. Personal, warm, and instantly recognizable. Uses <code>profile.avatar</code> from your data file.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="terminal" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 16px; background: var(--surface);">
+      <div style="background: #1a1a2e; border-radius: 10px; overflow: hidden; font-family: monospace; font-size: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+        <div style="display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: #16213e;">
+          <div style="width: 10px; height: 10px; border-radius: 50%; background: #ff5f57;"></div>
+          <div style="width: 10px; height: 10px; border-radius: 50%; background: #ffbd2e;"></div>
+          <div style="width: 10px; height: 10px; border-radius: 50%; background: #28c840;"></div>
+          <span style="margin-left: 8px; color: #6b7280; font-size: 11px;">~/portfolio</span>
+        </div>
+        <div style="padding: 14px 16px; color: #e2e8f0; line-height: 1.8;">
+          <div><span style="color: #10b981;">❯</span> <span style="color: #a78bfa;">whoami</span></div>
+          <div style="color: #94a3b8; padding-left: 12px;">Full Stack Developer</div>
+          <div style="margin-top: 4px;"><span style="color: #10b981;">❯</span> <span style="color: #a78bfa;">skills</span></div>
+          <div style="color: #94a3b8; padding-left: 12px;">["React", "Node.js", "TypeScript"...]</div>
+          <div style="margin-top: 4px;"><span style="color: #10b981;">❯</span> <span style="color: #a78bfa;">status</span></div>
+          <div style="color: #34d399; padding-left: 12px;">✓ Open to opportunities</div>
+          <div style="margin-top: 4px;"><span style="color: #10b981; animation: blink 1s infinite;">█</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Animated Terminal</h3>
+      <p>A fake terminal that types out your info. Shows personality with a techy/developer vibe. Animated with Framer Motion.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="stats" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 20px; background: var(--surface);">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+        <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: center;">
+          <div style="font-size: 28px; font-weight: 700; color: var(--accent);">3+</div>
+          <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">Years Experience</div>
+        </div>
+        <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: center;">
+          <div style="font-size: 28px; font-weight: 700; color: var(--accent);">20+</div>
+          <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">Projects Shipped</div>
+        </div>
+        <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: center;">
+          <div style="font-size: 28px; font-weight: 700; color: var(--accent);">5</div>
+          <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">Tech Stack</div>
+        </div>
+        <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: center;">
+          <div style="font-size: 28px; font-weight: 700; color: var(--accent);">∞</div>
+          <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">Coffee Consumed</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Stats / Numbers</h3>
+      <p>Bold numbers showcasing your experience — years, projects, skills. Adds instant credibility and visual interest.</p>
+    </div>
+  </div>
+</div>
