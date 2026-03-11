@@ -34,6 +34,9 @@ export const metadata: Metadata = {
   creator: seo.name,
   metadataBase: new URL(seo.url),
   alternates: { canonical: "/" },
+  icons: {
+    icon: "/icon.svg",
+  },
   openGraph: {
     type: "website",
     url: seo.url,
