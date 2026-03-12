@@ -5,7 +5,7 @@ import { TimelineItem } from "@/components/works/timeline-item";
 
 export default function WorksPage() {
   return (
-    <main className="max-w-6xl w-full mx-auto py-32">
+    <main className="max-w-6xl w-full mx-auto py-32 px-5">
       <div className="mb-16">
         <Link
           href="/#work"
