@@ -4,6 +4,7 @@ import {ArrowRight} from "lucide-react";
 import {profile} from "@/data/profile";
 import {Fragment} from "react";
 import {LazyMotion, domAnimation, m} from "framer-motion";
+import Link from "next/link";
 
 export function HeroSection() {
   return (
@@ -59,12 +60,12 @@ export function HeroSection() {
               <ArrowRight className="w-4 h-4" strokeWidth={2}/>
             </span>
           </a>
-          <a
-            href="#contact"
+          <Link
+            href="/resume"
             className="inline-flex items-center gap-2 border border-border px-6 py-3 rounded-full font-medium hover:bg-accent transition-colors"
           >
-            Get in touch
-          </a>
+            View Resume
+          </Link>
         </div>
       </m.div>
       </LazyMotion>
