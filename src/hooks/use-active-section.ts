@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export function useActiveSection(sectionIds: string[]) {
   const [activeSection, setActiveSection] = useState<string>(sectionIds[0]);
+  const historyTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,12 +25,24 @@ export function useActiveSection(sectionIds: string[]) {
       });
 
       setActiveSection(closest);
-      history.replaceState(null, "", `#${closest}`);
+
+      // Debounce history.replaceState to prevent iOS IPC flooding throttling
+      if (historyTimeoutRef.current) {
+        clearTimeout(historyTimeoutRef.current);
+      }
+      historyTimeoutRef.current = setTimeout(() => {
+        history.replaceState(null, "", `#${closest}`);
+      }, 150);
     };
 
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (historyTimeoutRef.current) {
+        clearTimeout(historyTimeoutRef.current);
+      }
+    };
   }, [sectionIds]);
 
   return activeSection;
