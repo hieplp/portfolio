@@ -1,20 +1,24 @@
-import HomeLayout from "@/components/layouts/home-layout";
-import { ExperienceSection } from "./_components/experience-section";
-import { IntroductionHero } from "./_components/introduction-hero";
-import { ProjectsSection } from "./_components/projects-section";
-import { SkillsSection } from "./_components/skills-section";
-import { AwardsSection } from "./_components/awards-section";
-import { SummarySection } from "./_components/summary-section";
+import { HeroSection } from "@/components/sections/hero-section";
+import { WorkSection } from "@/components/sections/work-section";
+import { SkillsSection } from "@/components/sections/skills-section";
+import { ProjectsSection } from "@/components/sections/projects-section";
+import { EducationSection } from "@/components/sections/education-section";
+import { AboutSection } from "@/components/sections/about-section";
+import { ContactSection } from "@/components/sections/contact-section";
+import {SideNav} from "@/components/side-nav";
+import React from "react";
 
 export default function Home() {
   return (
-    <HomeLayout>
-      <IntroductionHero />
-      <SummarySection />
+    <main className="px-5">
+      <SideNav />
+      <HeroSection />
+      <WorkSection />
       <SkillsSection />
-      <ExperienceSection />
       <ProjectsSection />
-      <AwardsSection />
-    </HomeLayout>
+      <EducationSection />
+      <AboutSection />
+      <ContactSection />
+    </main>
   );
 }

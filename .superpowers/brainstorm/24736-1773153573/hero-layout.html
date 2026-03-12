@@ -1,0 +1,77 @@
+<h2>Hero Section Layout — Profile Photo Right</h2>
+<p class="subtitle">Two-column layout inspired by pablodelucca.com</p>
+
+<div class="mockup">
+  <div class="mockup-header">Hero Section — Desktop</div>
+  <div class="mockup-body" style="padding: 0;">
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 40px; padding: 48px 40px; min-height: 340px; background: var(--bg);">
+
+      <!-- Left: Text content -->
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 12px;">
+        <div style="display: flex; gap: 8px; align-items: center;">
+          <span style="font-size: 11px; color: var(--text-muted); font-weight: 500; letter-spacing: 0.05em;">Product</span>
+          <span style="color: var(--accent); font-weight: 700;">·</span>
+          <span style="font-size: 11px; color: var(--text-muted); font-weight: 500; letter-spacing: 0.05em;">AI/ML</span>
+          <span style="color: var(--accent); font-weight: 700;">·</span>
+          <span style="font-size: 11px; color: var(--text-muted); font-weight: 500; letter-spacing: 0.05em;">SaaS</span>
+        </div>
+        <div style="font-size: 28px; font-weight: 700; line-height: 1.2;">Hi, I'm <span style="color: var(--accent);">Your Name</span>!</div>
+        <div style="font-size: 20px; font-weight: 600; color: var(--text-muted); line-height: 1.3;">Your Title</div>
+        <p style="font-size: 13px; color: var(--text-muted); max-width: 360px; line-height: 1.6; margin: 4px 0 12px;">Short bio about yourself — what you do, what you care about, and what you're looking for.</p>
+        <div style="display: flex; gap: 10px;">
+          <div style="background: var(--accent); color: white; padding: 8px 18px; border-radius: 999px; font-size: 12px; font-weight: 500; display: flex; align-items: center; gap: 6px;">View my work →</div>
+          <div style="border: 1px solid var(--border); padding: 8px 18px; border-radius: 999px; font-size: 12px; font-weight: 500;">Get in touch</div>
+        </div>
+      </div>
+
+      <!-- Right: Photo -->
+      <div style="flex-shrink: 0; display: flex; justify-content: center; align-items: flex-end;">
+        <div style="
+          width: 240px;
+          height: 300px;
+          border-radius: 24px;
+          background: linear-gradient(160deg, #a78bfa22, #6366f133);
+          border: 1px solid var(--border);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 80px;
+          overflow: hidden;
+          box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+          position: relative;
+        ">
+          <span style="opacity: 0.4;">🧑‍💻</span>
+          <div style="position: absolute; bottom: 12px; left: 0; right: 0; text-align: center; font-size: 10px; color: var(--text-muted);">profile.avatar image</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div style="margin-top: 24px;" class="section">
+  <p class="label">Design Notes</p>
+  <ul style="color: var(--text-muted); font-size: 13px; line-height: 2; padding-left: 20px;">
+    <li>Photo is a rounded rectangle (not circular) — more editorial, matches pablodelucca style</li>
+    <li>Photo anchors to bottom on mobile — stacks above text on small screens</li>
+    <li>Fade-in animations via Framer Motion on both sides</li>
+    <li>Uses <code>profile.avatar</code> path from your data file (currently <code>/avatar.png</code>)</li>
+  </ul>
+</div>
+
+<div class="options" style="margin-top: 16px;">
+  <div class="option" data-choice="approve" onclick="toggleSelect(this)">
+    <div class="letter">✓</div>
+    <div class="content">
+      <h3>Looks good — let's build it</h3>
+      <p>Proceed with this layout</p>
+    </div>
+  </div>
+  <div class="option" data-choice="tweak" onclick="toggleSelect(this)">
+    <div class="letter">~</div>
+    <div class="content">
+      <h3>Close, but I want changes</h3>
+      <p>I'll describe what to adjust in the terminal</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+{"type":"server-started","port":64730,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:64730","screen_dir":"/Users/hieplp/Projects/portfolio/.superpowers/brainstorm/24736-1773153573"}
+{"type":"screen-added","file":"/Users/hieplp/Projects/portfolio/.superpowers/brainstorm/24736-1773153573/hero-right-side.html"}
+{"source":"user-event","type":"click","text":"👤\n        Your NameYour Title\n      \n    \n    \n      A — Profile Avatar\n      A clean circular photo of you. Personal, warm, and instantly recognizable. Uses profile.avatar from your data file.","choice":"avatar","id":null,"timestamp":1773153640967}
+{"type":"screen-added","file":"/Users/hieplp/Projects/portfolio/.superpowers/brainstorm/24736-1773153573/hero-layout.html"}
+{"source":"user-event","type":"click","text":"✓\n    \n      Looks good — let's build it\n      Proceed with this layout","choice":"approve","id":null,"timestamp":1773153867396}
+{"source":"user-event","type":"click","text":"✓\n    \n      Looks good — let's build it\n      Proceed with this layout","choice":"approve","id":null,"timestamp":1773153875122}
+{"source":"user-event","type":"click","text":"~\n    \n      Close, but I want changes\n      I'll describe what to adjust in the terminal","choice":"tweak","id":null,"timestamp":1773153875603}
+{"source":"user-event","type":"click","text":"✓\n    \n      Looks good — let's build it\n      Proceed with this layout","choice":"approve","id":null,"timestamp":1773153876442}
