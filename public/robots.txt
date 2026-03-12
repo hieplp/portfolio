@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hieplp.dev/sitemap.xml

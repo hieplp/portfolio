@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { seo } from "@/data/seo";
+import { profile } from "@/data/profile";
 import { Geist_Mono, Outfit, Poppins } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
@@ -64,8 +65,29 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: seo.name,
+    url: seo.url,
+    jobTitle: profile.title,
+    email: profile.contact.email,
+    sameAs: [profile.contact.github, profile.contact.linkedin],
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Ho Chi Minh City",
+      addressCountry: "VN",
+    },
+  };
+
   return (
     <html lang="en" className={cn("font-sans", outfit.variable, poppins.variable)} suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         className={`${geistMono.variable} antialiased bg-secondary min-h-screen flex flex-col`}
       >

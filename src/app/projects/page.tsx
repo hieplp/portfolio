@@ -1,33 +1,26 @@
-"use client";
-
 import Link from "next/link";
-import { useState } from "react";
 import { ArrowLeft } from "lucide-react";
 import { projects } from "@/data/experience";
 import { ProjectCardModal } from "@/components/project/project-card-modal";
 import { ProjectType } from "@/types/resume";
-import { cn } from "@/lib/utils";
+import { ProjectFilters } from "./project-filters";
+import { Suspense } from "react";
 
 type Filter = "all" | ProjectType;
 
-const filters: { label: string; value: Filter }[] = [
-  { label: "All", value: "all" },
-  { label: "Personal", value: "personal" },
-  { label: "Company", value: "company" },
-];
+interface Props {
+  searchParams: Promise<{ type?: string }>;
+}
 
-export default function ProjectsPage() {
-  const [filter, setFilter] = useState<Filter>("all");
-
-  function handleFilter(value: Filter) {
-    setFilter(value);
-  }
+export default async function ProjectsPage({ searchParams }: Props) {
+  const { type } = await searchParams;
+  const filter = (type ?? "all") as Filter;
 
   const filtered =
     filter === "all" ? projects : projects.filter((p) => p.type === filter);
 
   return (
-    <main className="max-w-6xl w-full mx-auto py-32">
+    <main className="max-w-6xl w-full mx-auto py-32 px-5">
       <div className="mb-12">
         <Link
           href="/#projects"
@@ -42,23 +35,9 @@ export default function ProjectsPage() {
         </p>
       </div>
 
-      {/* Filters */}
-      <div className="flex items-center gap-2 mb-8">
-        {filters.map(({ label, value }) => (
-          <button
-            key={value}
-            onClick={() => handleFilter(value)}
-            className={cn(
-              "px-4 py-1.5 rounded-full text-sm font-medium border transition-all",
-              filter === value
-                ? "bg-primary text-primary-foreground border-primary"
-                : "border-foreground/10 text-muted-foreground hover:border-foreground/30 hover:text-foreground",
-            )}
-          >
-            {label}
-          </button>
-        ))}
-      </div>
+      <Suspense>
+        <ProjectFilters />
+      </Suspense>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filtered.map((item) => (

@@ -7,6 +7,19 @@ export const skills: SkillCategory[] = [
       { name: "Java" },
       { name: "Spring Boot" },
       { name: "Vert.x" },
+      { name: "jOOQ" },
+      { name: "MyBatis" },
+    ],
+  },
+  {
+    category: "Frontend",
+    items: [
+      { name: "React" },
+      { name: "Next.js" },
+      { name: "Vue.js" },
+      { name: "TypeScript" },
+      { name: "Tailwind CSS" },
+      { name: "jQuery" },
     ],
   },
   {
@@ -29,6 +42,7 @@ export const skills: SkillCategory[] = [
     items: [
       { name: "Docker" },
       { name: "Kubernetes" },
+      { name: "GitHub Copilot" },
     ],
   },
   {
@@ -39,7 +53,7 @@ export const skills: SkillCategory[] = [
     ],
   },
   {
-    category: "Reporting",
+    category: "Reporting & Data",
     items: [
       { name: "JasperReports" },
       { name: "Apache POI" },

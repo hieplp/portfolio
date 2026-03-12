@@ -90,7 +90,7 @@ export function WorkSection() {
       id="work"
       title="Work"
       href="/works"
-      subtitle="Experience and projects"
+      subtitle="Companies & roles"
       headerRight={
         <CarouselControls
           current={carousel.current}
