@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { ProjectType } from "@/types/resume";
@@ -12,7 +13,7 @@ const filters: { label: string; value: Filter }[] = [
   { label: "Company", value: "company" },
 ];
 
-export function ProjectFilters() {
+function ProjectFiltersInner() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const current = (searchParams.get("type") ?? "all") as Filter;
@@ -44,5 +45,13 @@ export function ProjectFilters() {
         </button>
       ))}
     </div>
+  );
+}
+
+export function ProjectFilters() {
+  return (
+    <Suspense fallback={<div className="flex items-center gap-2 mb-8 h-9" />}>
+      <ProjectFiltersInner />
+    </Suspense>
   );
 }

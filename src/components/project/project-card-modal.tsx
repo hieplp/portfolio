@@ -91,7 +91,7 @@ export function ProjectModal({ item, onClose }: { item: ProjectEntry; onClose: (
             <p className="text-xs uppercase tracking-wider opacity-50">Highlights</p>
             <ul className="flex flex-col gap-2">
               {item.highlights.map((h, i) => (
-                <li key={i} className="flex items-start gap-2 text-sm">
+                <li key={h} className="flex items-start gap-2 text-sm">
                   <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
                   {h}
                 </li>

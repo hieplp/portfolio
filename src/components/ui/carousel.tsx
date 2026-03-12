@@ -13,9 +13,7 @@ export function useResponsiveVisible(sm = 1, md = 2, lg = 3): number {
   useEffect(() => {
     const update = () => {
       const w = window.innerWidth;
-      if (w < 768) setVisible(sm);
-      else if (w < 1024) setVisible(md);
-      else setVisible(lg);
+      setVisible(w < 768 ? sm : w < 1024 ? md : lg);
     };
     update();
     window.addEventListener("resize", update);
