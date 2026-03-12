@@ -22,8 +22,8 @@ export function Navbar() {
   const { theme, setTheme } = useTheme();
 
   return (
-    <nav className="fixed w-screen top-0 left-0 z-50 backdrop-blur-md flex justify-center px-0 py-4 md:py-8">
-      <div className="flex items-center justify-between max-w-6xl w-full px-4 md:px-0">
+    <nav className="fixed w-screen top-0 left-0 z-50 backdrop-blur-md flex justify-center px-5 py-4 md:py-8">
+      <div className="flex items-center justify-between max-w-6xl w-full">
         {/* Logo */}
         <button className="flex items-center gap-3 font-medium tracking-tight cursor-pointer text-lg">
           <span className="text-primary font-bold">{profile.name}</span>
