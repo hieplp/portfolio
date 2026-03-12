@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, LazyMotion, domAnimation } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { ProjectEntry } from "@/types/resume";
 import { ProjectModal } from "@/components/project/project-card-modal";
@@ -33,11 +33,13 @@ export function CompanyProjects({ projects }: { projects: ProjectEntry[] }) {
         </div>
       </div>
 
-      <AnimatePresence>
-        {selected && (
-          <ProjectModal item={selected} onClose={() => setSelected(null)} />
-        )}
-      </AnimatePresence>
+      <LazyMotion features={domAnimation}>
+        <AnimatePresence>
+          {selected && (
+            <ProjectModal item={selected} onClose={() => setSelected(null)} />
+          )}
+        </AnimatePresence>
+      </LazyMotion>
     </>
   );
 }
