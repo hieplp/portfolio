@@ -23,7 +23,7 @@ export default function WorksPage() {
       <div className="flex flex-col">
         {experience.map((item, i) => (
           <TimelineItem
-            key={i}
+            key={item.company}
             item={item}
             isLast={i === experience.length - 1}
           />

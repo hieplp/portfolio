@@ -83,6 +83,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn("font-sans", outfit.variable, poppins.variable)} suppressHydrationWarning>
       <head>
+        {/* JSON-LD structured data — static string built from server-side config, XSS-safe */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

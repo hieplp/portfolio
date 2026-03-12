@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useReducer, useRef, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { LazyMotion, domAnimation, m } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 // — Responsive visible count —
@@ -34,19 +34,25 @@ export interface CarouselState {
   go: (idx: number) => void;
 }
 
+type CarouselAction = { type: "go"; index: number; direction: number };
+type CarouselReducerState = { current: number; direction: number };
+
+function carouselReducer(_state: CarouselReducerState, action: CarouselAction): CarouselReducerState {
+  return { current: action.index, direction: action.direction };
+}
+
 export function useCarousel(total: number, visible: number, hasExtra = false): CarouselState {
-  const [current, setCurrent] = useState(0);
-  const [direction, setDirection] = useState(0);
+  const [state, dispatch] = useReducer(carouselReducer, { current: 0, direction: 0 });
 
   const lastPageStart = Math.max(0, total - visible + (hasExtra ? 1 : 0));
   const maxIndex = lastPageStart;
 
   const go = (idx: number) => {
-    setDirection(idx > current ? 1 : -1);
-    setCurrent(Math.max(0, Math.min(idx, maxIndex)));
+    const clamped = Math.max(0, Math.min(idx, maxIndex));
+    dispatch({ type: "go", index: clamped, direction: idx > state.current ? 1 : -1 });
   };
 
-  return { current, direction, maxIndex, go };
+  return { current: state.current, direction: state.direction, maxIndex, go };
 }
 
 // — Controls —
@@ -58,7 +64,7 @@ export function CarouselControls({ current, maxIndex, go }: Omit<CarouselState, 
       <div className="flex gap-2 items-center">
         {Array.from({ length: maxIndex + 1 }).map((_, i) => (
           <button
-            key={i}
+            key={`page-${i}`}
             onClick={() => go(i)}
             aria-label={`Go to page ${i + 1}`}
             className={cn(
@@ -132,19 +138,25 @@ export function CarouselSlides<T>({
   ];
 
   return (
-    <div ref={containerRef} className="overflow-hidden">
-      <motion.div
-        className="flex"
-        style={{ gap: GAP }}
-        animate={{ x: -(current * (itemWidth + GAP)) }}
-        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-      >
-        {allSlots.map((slot, i) => (
-          <div key={i} style={{ width: itemWidth, flexShrink: 0 }} className="flex flex-col">
-            {slot.type === "extra" ? renderExtra : renderItem(slot.item, slot.idx)}
-          </div>
-        ))}
-      </motion.div>
-    </div>
+    <LazyMotion features={domAnimation}>
+      <div ref={containerRef} className="overflow-hidden">
+        <m.div
+          className="flex"
+          style={{ gap: GAP }}
+          animate={{ x: -(current * (itemWidth + GAP)) }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+        >
+          {allSlots.map((slot) => (
+            <div
+              key={slot.type === "extra" ? "extra" : slot.idx}
+              style={{ width: itemWidth, flexShrink: 0 }}
+              className="flex flex-col"
+            >
+              {slot.type === "extra" ? renderExtra : renderItem(slot.item, slot.idx)}
+            </div>
+          ))}
+        </m.div>
+      </div>
+    </LazyMotion>
   );
 }

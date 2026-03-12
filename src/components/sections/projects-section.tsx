@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { projects } from "@/data/experience";
 import { Section } from "@/components/sections/section";
@@ -15,7 +16,7 @@ const LATEST = projects.slice(0, 4);
 
 function ShowAllCard() {
   return (
-    <a
+    <Link
       href="/projects"
       className="group relative flex flex-col items-center justify-center text-center gap-4 p-6 rounded-3xl border border-foreground/10 hover:border-primary/30 hover:shadow-lg transition-all bg-foreground/[0.01] flex-1"
     >
@@ -27,7 +28,7 @@ function ShowAllCard() {
         View all projects
         <ArrowUpRight className="w-4 h-4 group-hover:rotate-12 transition-transform duration-200" />
       </div>
-    </a>
+    </Link>
   );
 }
 
