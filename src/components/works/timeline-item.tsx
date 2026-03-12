@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { ExperienceEntry } from "@/types/resume";
 import { CompanyProjects } from "./company-projects";
+import { TagBadge } from "@/components/ui/tag-badge";
 
 export function TimelineItem({ item, isLast }: { item: ExperienceEntry; isLast: boolean }) {
   return (
@@ -42,16 +43,7 @@ export function TimelineItem({ item, isLast }: { item: ExperienceEntry; isLast: 
 
         {/* Tags */}
         {item.tags && item.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2">
-            {item.tags.map((tag) => (
-              <span
-                key={tag}
-                className="px-2.5 py-1 rounded-md bg-foreground/5 text-[10px] font-medium tracking-wider"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
+          <TagBadge tags={item.tags} />
         )}
 
         {/* Description */}

@@ -2,10 +2,11 @@
 
 import { createPortal } from "react-dom";
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { LazyMotion, domAnimation, m, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, Github, Users, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ProjectEntry } from "@/types/resume";
+import { TagBadge } from "@/components/ui/tag-badge";
 
 function TypeBadge({ type }: { type: ProjectEntry["type"] }) {
   if (!type) return null;
@@ -20,21 +21,19 @@ function TypeBadge({ type }: { type: ProjectEntry["type"] }) {
 }
 
 export function ProjectModal({ item, onClose }: { item: ProjectEntry; onClose: () => void }) {
-  // Close on Escape
   useEffect(() => {
     const handler = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
   }, [onClose]);
 
-  // Lock body scroll — scrollbar-gutter: stable in globals.css prevents layout shift
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => { document.body.style.overflow = ""; };
   }, []);
 
   return createPortal(
-    <motion.div
+    <m.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -42,7 +41,7 @@ export function ProjectModal({ item, onClose }: { item: ProjectEntry; onClose: (
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
       onClick={onClose}
     >
-      <motion.div
+      <m.div
         initial={{ opacity: 0, scale: 0.95, y: 16 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 16 }}
@@ -50,7 +49,6 @@ export function ProjectModal({ item, onClose }: { item: ProjectEntry; onClose: (
         onClick={(e) => e.stopPropagation()}
         className="relative w-full max-w-lg max-h-[85vh] overflow-y-auto rounded-3xl border border-foreground/10 bg-secondary shadow-2xl p-8 flex flex-col gap-5"
       >
-        {/* Close */}
         <button
           onClick={onClose}
           aria-label="Close"
@@ -58,11 +56,7 @@ export function ProjectModal({ item, onClose }: { item: ProjectEntry; onClose: (
         >
           <X className="w-4 h-4" />
         </button>
-
-        {/* Type badge */}
         <TypeBadge type={item.type} />
-
-        {/* Title + links */}
         <div className="flex items-start justify-between gap-4 pr-8">
           <div className="flex flex-col gap-0.5">
             <h2 className="text-2xl font-bold tracking-tight">{item.title}</h2>
@@ -85,19 +79,13 @@ export function ProjectModal({ item, onClose }: { item: ProjectEntry; onClose: (
             )}
           </div>
         </div>
-
-        {/* Meta */}
         {item.teamSize && (
           <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
             <Users className="w-4 h-4 shrink-0" />
             <span>Team size: {item.teamSize}</span>
           </div>
         )}
-
-        {/* Description */}
         <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
-
-        {/* Highlights */}
         {item.highlights && item.highlights.length > 0 && (
           <div className="flex flex-col gap-3">
             <p className="text-xs uppercase tracking-wider opacity-50">Highlights</p>
@@ -111,20 +99,13 @@ export function ProjectModal({ item, onClose }: { item: ProjectEntry; onClose: (
             </ul>
           </div>
         )}
-
-        {/* Tags */}
         {item.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 pt-2 border-t border-foreground/10">
-            {item.tags.map((tag) => (
-              <span key={tag}
-                className="px-2.5 py-1 rounded-md bg-foreground/5 text-[10px] font-medium tracking-wider opacity-70">
-                {tag}
-              </span>
-            ))}
+          <div className="pt-2 border-t border-foreground/10">
+            <TagBadge tags={item.tags} className="opacity-70" />
           </div>
         )}
-      </motion.div>
-    </motion.div>,
+      </m.div>
+    </m.div>,
     document.body
   );
 }
@@ -133,9 +114,17 @@ export function ProjectCardModal({ item }: { item: ProjectEntry }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <>
+    <LazyMotion features={domAnimation}>
       <div
+        role="button"
+        tabIndex={0}
         onClick={() => setOpen(true)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            setOpen(true);
+          }
+        }}
         className={cn(
           "group flex flex-col gap-4 p-6 rounded-3xl border cursor-pointer select-none",
           "transition-all duration-300",
@@ -143,7 +132,6 @@ export function ProjectCardModal({ item }: { item: ProjectEntry }) {
         )}
       >
         <TypeBadge type={item.type} />
-
         <div className="flex items-start justify-between gap-2">
           <div className="flex flex-col gap-0.5 min-w-0">
             <h3 className="text-lg font-semibold line-clamp-1">{item.title}</h3>
@@ -164,17 +152,13 @@ export function ProjectCardModal({ item }: { item: ProjectEntry }) {
             )}
           </div>
         </div>
-
         <p className="text-sm text-muted-foreground line-clamp-2">{item.description}</p>
-
         {item.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mt-auto">
-            {item.tags.map((tag) => (
-              <span key={tag}
-                className="px-2.5 py-1 rounded-md bg-foreground/5 text-[10px] font-medium tracking-wider opacity-70 group-hover:bg-primary/5 group-hover:text-primary transition-colors">
-                {tag}
-              </span>
-            ))}
+          <div className="mt-auto">
+            <TagBadge
+              tags={item.tags}
+              className="opacity-70 group-hover:bg-primary/5 group-hover:text-primary transition-colors"
+            />
           </div>
         )}
       </div>
@@ -182,6 +166,6 @@ export function ProjectCardModal({ item }: { item: ProjectEntry }) {
       <AnimatePresence>
         {open && <ProjectModal item={item} onClose={() => setOpen(false)} />}
       </AnimatePresence>
-    </>
+    </LazyMotion>
   );
 }
