@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { projects } from "@/data/experience";
+import { PageContainer } from "@/components/layouts/page-container";
 import { ProjectCardModal } from "@/components/project/project-card-modal";
 import { ProjectType } from "@/types/resume";
 import { ProjectFilters } from "./project-filters";
@@ -37,7 +38,7 @@ function ProjectsContent() {
 
 export default function ProjectsPage() {
   return (
-    <main className="max-w-6xl w-full mx-auto py-32 px-5">
+    <PageContainer>
       <div className="mb-12">
         <Link
           href="/#projects"
@@ -51,6 +52,6 @@ export default function ProjectsPage() {
           <ProjectsContent />
         </Suspense>
       </div>
-    </main>
+    </PageContainer>
   );
 }
