@@ -1,5 +1,6 @@
 import { Download, ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import { PageContainer } from "@/components/layouts/page-container";
 import { ResumeHeader } from "./_components/resume-header";
 import { ResumeSummary } from "./_components/resume-summary";
 import { ResumeSkills } from "./_components/resume-skills";
@@ -9,7 +10,7 @@ import { ResumeAwards } from "./_components/resume-awards";
 
 export default function ResumePage() {
   return (
-    <main className="max-w-6xl w-full mx-auto px-5 md:px-0 py-32">
+    <PageContainer>
       {/* Top bar */}
       <div className="flex justify-between items-center mb-8">
         <Link
@@ -38,6 +39,6 @@ export default function ResumePage() {
         <ResumeEducation />
         <ResumeAwards />
       </div>
-    </main>
+    </PageContainer>
   );
 }

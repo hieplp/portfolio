@@ -2,10 +2,11 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { experience } from "@/data/experience";
 import { TimelineItem } from "@/components/works/timeline-item";
+import { PageContainer } from "@/components/layouts/page-container";
 
 export default function WorksPage() {
   return (
-    <main className="max-w-6xl w-full mx-auto py-32 px-5">
+    <PageContainer>
       <div className="mb-16">
         <Link
           href="/#work"
@@ -29,6 +30,6 @@ export default function WorksPage() {
           />
         ))}
       </div>
-    </main>
+    </PageContainer>
   );
 }
