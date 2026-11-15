@@ -1,0 +1,18 @@
+[
+  {
+    "file": "workspace.jpg",
+    "source": "https://www.pexels.com/photo/a-minimalist-workspace-8534373/",
+    "author": "Hanna Pad",
+    "license": "Pexels License",
+    "license_url": "https://www.pexels.com/license/",
+    "use": "Illustrative workspace, not represented as the portfolio owner\u2019s workspace"
+  },
+  {
+    "file": "architecture.jpg",
+    "source": "https://www.pexels.com/photo/grayscale-photo-of-a-concrete-stairs-11382359/",
+    "author": "Markus Winkler",
+    "license": "Pexels License",
+    "license_url": "https://www.pexels.com/license/",
+    "use": "Editorial architecture detail"
+  }
+]
