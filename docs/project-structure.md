@@ -8,6 +8,11 @@ Routes: `/` (the whole portfolio), `/work/[slug]` (one page per project, statica
 retired `/works` + `/projects` stubs that canonicalise to `/` and refresh into the matching section.
 `robots.txt`, `sitemap.xml`, and the favicon are metadata routes.
 
+Deployment is a static export (`output: "export"`, unoptimized images) published by
+`.github/workflows/deploy.yml` on every push to `main`: GitHub Pages builds the `out/` artifact and
+deploys it. `pnpm start` serves that same `out/` with `serve`, since `next start` cannot run an
+export.
+
 ```
 portfolio/
 ├─ src/
