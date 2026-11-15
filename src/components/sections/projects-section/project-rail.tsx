@@ -1,17 +1,14 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Project } from "@/content/projects";
 import ProjectCard from "./project-card";
-import ProjectDialog from "./project-dialog";
 
 const GAP = 16;
 
 export default function ProjectRail({ projects }: { projects: Project[] }) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [edges, setEdges] = useState({ start: true, end: false });
-  const [selected, setSelected] = useState<Project | null>(null);
-  const closeDialog = useCallback(() => setSelected(null), []);
 
   useEffect(() => {
     const track = trackRef.current;
@@ -47,11 +44,7 @@ export default function ProjectRail({ projects }: { projects: Project[] }) {
     <>
       <div className="project-grid" ref={trackRef}>
         {projects.map((project) => (
-          <ProjectCard
-            key={project.title}
-            project={project}
-            onOpen={() => setSelected(project)}
-          />
+          <ProjectCard key={project.slug} project={project} />
         ))}
       </div>
       <div className="rail-controls">
@@ -74,14 +67,6 @@ export default function ProjectRail({ projects }: { projects: Project[] }) {
           →
         </button>
       </div>
-      {projects.map((project) => (
-        <ProjectDialog
-          key={project.title}
-          project={project}
-          open={selected === project}
-          onClose={closeDialog}
-        />
-      ))}
     </>
   );
 }

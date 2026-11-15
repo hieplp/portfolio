@@ -4,18 +4,22 @@ Next.js 16.1.6 (App Router, `src/`), React 19.2, TypeScript. The visual layer is
 `src/app/globals.css`: design tokens plus component rules. No Tailwind, no CSS-in-JS, no component
 library.
 
-One route ships: `/`. `robots.txt`, `sitemap.xml`, and the favicon are metadata routes.
+Routes: `/` (the whole portfolio), `/work/[slug]` (one page per project, statically generated), and the
+retired `/works` + `/projects` stubs that canonicalise to `/` and refresh into the matching section.
+`robots.txt`, `sitemap.xml`, and the favicon are metadata routes.
 
 ```
 portfolio/
 ├─ src/
 │  ├─ app/
 │  │  ├─ layout.tsx        # next/font families, metadata, pre-paint theme script, header/main/footer
-│  │  ├─ page.tsx          # section composition only
 │  │  ├─ globals.css       # tokens + every component rule, in document order
 │  │  ├─ icon.svg          # favicon
 │  │  ├─ robots.ts         # /robots.txt
-│  │  └─ sitemap.ts        # /sitemap.xml
+│  │  ├─ sitemap.ts        # /sitemap.xml: home + every /work/[slug]
+│  │  ├─ work/[slug]/      # case-study page, one static page per project
+│  │  ├─ works/, projects/ # retired v2 URLs, canonical to /
+│  │  └─ page.tsx          # section composition only
 │  ├─ components/
 │  │  ├─ layout/
 │  │  │  ├─ header/        # brand, nav (+ active-section hook), theme toggle, mobile menu
@@ -23,7 +27,7 @@ portfolio/
 │  │  └─ sections/
 │  │     ├─ hero-section/  # poster, canvas pixel field, glyph mask
 │  │     ├─ experience-section/   # sticky aside + roles
-│  │     ├─ projects-section/     # rail, cards, case-study <dialog>
+│  │     ├─ projects-section/     # rail and cards linking to /work/[slug]
 │  │     ├─ techstack-section/    # stacked heading + grouped tags
 │  │     ├─ about-section/        # copy, facts, editorial image
 │  │     └─ contact-section/      # statement + mailto CTA

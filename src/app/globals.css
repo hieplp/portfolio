@@ -521,64 +521,28 @@ details[open] > summary .disclosure::before { content: "\2212"; }
 }
 .rail-button:disabled { opacity: 0.35; cursor: default; }
 
-/* ---------- project dialog ---------- */
+/* ---------- case study page ---------- */
 
-dialog {
-  width: min(680px, calc(100% - 32px));
-  max-height: calc(100dvh - 48px);
-  overflow-y: auto;
-  padding: 32px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--bg);
-  color: var(--text);
-  box-shadow: 0 24px 96px rgb(16 25 43 / 0.2);
+.case-study {
+  max-width: 760px;
+  margin-inline: auto;
+  padding: 48px var(--gutter) 96px;
 }
-dialog::backdrop { background: rgb(16 21 33 / 0.55); backdrop-filter: blur(4px); }
-
-.dialog-top {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 24px;
+.case-study-meta { margin-top: 32px; margin-bottom: 12px; }
+.case-study h1 {
+  font-size: clamp(36px, 5.6vw, 56px);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
 }
-.dialog-top h2 { font-size: 28px; line-height: 1.2; letter-spacing: -0.025em; }
-
-.dialog-close {
-  display: grid;
-  flex: none;
-  place-items: center;
-  width: 44px;
-  min-height: 44px;
-  border: 1px solid var(--line);
-  border-radius: var(--control);
-  font-size: 18px;
-}
-
-.dialog-meta {
-  margin-top: 8px;
-  color: var(--muted);
-  font: 11px/1.8 var(--mono);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.dialog-body { display: grid; gap: 16px; margin-top: 24px; }
-.dialog-body ul {
+.case-study-highlights {
   display: grid;
   gap: 10px;
+  margin-top: 28px;
   padding-left: 18px;
   color: var(--muted);
   line-height: 1.7;
 }
-
-.dialog-actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 16px;
-  margin-top: 28px;
-}
+.case-study .button { margin-top: 8px; }
 
 /* ---------- stack ---------- */
 
@@ -825,8 +789,6 @@ dialog::backdrop { background: rgb(16 21 33 / 0.55); backdrop-filter: blur(4px);
 
   .footer { flex-direction: column; align-items: flex-start; gap: 8px; }
 
-  dialog { padding: 24px; }
-  .dialog-top h2 { font-size: 24px; }
 }
 
 /* Wide screens get more air instead of wider lines. */

@@ -1,4 +1,5 @@
 export type Project = {
+  slug: string;
   kind: "Company project" | "Personal project";
   company: string;
   title: string;
@@ -14,6 +15,7 @@ export const projects: Project[] = [
   {
     kind: "Company project",
     company: "POSCO DX",
+    slug: "indorefresh",
     title: "IndoRefresh",
     description:
       "A large Java legacy system migrated with GitHub Copilot, cutting estimated effort by 60%.",
@@ -30,6 +32,7 @@ export const projects: Project[] = [
   {
     kind: "Company project",
     company: "POSCO DX",
+    slug: "marketingdx",
     title: "MarketingDX",
     description:
       "A Servlet-era internal marketing system rebuilt as Spring Boot microservices.",
@@ -46,6 +49,7 @@ export const projects: Project[] = [
   {
     kind: "Company project",
     company: "POSCO DX",
+    slug: "purchasedx",
     title: "PurchaseDX",
     description:
       "The procurement counterpart to MarketingDX: the same Servlet to Spring Boot migration, on a different domain.",
@@ -62,6 +66,7 @@ export const projects: Project[] = [
   {
     kind: "Company project",
     company: "CMC Global",
+    slug: "ccash",
     title: "CCash",
     description:
       "A tool that lets QA engineers at Techcombank simulate encrypted banking API requests.",
@@ -77,6 +82,7 @@ export const projects: Project[] = [
   {
     kind: "Company project",
     company: "INTELIN",
+    slug: "giot-mau-vang",
     title: "Giọt Máu Vàng",
     description:
       "A donation platform connecting donors with hospitals: registration, scheduling, and tracking.",
@@ -94,6 +100,7 @@ export const projects: Project[] = [
   {
     kind: "Company project",
     company: "INTELIN",
+    slug: "me-easy",
     title: "Mẹ Easy",
     description:
       "A social network for mothers, taken from ideation to production.",

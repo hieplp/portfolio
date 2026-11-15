@@ -41,6 +41,7 @@ export const metadata: Metadata = {
     title: site.title,
     description: site.description,
     siteName: "Ly Phuoc Hiep",
+    locale: "en_US",
     images: [{ url: site.ogImage, width: 1200, height: 630, alt: site.title }],
   },
   twitter: {
@@ -69,6 +70,11 @@ const jsonLd = {
       name: profile.name,
       jobTitle: profile.role,
       url: site.url,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Ho Chi Minh City",
+        addressCountry: "VN",
+      },
       email: `mailto:${profile.email}`,
       sameAs: [profile.github, profile.linkedin],
       knowsAbout: groups.flatMap((group) => group.items),
