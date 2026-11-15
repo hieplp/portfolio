@@ -9,15 +9,15 @@ export default function ProjectCard({
 }) {
   return (
     <article className="project-card">
-      <span
-        className="project-tag"
-        data-kind={
-          project.kind === "Company project" ? "company" : "personal"
-        }
-      >
-        {project.kind}
-      </span>
-      <p className="project-company">{project.company}</p>
+      <p className="project-type">
+        <span
+          className="project-tag"
+          data-kind={project.kind === "Company project" ? "company" : "personal"}
+        >
+          {project.kind}
+        </span>{" "}
+        / {project.company}
+      </p>
       <h3>{project.title}</h3>
       <p className="project-description">{project.description}</p>
       <dl className="project-facts">

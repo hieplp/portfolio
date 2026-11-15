@@ -8,6 +8,7 @@
   --line: #d9dde5;
   --accent: #3159ce;
   --accent-text: #fdfdfd;
+  --soft-blue: #e5ebfa;
 
   --display: var(--font-display), Georgia, serif;
   --body: var(--font-body), system-ui, sans-serif;
@@ -32,6 +33,7 @@
   --line: #383e4b;
   --accent: #9eb8ff;
   --accent-text: #192746;
+  --soft-blue: #253248;
   color-scheme: dark;
 }
 
@@ -331,7 +333,7 @@ section[tabindex="-1"]:focus { outline: none; }
 .position-label {
   margin-bottom: 12px;
   color: var(--accent);
-  font: 11px/1.6 var(--mono);
+  font: 10px/1.8 var(--mono);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -343,23 +345,23 @@ section[tabindex="-1"]:focus { outline: none; }
   gap: 24px;
 }
 
-.position h3 { font-size: 24px; line-height: 1.35; letter-spacing: -0.025em; }
+.position h3 { font-size: 24px; line-height: 1.4; letter-spacing: -0.8px; }
 
 .position-dates {
   margin-top: 8px;
   color: var(--muted);
-  font: 11px/1.8 var(--mono);
+  font: 10px/1.8 var(--mono);
   white-space: nowrap;
 }
 
 .position-summary {
-  margin-top: 18px;
+  margin-top: 20px;
   max-width: 62ch;
   color: var(--muted);
   line-height: 1.75;
 }
 
-.position details { margin-top: 10px; }
+.position details { margin-top: 12px; }
 
 .position summary {
   display: flex;
@@ -380,10 +382,10 @@ details[open] > summary .disclosure::before { content: "\2212"; }
 .position ul {
   display: grid;
   gap: 12px;
-  margin: 8px 0 16px;
+  margin: 12px 0 16px;
   padding-left: 20px;
   color: var(--muted);
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
 .position-stack {
@@ -402,18 +404,22 @@ details[open] > summary .disclosure::before { content: "\2212"; }
 
 /* ---------- projects ---------- */
 
-.projects-intro { margin-bottom: 32px; }
+.projects-intro {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 32px;
+}
 .projects-intro h2 {
   font-size: var(--h2);
   line-height: 1.12;
   letter-spacing: -0.035em;
 }
 .projects-intro p {
-  margin-top: 16px;
-  max-width: 52ch;
+  max-width: 40ch;
   color: var(--muted);
-  font-size: 14px;
-  line-height: 1.8;
+  font: 10px/1.8 var(--mono);
 }
 
 .project-grid {
@@ -430,60 +436,58 @@ details[open] > summary .disclosure::before { content: "\2212"; }
   flex: 0 0 clamp(280px, 54%, 620px);
   display: flex;
   flex-direction: column;
-  padding: 28px;
+  padding: 32px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--paper);
   scroll-snap-align: start;
   transition: border-color var(--speed) var(--ease);
 }
-/* Cards stretch to the tallest in the rail, so the action row always aligns. */
-.project-card .project-facts { margin-bottom: 28px; }
-.project-card > .project-open { margin-top: auto; }
+.project-card:first-child {
+  background: var(--soft-blue);
+  border-color: var(--soft-blue);
+}
 @media (hover: hover) {
   .project-card:hover { border-color: var(--accent); }
 }
 
-.project-tag,
-.project-company {
-  display: inline-block;
-  align-self: flex-start;
-  font: 11px/1.5 var(--mono);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+.project-type {
+  margin-bottom: 24px;
+  color: var(--muted);
+  font: 10px/1.8 var(--mono);
 }
-.project-tag {
-  margin-bottom: 10px;
-  padding: 4px 10px;
-  border: 1px solid color-mix(in srgb, currentColor 35%, var(--line));
-  border-radius: var(--control);
-}
+.project-tag { letter-spacing: 0.06em; text-transform: uppercase; }
 .project-tag[data-kind="company"] { color: var(--accent); }
-.project-company { color: var(--muted); margin-bottom: 16px; }
 
-.project-card h3 { font-size: 30px; line-height: 1.15; letter-spacing: -0.025em; }
+.project-card h3 {
+  max-width: 18ch;
+  font-size: 32px;
+  line-height: 1.2;
+  letter-spacing: -1.4px;
+}
 
 .project-description {
-  margin-top: 12px;
+  max-width: 46ch;
+  margin-top: 16px;
   color: var(--muted);
-  font-size: 15px;
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
 .project-facts {
   display: grid;
-  gap: 10px;
-  margin-top: 22px;
+  gap: 16px;
+  margin-block: 28px;
   font-size: 13px;
 }
 .project-facts > div {
   display: grid;
-  grid-template-columns: 64px minmax(0, 1fr);
+  grid-template-columns: 88px minmax(0, 1fr);
   gap: 16px;
 }
 .project-facts dt { color: var(--muted); }
 .project-facts dd { overflow-wrap: anywhere; }
 
+/* Action row reads like the archived case-study summary: accent, ruled off, always at the card foot. */
 .project-open {
   display: flex;
   align-items: center;
@@ -734,6 +738,7 @@ dialog::backdrop { background: rgb(16 21 33 / 0.55); backdrop-filter: blur(4px);
   .section-layout { grid-template-columns: 224px minmax(0, 1fr); gap: 48px; }
   .position-header { display: block; }
   .position-dates { margin-top: 12px; }
+  .project-card { padding: 28px; }
   .about-layout { grid-template-columns: minmax(0, 1fr) 240px; gap: 40px; }
   .contact h2 { font-size: clamp(40px, 5.3vw, 56px); }
 }
@@ -762,6 +767,8 @@ dialog::backdrop { background: rgb(16 21 33 / 0.55); backdrop-filter: blur(4px);
   .poster-description { max-width: 30ch; }
 
   .section-layout { grid-template-columns: 192px minmax(0, 1fr); gap: 40px; }
+  .project-card { padding: 24px; }
+  .project-card h3 { font-size: 28px; }
   .about-layout { grid-template-columns: 1fr; gap: 32px; }
   .about-figure { max-width: 320px; }
   .contact { flex-direction: column; align-items: flex-start; gap: 28px; }
@@ -802,7 +809,9 @@ dialog::backdrop { background: rgb(16 21 33 / 0.55); backdrop-filter: blur(4px);
 
   .project-card { flex-basis: 86%; padding: 24px; }
   .project-card h3 { font-size: 26px; }
-  .project-facts > div { grid-template-columns: 56px minmax(0, 1fr); }
+  .project-facts > div { grid-template-columns: 72px minmax(0, 1fr); }
+  .projects-intro { display: block; }
+  .projects-intro p { margin-top: 12px; }
 
   .skill-grid { grid-template-columns: 1fr; gap: 28px; }
 

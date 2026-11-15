@@ -2,7 +2,6 @@ export type Project = {
   kind: "Company project" | "Personal project";
   company: string;
   title: string;
-  type: string;
   description: string;
   role: string;
   team: string;
@@ -16,25 +15,22 @@ export const projects: Project[] = [
     kind: "Company project",
     company: "POSCO DX",
     title: "IndoRefresh",
-    type: "AI-assisted migration proof of concept",
     description:
-      "A proof of concept that migrates a large Java legacy system with GitHub Copilot, cutting estimated effort by 60%.",
-    role: "IT Developer, POC lead",
+      "A large Java legacy system migrated with GitHub Copilot, cutting estimated effort by 60%.",
+    role: "IT Developer, migration lead",
     team: "10 engineers",
     stack: "JavaFX / Glue Framework / GitHub Copilot / Java 21",
     highlights: [
       "Analyzed a system built on Swing, Java 1.4, JDBC, JavaEE, and EJB.",
-      "Migrated selected modules and redesigned the UI: Swing to JavaFX, Java 1.4 to Java 21, JDBC to Glue Framework.",
+      "Migrated modules and redesigned the UI: Swing to JavaFX, Java 1.4 to Java 21, JDBC to Glue Framework.",
       "Designed the prompts that drive AI-assisted code conversion.",
       "Reduced estimated migration effort by 60%.",
-      "Assessed whether AI-driven migration holds up on large legacy systems.",
     ],
   },
   {
     kind: "Company project",
     company: "POSCO DX",
     title: "MarketingDX",
-    type: "Enterprise marketing platform",
     description:
       "A Servlet-era internal marketing system rebuilt as Spring Boot microservices.",
     role: "IT Developer",
@@ -51,7 +47,6 @@ export const projects: Project[] = [
     kind: "Company project",
     company: "POSCO DX",
     title: "PurchaseDX",
-    type: "Enterprise procurement platform",
     description:
       "The procurement counterpart to MarketingDX: the same Servlet to Spring Boot migration, on a different domain.",
     role: "IT Developer",
@@ -68,7 +63,6 @@ export const projects: Project[] = [
     kind: "Company project",
     company: "CMC Global",
     title: "CCash",
-    type: "Internal QA tool",
     description:
       "A tool that lets QA engineers at Techcombank simulate encrypted banking API requests.",
     role: "Software Engineer",
@@ -84,7 +78,6 @@ export const projects: Project[] = [
     kind: "Company project",
     company: "INTELIN",
     title: "Giọt Máu Vàng",
-    type: "Blood donation platform",
     description:
       "A donation platform connecting donors with hospitals: registration, scheduling, and tracking.",
     role: "Backend Engineer",
@@ -102,7 +95,6 @@ export const projects: Project[] = [
     kind: "Company project",
     company: "INTELIN",
     title: "Mẹ Easy",
-    type: "Social platform",
     description:
       "A social network for mothers, taken from ideation to production.",
     role: "Backend Engineer",

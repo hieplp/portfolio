@@ -19,7 +19,7 @@ export default function Position({
       <p className="position-summary">{role.summary}</p>
       <details open={open}>
         <summary>
-          Responsibilities and contributions{" "}
+          Responsibilities &amp; contributions{" "}
           <span className="disclosure" aria-hidden="true" />
         </summary>
         <ul>

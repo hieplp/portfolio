@@ -18,7 +18,7 @@ export const roles: Role[] = [
       "Migrated Servlet-based systems to Spring Boot microservices (MarketingDX, PurchaseDX).",
       "Refactored business logic into a service-based structure for modularity and maintainability.",
       "Implemented the data access layer with JPA and MyBatis against Oracle.",
-      "Led the Indonesia POC: Swing to JavaFX, Java 1.4 to Java 21, JDBC to Glue Framework.",
+      "Led the IndoRefresh migration project: Swing to JavaFX, Java 1.4 to Java 21, JDBC to Glue Framework.",
       "Designed the prompts behind AI-assisted code conversion with GitHub Copilot, cutting estimated migration effort by 60%.",
     ],
     stack: "Spring Boot / Oracle / jQuery / IBSheet / JavaFX / GitHub Copilot",
