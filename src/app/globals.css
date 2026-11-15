@@ -17,8 +17,10 @@
   --radius: 12px;
   --control: 6px;
   --gutter: clamp(16px, 2vw, 24px);
+  /* Text rides a centred frame; rules, borders and the poster canvas stay full-bleed. */
+  --frame: 1240px;
   --header-h: 80px;
-  --h2: clamp(32px, 3.6vw, 48px);
+  --h2: clamp(32px, 3.6vw, 56px);
   --speed: 220ms;
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
   color-scheme: light;
@@ -67,7 +69,9 @@ section[tabindex="-1"]:focus { outline: none; }
 
 ::selection { background: var(--accent); color: var(--accent-text); }
 
-.page-gutter { padding-inline: var(--gutter); }
+/* Padding grows past --frame so content centres while the rules stay edge to edge. */
+.page-gutter,
+.site-header { padding-inline: max(var(--gutter), (100% - var(--frame)) / 2); }
 
 .skip {
   position: fixed;
@@ -121,7 +125,6 @@ section[tabindex="-1"]:focus { outline: none; }
   justify-content: space-between;
   gap: 32px;
   min-height: var(--header-h);
-  padding-inline: var(--gutter);
   background: var(--bg);
   border-bottom: 1px solid var(--line);
 }
@@ -227,7 +230,7 @@ section[tabindex="-1"]:focus { outline: none; }
 }
 
 .cover-name {
-  font-size: clamp(104px, 13vw, 188px);
+  font-size: clamp(104px, 13vw, 264px);
   line-height: 1.08;
   letter-spacing: -0.055em;
   overflow-wrap: anywhere;
@@ -824,6 +827,15 @@ dialog::backdrop { background: rgb(16 21 33 / 0.55); backdrop-filter: blur(4px);
 
   dialog { padding: 24px; }
   .dialog-top h2 { font-size: 24px; }
+}
+
+/* Wide screens get more air instead of wider lines. */
+@media (min-width: 1536px) {
+  .portfolio-section { padding-block: 96px 104px; }
+}
+
+@media (min-width: 1920px) {
+  :root { --gutter: 32px; }
 }
 
 @media (max-height: 680px) and (min-width: 768px) {
