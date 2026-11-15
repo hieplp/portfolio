@@ -3,6 +3,8 @@ import { IBM_Plex_Mono, Manrope, Syne } from "next/font/google";
 import "./globals.css";
 
 import { site } from "@/content/site";
+import { profile } from "@/content/profile";
+import { groups } from "@/content/techstack";
 import { themeInitScript } from "@/content/theme";
 import { Footer, Header } from "@/components/layout";
 
@@ -56,6 +58,33 @@ export const viewport = {
   ],
 };
 
+// Person + WebSite, built from the same content the page renders so they cannot drift.
+const personId = `${site.url}/#person`;
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": personId,
+      name: profile.name,
+      jobTitle: profile.role,
+      url: site.url,
+      email: `mailto:${profile.email}`,
+      sameAs: [profile.github, profile.linkedin],
+      knowsAbout: groups.flatMap((group) => group.items),
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${site.url}/#website`,
+      url: site.url,
+      name: profile.name,
+      description: site.description,
+      inLanguage: "en",
+      publisher: { "@id": personId },
+    },
+  ],
+};
+
 export default function Layout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -67,6 +96,10 @@ export default function Layout({
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body id="top">
         <a className="skip" href="#main">

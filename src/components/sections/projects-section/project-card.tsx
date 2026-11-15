@@ -38,6 +38,7 @@ export default function ProjectCard({
         className="project-open"
         type="button"
         aria-haspopup="dialog"
+        aria-label={`Read case study: ${project.title}`}
         onClick={onOpen}
       >
         Read case study <span aria-hidden="true">→</span>

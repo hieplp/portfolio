@@ -74,9 +74,14 @@ export default function ProjectRail({ projects }: { projects: Project[] }) {
           →
         </button>
       </div>
-      {selected && (
-        <ProjectDialog project={selected} onClose={closeDialog} />
-      )}
+      {projects.map((project) => (
+        <ProjectDialog
+          key={project.title}
+          project={project}
+          open={selected === project}
+          onClose={closeDialog}
+        />
+      ))}
     </>
   );
 }

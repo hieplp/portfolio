@@ -31,7 +31,8 @@ export default function AboutSection() {
             alt={image.alt}
             width={700}
             height={1050}
-            sizes="(max-width: 1023px) 320px, 320px"
+            sizes="320px"
+            quality={60}
           />
           <figcaption>{image.credit}</figcaption>
         </figure>

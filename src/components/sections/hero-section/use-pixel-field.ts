@@ -1,6 +1,11 @@
 import { useEffect, type RefObject } from "react";
 import { buildPixels, paintGlyphMask, type Pixel } from "./pixel-field";
 
+type Box = { x: number; y: number; w: number; h: number };
+
+/* A frame only repaints the box the pointer disturbs; 40px covers the 28px push and size growth. */
+const PAD = 40;
+
 /* Event-driven pixel field canvas: rebuilds on resize/font/theme, reacts to pointer. */
 export function usePixelField(
   heroRef: RefObject<HTMLElement | null>,
@@ -20,14 +25,20 @@ export function usePixelField(
 
     let width = 1;
     let height = 1;
+    let dpr = 1;
     let pixels: Pixel[] = [];
     let accent = "";
     let frame = 0;
     let lastTime = 0;
     let inView = true;
+    // Box the last frame disturbed, in CSS px, so the next frame can put the field back.
+    let drawn: Box | null = null;
 
     const letterMask = document.createElement("canvas");
     const maskContext = letterMask.getContext("2d");
+    // The undisturbed field, painted once per rebuild: keeps per-frame work to the dirty box.
+    const field = document.createElement("canvas");
+    const fieldContext = field.getContext("2d");
     const pointer = { x: 0, y: 0, strength: 0 };
     const target = { x: 0, y: 0, strength: 0 };
 
@@ -36,52 +47,164 @@ export function usePixelField(
       target.x = target.y = target.strength = 0;
     };
 
-    const draw = () => {
-      ctx.clearRect(0, 0, width, height);
-      ctx.fillStyle = accent;
-      const range = width < 600 ? 100 : 160;
-      const range2 = range * range;
-      const { x: px, y: py, strength } = pointer;
+    const clampBox = (box: Box): Box | null => {
+      const x = Math.max(0, Math.floor(box.x));
+      const y = Math.max(0, Math.floor(box.y));
+      const right = Math.min(width, Math.ceil(box.x + box.w));
+      const bottom = Math.min(height, Math.ceil(box.y + box.h));
+      if (right - x < 1 || bottom - y < 1) return null;
+      return { x, y, w: right - x, h: bottom - y };
+    };
+
+    const paintField = () => {
+      if (!fieldContext) return;
+      field.width = canvas.width;
+      field.height = canvas.height;
+      fieldContext.setTransform(dpr, 0, 0, dpr, 0, 0);
+      fieldContext.clearRect(0, 0, width, height);
+      fieldContext.fillStyle = accent;
       for (const pixel of pixels) {
-        let x = pixel.x;
-        let y = pixel.y;
-        let size = pixel.size;
-        let alpha = pixel.alpha;
-        if (strength > 0.001) {
-          // Push along the unit vector: cos(atan2(dy, dx)) === dx / d, so no trig.
-          const dx = x - px;
-          const dy = y - py;
-          const d2 = dx * dx + dy * dy;
-          if (d2 < range2 && d2 > 0) {
-            const d = Math.sqrt(d2);
-            const force = (1 - d / range) ** 2 * strength;
-            const push = (force * 28) / d;
-            x += dx * push;
-            y += dy * push;
-            size += force * 2;
-            alpha = Math.min(1, alpha + force * 0.32);
-          }
-        }
-        ctx.globalAlpha = alpha;
-        ctx.fillRect(
-          Math.round(x - size / 2),
-          Math.round(y - size / 2),
-          Math.max(1, Math.round(size)),
-          Math.max(1, Math.round(size)),
+        fieldContext.globalAlpha = pixel.alpha;
+        const size = Math.max(1, Math.round(pixel.size));
+        fieldContext.fillRect(
+          Math.round(pixel.x - pixel.size / 2),
+          Math.round(pixel.y - pixel.size / 2),
+          size,
+          size,
         );
       }
+      fieldContext.globalAlpha = 1;
+      fieldContext.globalCompositeOperation = "source-over";
+    };
+
+    /* Device-pixel rect of `box`. Integer bounds: a fractional one makes drawImage resample. */
+    const areaOf = (box: Box): [number, number, number, number] => {
+      const x = Math.floor(box.x * dpr);
+      const y = Math.floor(box.y * dpr);
+      return [
+        x,
+        y,
+        Math.ceil((box.x + box.w) * dpr) - x,
+        Math.ceil((box.y + box.h) * dpr) - y,
+      ];
+    };
+
+    /* Puts the undisturbed field back over `box` (or everything). The field is kept unpunched so
+       this stays a plain copy; `punch` cuts the glyphs out afterwards, once per repaint. */
+    const restore = (box: Box | null) => {
+      ctx.save();
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.globalCompositeOperation = "source-over";
       ctx.globalAlpha = 1;
-      if (maskContext) {
-        ctx.save();
-        ctx.globalCompositeOperation = "destination-out";
-        ctx.drawImage(letterMask, 0, 0, width, height);
-        ctx.restore();
+      if (box) {
+        const area = areaOf(box);
+        ctx.clearRect(...area);
+        ctx.drawImage(field, ...area, ...area);
+      } else {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(field, 0, 0);
       }
+      ctx.restore();
+    };
+
+    /* Cuts the heading out of the field, over `box` or the whole canvas. Must run after the
+       displaced pixels are drawn, or they bleed through the letters. */
+    const punch = (box: Box | null) => {
+      const area: [number, number, number, number] = box
+        ? areaOf(box)
+        : [0, 0, canvas.width, canvas.height];
+      ctx.save();
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.globalAlpha = 1;
+      ctx.globalCompositeOperation = "destination-out";
+      ctx.drawImage(letterMask, ...area, ...area);
+      ctx.restore();
+    };
+
+    const draw = () => {
+      const range = width < 600 ? 100 : 160;
+      const radius = range + PAD;
+      const box =
+        pointer.strength > 0.001
+          ? clampBox({
+              x: pointer.x - radius,
+              y: pointer.y - radius,
+              w: radius * 2,
+              h: radius * 2,
+            })
+          : null;
+      // Both boxes: pixels pushed by the previous frame sit outside the current one.
+      let region = box;
+      if (drawn) {
+        region = region
+          ? {
+              x: Math.min(region.x, drawn.x),
+              y: Math.min(region.y, drawn.y),
+              w:
+                Math.max(region.x + region.w, drawn.x + drawn.w) -
+                Math.min(region.x, drawn.x),
+              h:
+                Math.max(region.y + region.h, drawn.y + drawn.h) -
+                Math.min(region.y, drawn.y),
+            }
+          : drawn;
+      }
+      if (!region) return;
+
+      restore(region);
+      const { x: px, y: py, strength } = pointer;
+      if (strength > 0.001) {
+        const range2 = range * range;
+        // A pushed pixel must not also stay at its base spot: the original cleared the frame, so
+        // the disturbed area reads as a hole in the field, not as a smudge over it.
+        // Device pixels with the whole hull: a fractional erase leaves the base pixel half there.
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.globalAlpha = 1;
+        ctx.globalCompositeOperation = "destination-out";
+        ctx.beginPath();
+        for (const pixel of pixels) {
+          const dx = pixel.x - px;
+          const dy = pixel.y - py;
+          const d2 = dx * dx + dy * dy;
+          if (d2 >= range2 || d2 === 0) continue;
+          const size = Math.max(1, Math.round(pixel.size));
+          const left = Math.round(pixel.x - pixel.size / 2);
+          const top = Math.round(pixel.y - pixel.size / 2);
+          const x0 = Math.floor(left * dpr);
+          const y0 = Math.floor(top * dpr);
+          ctx.rect(x0, y0, Math.ceil((left + size) * dpr) - x0, Math.ceil((top + size) * dpr) - y0);
+        }
+        ctx.fill();
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        ctx.globalCompositeOperation = "source-over";
+        ctx.fillStyle = accent;
+        for (const pixel of pixels) {
+          const dx = pixel.x - px;
+          const dy = pixel.y - py;
+          const d2 = dx * dx + dy * dy;
+          if (d2 >= range2 || d2 === 0) continue;
+          // Push along the unit vector: cos(atan2(dy, dx)) === dx / d, so no trig.
+          const d = Math.sqrt(d2);
+          const force = (1 - d / range) ** 2 * strength;
+          const push = (force * 28) / d;
+          const size = pixel.size + force * 2;
+          ctx.globalAlpha = Math.min(1, pixel.alpha + force * 0.32);
+          ctx.fillRect(
+            Math.round(pixel.x + dx * push - size / 2),
+            Math.round(pixel.y + dy * push - size / 2),
+            Math.max(1, Math.round(size)),
+            Math.max(1, Math.round(size)),
+          );
+        }
+        ctx.globalAlpha = 1;
+      }
+      punch(region);
+      drawn = box;
     };
 
     const rebuild = (force = false) => {
       const rect = hero.getBoundingClientRect();
-      const dpr = Math.min(devicePixelRatio || 1, 2);
+      dpr = Math.min(devicePixelRatio || 1, 2);
       const w = Math.max(1, rect.width);
       const h = Math.max(1, rect.height);
       // ResizeObserver fires on every fractional change; the canvas bitmap encodes dpr.
@@ -111,7 +234,10 @@ export function usePixelField(
 
       pixels = buildPixels(width, height);
       resetPointer();
-      draw();
+      drawn = null;
+      paintField();
+      restore(null);
+      punch(null);
     };
 
     const animate = (now: number) => {
@@ -187,7 +313,10 @@ export function usePixelField(
       accent = getComputedStyle(document.documentElement)
         .getPropertyValue("--accent")
         .trim();
-      draw();
+      paintField();
+      drawn = null;
+      restore(null);
+      punch(null);
     });
     themeObserver.observe(document.documentElement, {
       attributes: true,
