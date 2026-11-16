@@ -11,7 +11,7 @@ export default function HeroSection() {
   const heroRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
-  usePixelField(heroRef, canvasRef, headingRef);
+  const { paused, toggle } = usePixelField(heroRef, canvasRef, headingRef);
 
   return (
     <section
@@ -26,7 +26,7 @@ export default function HeroSection() {
         aria-hidden="true"
       />
       <PosterHeading headingRef={headingRef} profile={profile} />
-      <PosterFooter />
+      <PosterFooter paused={paused} onToggleMotion={toggle} />
     </section>
   );
 }

@@ -1,4 +1,11 @@
-export type Pixel = { x: number; y: number; size: number; alpha: number };
+export type Pixel = {
+  x: number;
+  y: number;
+  size: number;
+  alpha: number;
+  /* Position in the ambient wave, in radians. */
+  phase: number;
+};
 
 /* Deterministic grain field inside an elliptical envelope, brightest along a noise ridge. */
 export function buildPixels(width: number, height: number): Pixel[] {
@@ -18,7 +25,13 @@ export function buildPixels(width: number, height: number): Pixel[] {
       if (density < 0.055) continue;
       const size = 1.25 + density * (width < 600 ? 5 : 4.25);
       // density is in [0,1], so alpha stays in [0.24, 0.96] without clamping.
-      pixels.push({ x, y, size, alpha: 0.24 + density * 0.72 });
+      pixels.push({
+        x,
+        y,
+        size,
+        alpha: 0.24 + density * 0.72,
+        phase: (x / width) * 4.4 + (y / height) * 2.6,
+      });
     }
   }
   return pixels;

@@ -55,8 +55,10 @@ portfolio/
   CTA.
 - **Fonts** come from `next/font/google` (Syne, Manrope, IBM Plex Mono), latin subset, woff2, with
   Next's fallback metrics. The first build of a fresh clone needs network access to fetch them.
-- **Motion** is either CSS with a `prefers-reduced-motion` counterpart or the canvas field, which
-  checks the same query and paints a single static frame.
+- **Motion** is CSS with a `prefers-reduced-motion` counterpart, plus the hero canvas field: a
+  1.1-second draw-in bloom on first paint, then a ~12.5-second ambient wave at 30fps with a
+  Pause/Play control, paused off screen. Reduced motion paints one static frame and hides the
+  control; the flag also stops the CSS entrance animations.
 
 ## Updating `public/og.png`
 

@@ -26,14 +26,16 @@ export default function AboutSection() {
           </dl>
         </div>
         <figure className="about-figure">
-          <Image
-            src={image.src}
-            alt={image.alt}
-            width={700}
-            height={1050}
-            sizes="320px"
-            quality={60}
-          />
+          <div className="about-media">
+            <Image
+              src={image.src}
+              alt={image.alt}
+              width={700}
+              height={1050}
+              sizes="320px"
+              quality={60}
+            />
+          </div>
           <figcaption>{image.credit}</figcaption>
         </figure>
       </div>
