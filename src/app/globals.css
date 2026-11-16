@@ -364,9 +364,12 @@ section[tabindex="-1"]:focus { outline: none; }
   initial-value: 0%;
 }
 
+/* The hook adds data-drawn once the canvas has a field to show, so the reveal cannot start on a blank canvas. */
+html[data-js] .poster-pixels:not([data-drawn]) { opacity: 0; }
+
 @media (prefers-reduced-motion: no-preference) {
   /* The field blooms out of its densest point, then the idle wave takes over. */
-  .poster-pixels {
+  .poster-pixels[data-drawn] {
     -webkit-mask-image: radial-gradient(
       circle at 72% 38%,
       #000 0,

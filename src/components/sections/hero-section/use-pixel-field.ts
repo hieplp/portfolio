@@ -474,6 +474,8 @@ export function usePixelField(
     };
 
     rebuild();
+    // Hidden by CSS until here, so the reveal starts on a painted field, not a blank one.
+    canvas.dataset.drawn = "";
     document.fonts?.ready.then(() => {
       if (!signal.aborted) rebuild(true);
     });
