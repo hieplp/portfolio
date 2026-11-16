@@ -542,7 +542,8 @@ details[open] > summary .disclosure::before { content: "\2212"; }
 .project-grid::-webkit-scrollbar { display: none; }
 
 .project-card {
-  flex: 0 0 clamp(280px, 54%, 620px);
+  /* Exact two-up: half the rail minus half the 16px gap, so no card edge is clipped. */
+  flex: 0 0 calc(50% - 8px);
   display: flex;
   flex-direction: column;
   padding: 32px;
@@ -962,7 +963,7 @@ details[open] > summary .disclosure::before { content: "\2212"; }
 
   .position h3 { font-size: 22px; }
 
-  .project-card { flex-basis: 86%; padding: 24px; }
+  .project-card { flex-basis: 100%; padding: 24px; }
   .project-card h3 { font-size: 26px; }
   .project-facts > div { grid-template-columns: 72px minmax(0, 1fr); }
   .projects-intro { display: block; }
