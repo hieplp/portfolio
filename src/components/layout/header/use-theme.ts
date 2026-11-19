@@ -47,6 +47,7 @@ export function useTheme() {
 
   return {
     theme,
-    toggle: () => storeTheme(theme === "dark" ? "light" : "dark"),
+    // Read the live attribute, not the render snapshot: a click during hydration lag must still flip.
+    toggle: () => storeTheme(readTheme() === "dark" ? "light" : "dark"),
   };
 }
