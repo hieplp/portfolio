@@ -1,14 +1,16 @@
+import Link from "next/link";
+
 import { profile } from "@/content/profile";
 
 export default function Brand({ onClick }: { onClick: () => void }) {
   return (
-    <a
+    <Link
       className="brand"
-      href="#top"
+      href="/"
       aria-label="Portfolio home"
       onClick={onClick}
     >
       <span>{profile.name}</span>
-    </a>
+    </Link>
   );
 }

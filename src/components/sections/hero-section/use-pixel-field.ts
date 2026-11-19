@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type RefObject } from "react";
+import { useEffect, type RefObject } from "react";
 import { buildPixels, paintGlyphMask, type Pixel } from "./pixel-field";
 
 type Box = { x: number; y: number; w: number; h: number };
@@ -17,15 +17,6 @@ export function usePixelField(
   canvasRef: RefObject<HTMLCanvasElement | null>,
   headingRef: RefObject<HTMLElement | null>,
 ) {
-  const [paused, setPaused] = useState(false);
-  const pausedRef = useRef(false);
-  const wakeRef = useRef<() => void>(() => {});
-
-  useEffect(() => {
-    pausedRef.current = paused;
-    wakeRef.current();
-  }, [paused]);
-
   useEffect(() => {
     const hero = heroRef.current;
     const canvas = canvasRef.current;
@@ -202,7 +193,7 @@ export function usePixelField(
 
     const ambientTick = (now: number) => {
       ambientFrame = 0;
-      if (!inView || reducedMotion.matches || pausedRef.current) return;
+      if (!inView || reducedMotion.matches) return;
       const dt = Math.min(80, now - ambientClock);
       ambientClock = now;
       ambientTime += dt;
@@ -221,8 +212,7 @@ export function usePixelField(
         ambientTimer ||
         frame ||
         !inView ||
-        reducedMotion.matches ||
-        pausedRef.current
+        reducedMotion.matches
       )
         return;
       ambientTimer = window.setTimeout(() => {
@@ -231,8 +221,7 @@ export function usePixelField(
           ambientFrame ||
           frame ||
           !inView ||
-          reducedMotion.matches ||
-          pausedRef.current
+          reducedMotion.matches
         )
           return;
         ambientClock = performance.now();
@@ -468,11 +457,6 @@ export function usePixelField(
     });
     viewObserver.observe(hero);
 
-    wakeRef.current = () => {
-      if (pausedRef.current) stopAmbient();
-      else scheduleAmbient();
-    };
-
     rebuild();
     // Hidden by CSS until here, so the reveal starts on a painted field, not a blank one.
     canvas.dataset.drawn = "";
@@ -487,12 +471,6 @@ export function usePixelField(
       themeObserver.disconnect();
       sizeObserver.disconnect();
       viewObserver.disconnect();
-      wakeRef.current = () => {};
     };
   }, [heroRef, canvasRef, headingRef]);
-
-  return {
-    paused,
-    toggle: () => setPaused((value) => !value),
-  };
 }

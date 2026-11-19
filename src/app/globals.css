@@ -346,18 +346,6 @@ section[tabindex="-1"]:focus { outline: none; }
   gap: 28px;
 }
 
-.motion-toggle {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  color: var(--muted);
-  font: 500 11px/1.6 var(--mono);
-  letter-spacing: 0.04em;
-  transition: color var(--speed-out) var(--ease);
-}
-.motion-toggle:hover,
-.motion-toggle:focus-visible { color: var(--accent); }
-
 @property --field-open {
   syntax: "<length-percentage>";
   inherits: false;
@@ -1082,7 +1070,6 @@ details[open] > summary .disclosure::before { content: "\2212"; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .motion-toggle { display: none; }
   .button:hover,
   .button:active,
   .theme-toggle:active,
