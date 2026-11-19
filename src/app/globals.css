@@ -706,14 +706,21 @@ details[open] > summary .disclosure::before { content: "\2212"; }
 
 .resume-section { margin-top: 36px; }
 .resume-section h2 {
+  position: relative;
   padding-bottom: 6px;
-  border-bottom: 1px solid currentColor;
   font-family: inherit;
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.14em;
   line-height: 1.4;
   text-transform: uppercase;
+}
+.resume-section h2::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 1px;
+  background: currentColor;
 }
 
 .resume-entry { margin-top: 20px; }
@@ -745,6 +752,47 @@ details[open] > summary .disclosure::before { content: "\2212"; }
 .resume-skills { display: grid; gap: 6px; margin-top: 16px; font-size: 14px; line-height: 1.6; }
 .resume-skills > div { display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 16px; }
 .resume-skills dt { font-weight: 600; }
+
+/* Paper stays still until read: header on load, sections and entries as they scroll in.
+   Scroll-driven CSS only; browsers without it simply show the finished layout. */
+@media (prefers-reduced-motion: no-preference) {
+  .resume-header h1 { animation: resume-rise 620ms var(--ease) both; }
+  .resume-header > p { animation: resume-rise 620ms var(--ease) 90ms both; }
+  .resume-header > .resume-contact { animation-delay: 160ms; }
+
+  @supports (animation-timeline: view()) {
+    .resume-entry,
+    .resume-skills > div {
+      animation: resume-reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 5% entry 45%;
+    }
+    .resume-section h2 {
+      animation: resume-rise linear both;
+      animation-range: entry 15% entry 55%;
+      animation-timeline: view();
+    }
+    .resume-section h2::after {
+      transform-origin: left;
+      animation: resume-rule linear both;
+      animation-range: entry 20% entry 65%;
+      animation-timeline: view();
+    }
+  }
+
+  @keyframes resume-rise {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes resume-reveal {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes resume-rule {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+}
 
 @media (hover: hover) {
   .resume-contact a:hover { color: var(--accent); }
@@ -1102,6 +1150,15 @@ details[open] > summary .disclosure::before { content: "\2212"; }
   .resume-stack,
   .resume-stack span { color: #000; }
   .resume-contact a { text-decoration: none; }
-  .resume-section h2 { border-color: #000; }
+  .resume-header h1,
+  .resume-header p,
+  .resume-section h2,
+  .resume-section h2::after,
+  .resume-entry,
+  .resume-skills > div {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
   .resume-entry, .resume-skills > div { break-inside: avoid; }
 }
