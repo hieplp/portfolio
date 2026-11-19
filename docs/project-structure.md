@@ -4,8 +4,9 @@ Next.js 16.1.6 (App Router, `src/`), React 19.2, TypeScript. The visual layer is
 `src/app/globals.css`: design tokens plus component rules. No Tailwind, no CSS-in-JS, no component
 library.
 
-Routes: `/` (the whole portfolio), `/work/[slug]` (one page per project, statically generated), and the
-retired `/works` + `/projects` stubs that canonicalise to `/` and refresh into the matching section.
+Routes: `/` (the whole portfolio), `/resume` (a plain Harvard-style resume meant for printing),
+`/work/[slug]` (one page per project, statically generated), and the retired `/works` + `/projects`
+stubs that canonicalise to `/` and refresh into the matching section.
 `robots.txt`, `sitemap.xml`, and the favicon are metadata routes.
 
 Deployment is a static export (`output: "export"`, unoptimized images) published by
@@ -21,8 +22,9 @@ portfolio/
 │  │  ├─ globals.css       # tokens + every component rule, in document order
 │  │  ├─ icon.svg          # favicon
 │  │  ├─ robots.ts         # /robots.txt
-│  │  ├─ sitemap.ts        # /sitemap.xml: home + every /work/[slug]
+│  │  ├─ sitemap.ts        # /sitemap.xml: home, /resume, every /work/[slug]
 │  │  ├─ work/[slug]/      # case-study page, one static page per project
+│  │  ├─ resume/           # Harvard-style resume page (+ print styles)
 │  │  ├─ works/, projects/ # retired v2 URLs, canonical to /
 │  │  └─ page.tsx          # section composition only
 │  ├─ components/
@@ -36,7 +38,7 @@ portfolio/
 │  │     ├─ techstack-section/    # stacked heading + grouped tags
 │  │     ├─ about-section/        # copy, facts, editorial image
 │  │     └─ contact-section/      # statement + mailto CTA
-│  ├─ content/             # all copy and data: profile, experience, projects, techstack,
+│  ├─ content/             # all copy and data: profile, education, experience, projects, techstack,
 │  │                       # about, contact, site (SEO), theme
 │  └─ archived/            # pre-v3 components, not imported anywhere
 ├─ public/

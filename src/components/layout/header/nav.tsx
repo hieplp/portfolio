@@ -18,7 +18,7 @@ export default function Nav({
       {SECTIONS.map(({ id, label }) => (
         <a
           key={id}
-          href={`#${id}`}
+          href={`/#${id}`}
           aria-current={active === id ? "location" : undefined}
           onClick={onNavigate}
         >

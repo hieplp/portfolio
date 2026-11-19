@@ -686,6 +686,88 @@ details[open] > summary .disclosure::before { content: "\2212"; }
 }
 .case-study .button { margin-top: 8px; }
 
+/* ---------- resume ---------- */
+
+.resume {
+  padding: 56px max(var(--gutter), (100% - var(--frame)) / 2) 96px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.resume-header { text-align: center; }
+.resume-header h1 {
+  font-family: inherit;
+  font-size: clamp(30px, 4vw, 38px);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+}
+.resume-header p {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+.resume-contact { overflow-wrap: anywhere; }
+.resume-contact a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.resume-section { margin-top: 36px; }
+.resume-section h2 {
+  padding-bottom: 6px;
+  border-bottom: 1px solid currentColor;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.resume-entry { margin-top: 20px; }
+.resume-entry-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+}
+.resume-entry-head h3 {
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.resume-dates {
+  flex: none;
+  color: var(--muted);
+  font-size: 13px;
+  white-space: nowrap;
+}
+.resume-org { margin-top: 2px; font-size: 14px; font-style: italic; }
+.resume-summary { margin-top: 8px; color: var(--muted); font-size: 14px; line-height: 1.6; }
+.resume-entry ul { margin: 8px 0 0; padding-left: 18px; font-size: 14px; line-height: 1.6; }
+.resume-entry li + li { margin-top: 4px; }
+.resume-stack { margin-top: 8px; color: var(--muted); font-size: 13px; line-height: 1.6; }
+.resume-stack span { color: var(--text); font-weight: 600; }
+
+.resume-skills { display: grid; gap: 6px; margin-top: 16px; font-size: 14px; line-height: 1.6; }
+.resume-skills > div { display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 16px; }
+.resume-skills dt { font-weight: 600; }
+
+@media (hover: hover) {
+  .resume-contact a:hover { color: var(--accent); }
+}
+
+@media (max-width: 767px) {
+  .resume { padding-top: 36px; }
+  .resume-entry-head { display: block; }
+  .resume-dates { margin-top: 2px; }
+  .resume-skills > div { grid-template-columns: 1fr; gap: 0; }
+  .resume-skills dt { margin-top: 8px; }
+}
+
 /* ---------- stack ---------- */
 
 .skill-grid {
@@ -1013,4 +1095,22 @@ details[open] > summary .disclosure::before { content: "\2212"; }
   .footer-link:hover .footer-arrow,
   .project-open span { transform: none; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* The resume is the only surface meant to leave the site as paper. */
+@media print {
+  @page { margin: 16mm; }
+
+  body { background: #fff; color: #000; }
+  .site-header, .footer, .skip { display: none; }
+
+  .resume { max-width: none; padding: 0; }
+  .resume-header p,
+  .resume-dates,
+  .resume-summary,
+  .resume-stack,
+  .resume-stack span { color: #000; }
+  .resume-contact a { text-decoration: none; }
+  .resume-section h2 { border-color: #000; }
+  .resume-entry, .resume-skills > div { break-inside: avoid; }
 }

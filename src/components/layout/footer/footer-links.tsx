@@ -3,6 +3,7 @@ import { profile } from "@/content/profile";
 
 // Only real profile links render; an empty field stays out instead of a dead href.
 const links = [
+  { href: "/resume", label: "Resume", arrow: "→", external: false },
   { href: profile.github, label: "GitHub", arrow: "↗", external: true },
   { href: profile.linkedin, label: "LinkedIn", arrow: "↗", external: true },
   { href: `mailto:${email}`, label: "Email", arrow: "", external: false },

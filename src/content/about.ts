@@ -1,3 +1,4 @@
+import { education } from "./education";
 import { profile } from "./profile";
 
 export const paragraphs = [
@@ -10,7 +11,7 @@ export const facts = [
   { label: "Availability", value: profile.availability },
   {
     label: "Education",
-    value: "FPT University, BSc Computer Science, 2017 - 2021",
+    value: `${education.school}, ${education.degree}, ${education.dates}`,
   },
 ];
 
