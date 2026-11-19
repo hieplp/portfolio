@@ -355,29 +355,31 @@ section[tabindex="-1"]:focus { outline: none; }
 /* The hook adds data-drawn once the canvas has a field to show, so the reveal cannot start on a blank canvas. */
 html[data-js] .poster-pixels:not([data-drawn]) { opacity: 0; }
 
+/* The field blooms out of its densest point, then the idle wave takes over. Kept outside the
+   motion query on request: the hero canvas never reduces to a still frame. */
+.poster-pixels[data-drawn] {
+  -webkit-mask-image: radial-gradient(
+    circle at 72% 38%,
+    #000 0,
+    #000 var(--field-open),
+    transparent calc(var(--field-open) + 90px)
+  );
+  mask-image: radial-gradient(
+    circle at 72% 38%,
+    #000 0,
+    #000 var(--field-open),
+    transparent calc(var(--field-open) + 90px)
+  );
+  animation: field-draw 1100ms linear both;
+}
+@keyframes field-draw {
+  from { --field-open: 0%; opacity: 0.35; }
+  to { --field-open: 120%; opacity: 1; }
+}
+
 @media (prefers-reduced-motion: no-preference) {
-  /* The field blooms out of its densest point, then the idle wave takes over. */
-  .poster-pixels[data-drawn] {
-    -webkit-mask-image: radial-gradient(
-      circle at 72% 38%,
-      #000 0,
-      #000 var(--field-open),
-      transparent calc(var(--field-open) + 90px)
-    );
-    mask-image: radial-gradient(
-      circle at 72% 38%,
-      #000 0,
-      #000 var(--field-open),
-      transparent calc(var(--field-open) + 90px)
-    );
-    animation: field-draw 1100ms linear both;
-  }
   .poster-heading { animation: appear 640ms var(--ease) 60ms both; }
   .poster-footer { animation: appear 640ms var(--ease) 160ms both; }
-  @keyframes field-draw {
-    from { --field-open: 0%; opacity: 0.35; }
-    to { --field-open: 120%; opacity: 1; }
-  }
   @keyframes appear {
     from { opacity: 0; transform: translateY(22px); }
     to { opacity: 1; transform: none; }
@@ -1082,6 +1084,8 @@ details[open] > summary .disclosure::before { content: "\2212"; }
   .footer-link:hover .footer-arrow,
   .project-open span { transform: none; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
+  /* The hero field is explicitly exempt from the pre-motion preference. */
+  .poster-pixels { animation: field-draw 1100ms linear both !important; }
 }
 
 /* The resume is the only surface meant to leave the site as paper. */

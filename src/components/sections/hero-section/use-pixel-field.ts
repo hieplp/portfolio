@@ -11,7 +11,8 @@ const AMBIENT_STEP = 1000 / 30;
 const AMBIENT_SPEED = 0.5;
 const AMBIENT_RESUME = 600;
 
-/* Event-driven pixel field canvas: rebuilds on resize/font/theme, reacts to pointer, breathes when idle. */
+/* Event-driven pixel field canvas: rebuilds on resize/font/theme, reacts to pointer, breathes when idle.
+   Reduced-motion preferences are deliberately ignored here; the hero field always animates. */
 export function usePixelField(
   heroRef: RefObject<HTMLElement | null>,
   canvasRef: RefObject<HTMLCanvasElement | null>,
@@ -24,7 +25,6 @@ export function usePixelField(
     const ctx = canvas?.getContext("2d");
     if (!hero || !canvas || !heading || !ctx) return;
 
-    const reducedMotion = matchMedia("(prefers-reduced-motion:reduce)");
     const controller = new AbortController();
     const { signal } = controller;
 
@@ -193,7 +193,7 @@ export function usePixelField(
 
     const ambientTick = (now: number) => {
       ambientFrame = 0;
-      if (!inView || reducedMotion.matches) return;
+      if (!inView) return;
       const dt = Math.min(80, now - ambientClock);
       ambientClock = now;
       ambientTime += dt;
@@ -207,23 +207,10 @@ export function usePixelField(
 
     /* Delay the idle wave long enough that it does not compete with a pointer push settling. */
     const scheduleAmbient = (delay = 0) => {
-      if (
-        ambientFrame ||
-        ambientTimer ||
-        frame ||
-        !inView ||
-        reducedMotion.matches
-      )
-        return;
+      if (ambientFrame || ambientTimer || frame || !inView) return;
       ambientTimer = window.setTimeout(() => {
         ambientTimer = 0;
-        if (
-          ambientFrame ||
-          frame ||
-          !inView ||
-          reducedMotion.matches
-        )
-          return;
+        if (ambientFrame || frame || !inView) return;
         ambientClock = performance.now();
         ambientAcc = 0;
         ambientFrame = requestAnimationFrame(ambientTick);
@@ -354,7 +341,7 @@ export function usePixelField(
 
     const animate = (now: number) => {
       frame = 0;
-      if (!inView || reducedMotion.matches) return;
+      if (!inView) return;
       const dt = Math.min(40, now - lastTime);
       lastTime = now;
       const settled =
@@ -377,7 +364,7 @@ export function usePixelField(
     };
 
     const schedule = () => {
-      if (!inView || reducedMotion.matches) return;
+      if (!inView) return;
       if (!frame) {
         lastTime = performance.now();
         frame = requestAnimationFrame(animate);
@@ -385,7 +372,6 @@ export function usePixelField(
     };
 
     const react = (event: PointerEvent) => {
-      if (reducedMotion.matches) return;
       stopAmbient();
       const rect = hero.getBoundingClientRect();
       target.x = event.clientX - rect.left;
@@ -413,11 +399,6 @@ export function usePixelField(
       punch(null);
     };
 
-    const onMotionChange = () => {
-      if (reducedMotion.matches) freeze();
-      else scheduleAmbient(300);
-    };
-
     hero.addEventListener("pointermove", react, { passive: true, signal });
     hero.addEventListener("pointerdown", react, { passive: true, signal });
     hero.addEventListener("pointerleave", release, { passive: true, signal });
@@ -429,7 +410,6 @@ export function usePixelField(
       },
       { passive: true, signal },
     );
-    reducedMotion.addEventListener("change", onMotionChange, { signal });
 
     const themeObserver = new MutationObserver(() => {
       accent = getComputedStyle(document.documentElement)

@@ -59,7 +59,8 @@ portfolio/
   Next's fallback metrics. The first build of a fresh clone needs network access to fetch them.
 - **Motion** is CSS with a `prefers-reduced-motion` counterpart, plus the hero canvas field: a
   1.1-second draw-in bloom on first paint, then a ~12.5-second ambient wave at 30fps, paused off
-  screen. Reduced motion paints one static frame; the flag also stops the CSS entrance animations.
+  screen. The hero field deliberately ignores reduce-motion (the wave always runs); the flag still
+  stops the other CSS entrance animations.
 
 ## Updating `public/og.png`
 
