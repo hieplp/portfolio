@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import type { Project } from "@/content/projects";
 import ProjectCard from "./project-card";
@@ -48,6 +49,9 @@ export default function ProjectRail({ projects }: { projects: Project[] }) {
         ))}
       </div>
       <div className="rail-controls">
+        <Link className="text-link" href="/projects">
+          All projects <span className="text-link-arrow" aria-hidden="true">→</span>
+        </Link>
         <button
           type="button"
           className="rail-button"

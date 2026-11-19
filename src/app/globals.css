@@ -546,7 +546,7 @@ details[open] > summary .disclosure::before { content: "\2212"; }
     box-shadow var(--speed-out) var(--ease),
     background-color var(--speed-out) var(--ease);
 }
-.project-card:first-child {
+.project-grid .project-card:first-child {
   background: var(--soft-blue);
   border-color: var(--soft-blue);
 }
@@ -574,15 +574,17 @@ details[open] > summary .disclosure::before { content: "\2212"; }
   line-height: 1.2;
   letter-spacing: -1.4px;
 }
-.project-card h3 a {
+.project-card h3 button {
+  font: inherit;
+  text-align: left;
   background-image: linear-gradient(currentColor, currentColor);
   background-repeat: no-repeat;
   background-size: 0% 2px;
   background-position: right calc(100% - 1px);
   transition: background-size var(--speed-out) var(--ease);
 }
-.project-card h3 a:hover,
-.project-card h3 a:focus-visible {
+.project-card h3 button:hover,
+.project-card h3 button:focus-visible {
   background-size: 100% 2px;
   background-position: left calc(100% - 1px);
   transition-duration: var(--speed-in);
@@ -633,7 +635,8 @@ details[open] > summary .disclosure::before { content: "\2212"; }
   transition-duration: var(--speed-in);
 }
 
-.rail-controls { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }
+.rail-controls { display: flex; align-items: center; justify-content: flex-end; gap: 8px; margin-top: 16px; }
+.rail-controls .text-link { margin-right: auto; }
 
 .rail-button {
   display: inline-flex;
@@ -653,20 +656,182 @@ details[open] > summary .disclosure::before { content: "\2212"; }
 }
 .rail-button:disabled { opacity: 0.35; cursor: default; }
 
-/* ---------- case study page ---------- */
+/* ---------- projects index ---------- */
 
-.case-study {
-  max-width: 760px;
-  margin-inline: auto;
-  padding: 48px var(--gutter) 96px;
+.project-index {
+  padding: 48px max(var(--gutter), (100% - var(--frame)) / 2) 96px;
 }
-.case-study-meta { margin-top: 32px; margin-bottom: 12px; }
-.case-study h1 {
+.project-index h1 {
+  margin-top: 32px;
   font-size: clamp(36px, 5.6vw, 56px);
   line-height: 1.08;
   letter-spacing: -0.03em;
 }
-.case-study-highlights {
+.project-index-intro {
+  max-width: 60ch;
+  margin-top: 16px;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.project-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+.project-types { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.project-search {
+  flex: 1 1 180px;
+  max-width: 260px;
+  min-height: 36px;
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--control);
+  background: var(--paper);
+  color: var(--text);
+  font: 13px var(--body);
+}
+.project-search::placeholder { color: var(--muted); }
+
+.project-filter {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--control);
+  font-size: 13px;
+  transition: border-color var(--speed-out) var(--ease),
+    background-color var(--speed-out) var(--ease),
+    color var(--speed-out) var(--ease);
+}
+@media (hover: hover) {
+  .project-filter:hover { border-color: var(--accent); color: var(--accent); }
+}
+.project-filter[aria-pressed="true"] {
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--bg);
+}
+.project-filter[aria-pressed="true"]:hover { border-color: var(--text); color: var(--bg); }
+
+.project-tech { position: relative; }
+.project-tech summary { list-style: none; }
+.project-tech summary::-webkit-details-marker { display: none; }
+.project-tech summary::after {
+  content: "\25BE";
+  margin-left: 8px;
+  font-size: 10px;
+}
+.project-tech-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 10;
+  display: grid;
+  gap: 10px;
+  width: 240px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  box-shadow: 0 16px 30px -24px color-mix(in oklab, var(--text) 40%, transparent);
+}
+.project-tech-menu .project-search { width: 100%; max-width: none; }
+.project-tech-options {
+  display: grid;
+  gap: 8px;
+  max-height: 280px;
+  overflow: auto;
+}
+.project-tech-options label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.project-tech-options input { accent-color: var(--accent); }
+.project-tech-none { color: var(--muted); font-size: 13px; }
+
+.project-index-count {
+  margin-top: 16px;
+  color: var(--muted);
+  font: 10px/1.8 var(--mono);
+}
+.project-empty { margin-top: 16px; color: var(--muted); }
+
+.project-index-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+@media (max-width: 767px) {
+  .project-search { max-width: none; }
+  .project-tech-menu { left: auto; right: 0; }
+  .project-index-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- project dialog ---------- */
+
+.project-dialog {
+  width: min(680px, calc(100vw - 32px));
+  max-height: 85vh;
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--text);
+  overflow: auto;
+}
+.project-dialog::backdrop { background: rgb(0 0 0 / 0.55); }
+
+.project-dialog-body { padding: 32px; }
+.project-dialog-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.project-dialog-head .project-type { margin-bottom: 0; }
+.project-dialog-close {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  font-size: 20px;
+  line-height: 1;
+  transition: border-color var(--speed-out) var(--ease),
+    color var(--speed-out) var(--ease);
+}
+@media (hover: hover) {
+  .project-dialog-close:hover { border-color: var(--accent); color: var(--accent); }
+}
+.project-dialog h2 {
+  margin-top: 12px;
+  font-size: 32px;
+  line-height: 1.2;
+  letter-spacing: -1.4px;
+}
+.project-dialog .project-facts { margin-bottom: 20px; }
+.project-dialog .button { margin-top: 8px; }
+
+/* The modal is the only scroll target while open. */
+body:has(.project-dialog[open]) { overflow: hidden; }
+
+.project-highlights {
   display: grid;
   gap: 10px;
   margin-top: 28px;
@@ -674,7 +839,10 @@ details[open] > summary .disclosure::before { content: "\2212"; }
   color: var(--muted);
   line-height: 1.7;
 }
-.case-study .button { margin-top: 8px; }
+
+@media (max-width: 767px) {
+  .project-dialog-body { padding: 24px; }
+}
 
 /* ---------- resume ---------- */
 

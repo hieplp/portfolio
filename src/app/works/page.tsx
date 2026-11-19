@@ -12,7 +12,7 @@ export default function Works() {
   return (
     <>
       <meta httpEquiv="refresh" content="0; url=/#experience" />
-      <section className="case-study">
+      <section className="project-index">
         <h1>Work experience</h1>
         <p className="project-description">
           This page moved to the home page. Continue to{" "}

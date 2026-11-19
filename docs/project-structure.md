@@ -4,9 +4,9 @@ Next.js 16.1.6 (App Router, `src/`), React 19.2, TypeScript. The visual layer is
 `src/app/globals.css`: design tokens plus component rules. No Tailwind, no CSS-in-JS, no component
 library.
 
-Routes: `/` (the whole portfolio), `/resume` (a plain Harvard-style resume meant for printing),
-`/work/[slug]` (one page per project, statically generated), and the retired `/works` + `/projects`
-stubs that canonicalise to `/` and refresh into the matching section.
+Routes: `/` (the whole portfolio), `/projects` (filterable index, details open in a dialog),
+`/resume` (a plain Harvard-style resume meant for printing), and the retired `/works` stub that
+canonicalises to `/` and refreshes into the experience section.
 `robots.txt`, `sitemap.xml`, and the favicon are metadata routes.
 
 Deployment is a static export (`output: "export"`, unoptimized images) published by
@@ -22,10 +22,10 @@ portfolio/
 │  │  ├─ globals.css       # tokens + every component rule, in document order
 │  │  ├─ icon.svg          # favicon
 │  │  ├─ robots.ts         # /robots.txt
-│  │  ├─ sitemap.ts        # /sitemap.xml: home, /resume, every /work/[slug]
-│  │  ├─ work/[slug]/      # case-study page, one static page per project
+│  │  ├─ sitemap.ts        # /sitemap.xml: home, /projects, /resume
+│  │  ├─ projects/         # filterable index; project detail dialogs
 │  │  ├─ resume/           # Harvard-style resume page (+ print styles)
-│  │  ├─ works/, projects/ # retired v2 URLs, canonical to /
+│  │  ├─ works/            # retired v2 URL, canonical to /
 │  │  └─ page.tsx          # section composition only
 │  ├─ components/
 │  │  ├─ layout/
@@ -34,7 +34,7 @@ portfolio/
 │  │  └─ sections/
 │  │     ├─ hero-section/  # poster, canvas pixel field, glyph mask
 │  │     ├─ experience-section/   # sticky aside + roles
-│  │     ├─ projects-section/     # rail and cards linking to /work/[slug]
+│  │     ├─ projects-section/     # rail and cards, detail dialog
 │  │     ├─ techstack-section/    # stacked heading + grouped tags
 │  │     ├─ about-section/        # copy, facts, editorial image
 │  │     └─ contact-section/      # statement + mailto CTA
